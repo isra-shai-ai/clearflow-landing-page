@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearFlow | אוטומציה עסקית</title>
+    
+    <!-- Google Fonts: Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration and Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Rubik', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1E3A5F', // Deep Blue
+                        accent: '#4A6FA5', // Slate Blue
+                        surface: '#F8FAFC', // Off-white
+                        alt: '#F1F5F9', // Light gray
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #F8FAFC;
+        }
+        /* Subtle selection color */
+        ::selection {
+            background-color: #4A6FA5;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-4">
+        <div class="container mx-auto px-6 max-w-6xl flex items-center justify-between">
+            <div class="text-2xl font-bold text-primary tracking-tight">ClearFlow</div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- Section 1: Hero -->
+        <section class="py-20 md:py-32 px-6 flex flex-col items-center text-center max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-6">
+                אוטומציה עסקית שעושה סדר. בלי באזוורדס, רק תכל'ס.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl leading-relaxed">
+                מערכות שעובדות בשבילך. אנחנו מחברים את המערכות שלכם כדי לחסוך זמן, למנוע טעויות אנוש, ולתת לכם בחזרה את השליטה על התפעול של העסק.
+            </p>
+            <a href="#contact" aria-label="גלול לטופס יצירת קשר" 
+               class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-medium text-lg rounded-full shadow-lg hover:bg-[#152a45] hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+                בואו נעשה סדר
+            </a>
+        </section>
+
+        <!-- Section 2: The Pain / Problem -->
+        <section class="py-20 px-6 bg-alt border-y border-gray-200">
+            <div class="container mx-auto max-w-5xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-primary mb-4">
+                        הופכים כאוס לבהירות: העסק צומח, אבל התפעול תוקע אתכם?
+                    </h2>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-8 justify-center mt-12 px-4 md:px-0">
+                    <ul class="space-y-6 text-lg text-gray-700 w-full md:w-3/4 mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                        <li class="flex items-start">
+                            <span class="text-red-500 ml-4 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </span>
+                            <span>לידים נופלים בין הכיסאות כי שוכחים לחזור אליהם.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 ml-4 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </span>
+                            <span>העברת מידע בין מחלקות נעשית ידנית (וכוללת טעויות).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 ml-4 mt-1 flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </span>
+                            <span>קליטת לקוח חדש או עובד לוקחת שעות של ניירת.</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <p class="text-center text-xl text-primary font-medium mt-12 bg-accent/10 py-6 px-4 rounded-xl max-w-3xl mx-auto">
+                    זה לא חייב להיות ככה. <br class="md:hidden"> כשהמערכות מדברות אחת עם השנייה – דברים פשוט קורים.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3: Core Services & Process -->
+        <section class="py-20 px-6 bg-surface">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-primary">
+                        מתהליך מסורבל לזרימה חלקה ב-3 שלבים:
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                    
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-primary to-accent"></div>
+                        <div class="w-12 h-12 bg-alt rounded-full flex items-center justify-center text-xl font-bold text-primary mb-6">1</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">מיפוי, אפיון וסדר בבלאגן</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            שיחת עומק שבה מפרקים את תהליכי העבודה הקיימים, מזהים איפה מבזבזים זמן, ובונים תוכנית פעולה מציאותית.
+                        </p>
+                        <div class="mt-auto pt-6 border-t border-gray-100">
+                            <p class="text-sm font-medium text-accent italic">
+                                המסר: לא מתחילים לבנות כלום לפני שמבינים את הצורך.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-primary to-accent"></div>
+                        <div class="w-12 h-12 bg-alt rounded-full flex items-center justify-center text-xl font-bold text-primary mb-6">2</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">בניית אוטומציות וחיבור מערכות</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            בניית תהליכים אוטומטיים במערכות (כמו Make). קליטת לידים ל-CRM, הפקת חשבוניות, ותהליכי Onboarding מסודרים.
+                        </p>
+                        <div class="mt-auto pt-6 border-t border-gray-100">
+                            <p class="text-sm font-medium text-accent italic">
+                                המסר: המערכות עובדות כדי שאתם לא תעשו עבודה שחורה פעמיים.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 (Highlight) -->
+                    <div class="bg-primary text-white rounded-2xl p-8 shadow-xl transform md:-translate-y-2 relative overflow-hidden group border border-[#2A4C7A]">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-10 -mt-10"></div>
+                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-xl font-bold text-white mb-6 backdrop-blur-sm">3</div>
+                        <h3 class="text-xl font-bold text-white mb-4">הדרכה והעברת מקל</h3>
+                        <p class="text-[#E2E8F0] mb-6 leading-relaxed">
+                            לאחר ההטמעה, העברת הדרכה מסודרת לצוות על תפעול המערכת ביום-יום. ליווי קרוב בחודש הראשון.
+                        </p>
+                        <div class="mt-auto pt-6 border-t border-white/20">
+                            <p class="text-sm font-medium text-blue-200 italic">
+                                המסר: לא משאירים אתכם עם "קופסה שחורה". נותנים לכם את השליטה.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Contact Form -->
+        <section id="contact" class="py-24 px-6 bg-white relative overflow-hidden">
+            <div class="absolute left-0 top-0 w-64 h-64 bg-accent/5 rounded-full -ml-32 -mt-32 blur-3xl"></div>
+            
+            <div class="container mx-auto max-w-xl relative z-10">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-primary mb-4">
+                        מוכנים להפסיק לבזבז זמן?
+                    </h2>
+                    <p class="text-gray-600">השאירו פרטים ונחזור אליכם בהקדם לתכנון השלב הבא.</p>
+                </div>
+
+                <form action="#" class="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100 space-y-6">
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">שם מלא</label>
+                        <input type="text" id="fullName" name="fullName" aria-label="שם מלא" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-shadow bg-surface">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">אימייל</label>
+                        <input type="email" id="email" name="email" aria-label="אימייל" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-shadow bg-surface text-left" dir="ltr">
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">טלפון</label>
+                        <input type="tel" id="phone" name="phone" aria-label="טלפון" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-shadow bg-surface text-left" dir="ltr">
+                    </div>
+
+                    <button type="submit" aria-label="שלח הודעה"
+                        class="w-full py-4 bg-primary text-white font-medium text-lg rounded-xl shadow-md hover:bg-[#152a45] hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary mt-4">
+                        שלח הודעה
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-slate-300 py-8 border-t border-[#152a45]">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>&copy; 2026 ClearFlow. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
