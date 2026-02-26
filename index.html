@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="he">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClearFlow | אוטומציה עסקית</title>
-    
-    <!-- Google Fonts: Rubik -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS (CDN) -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Configuration and Custom CSS -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Rubik', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Rubik', 'sans-serif'] },
                     colors: {
-                        primary: '#1E3A5F', // Deep Blue
-                        accent: '#4A6FA5', // Slate Blue
-                        surface: '#F8FAFC', // Off-white
-                        alt: '#F1F5F9', // Light gray
+                        primary: '#1E3A5F',
+                        accent: '#4A6FA5',
+                        surface: '#F8FAFC',
+                        alt: '#F1F5F9',
                     }
                 }
             }
@@ -35,172 +29,307 @@
         html {
             scroll-behavior: smooth;
         }
+
         body {
             background-color: #F8FAFC;
         }
-        /* Subtle selection color */
+
         ::selection {
             background-color: #4A6FA5;
             color: white;
         }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #F59E0B, #EA580C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes blob {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(24px, -24px) scale(1.06);
+            }
+
+            66% {
+                transform: translate(-12px, 12px) scale(0.96);
+            }
+        }
+
+        .blob {
+            animation: blob 9s infinite ease-in-out;
+        }
+
+        .blob-delay {
+            animation-delay: 4s;
+        }
     </style>
 </head>
+
 <body class="font-sans text-gray-800 antialiased flex flex-col min-h-screen">
 
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-4">
+    <!-- ── Floating WhatsApp ── -->
+    <a href="#" target="_blank" aria-label="פתח שיחה בוואטסאפ"
+        class="fixed bottom-6 left-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300">
+        <svg viewBox="0 0 24 24" fill="white" class="w-7 h-7">
+            <path
+                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 1.67c2.2 0 4.26.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23a8.27 8.27 0 0 1-4.19-1.14l-.3-.18-3.12.82.83-3.04-.19-.31A8.19 8.19 0 0 1 3.8 11.91c0-4.55 3.69-8.24 8.24-8.24zm-2.04 4.6c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2 0 1.18.86 2.32 1 2.49.13.17 1.69 2.58 4.12 3.61.57.25 1.02.4 1.37.51.57.18 1.1.16 1.51.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.25-.13-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.13-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.35-1.67-.14-.24-.01-.37.1-.49.11-.11.25-.29.38-.44.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.4H9.8a.67.67 0 0 0-.47.2z" />
+        </svg>
+    </a>
+
+    <!-- ── Header ── -->
+    <header class="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-white/50 shadow-sm py-4">
         <div class="container mx-auto px-6 max-w-6xl flex items-center justify-between">
             <div class="text-2xl font-bold text-primary tracking-tight">ClearFlow</div>
+            <a href="#" aria-label="יצירת קשר בוואטסאפ"
+                class="flex items-center gap-2 bg-primary text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#152a45] transition-colors duration-300 shadow-md">
+                <svg viewBox="0 0 24 24" fill="white" class="w-4 h-4 flex-shrink-0">
+                    <path
+                        d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 1.67c2.2 0 4.26.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23a8.27 8.27 0 0 1-4.19-1.14l-.3-.18-3.12.82.83-3.04-.19-.31A8.19 8.19 0 0 1 3.8 11.91c0-4.55 3.69-8.24 8.24-8.24zm-2.04 4.6c-.16 0-.42.06-.64.3-.22.25-.84.82-.84 2 0 1.18.86 2.32 1 2.49.13.17 1.69 2.58 4.12 3.61.57.25 1.02.4 1.37.51.57.18 1.1.16 1.51.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.25-.13-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.13-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.35-1.67-.14-.24-.01-.37.1-.49.11-.11.25-.29.38-.44.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.4H9.8a.67.67 0 0 0-.47.2z" />
+                </svg>
+                <span>052-1234567</span>
+            </a>
         </div>
     </header>
 
     <main class="flex-grow">
-        
-        <!-- Section 1: Hero -->
-        <section class="py-20 md:py-32 px-6 flex flex-col items-center text-center max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-6">
-                אוטומציה עסקית שעושה סדר. בלי באזוורדס, רק תכל'ס.
-            </h1>
-            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl leading-relaxed">
-                מערכות שעובדות בשבילך. אנחנו מחברים את המערכות שלכם כדי לחסוך זמן, למנוע טעויות אנוש, ולתת לכם בחזרה את השליטה על התפעול של העסק.
-            </p>
-            <a href="#contact" aria-label="גלול לטופס יצירת קשר" 
-               class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-medium text-lg rounded-full shadow-lg hover:bg-[#152a45] hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-                בואו נעשה סדר
-            </a>
+
+        <!-- ── Section 1: Hero ── -->
+        <section class="relative py-20 md:py-28 px-6 overflow-hidden">
+            <!-- Mesh gradient blobs -->
+            <div
+                class="absolute -top-20 -right-20 w-[500px] h-[500px] bg-blue-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 blob pointer-events-none">
+            </div>
+            <div
+                class="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-amber-200 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 blob blob-delay pointer-events-none">
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-5">
+                    אוטומציה עסקית ש<span class="gradient-text">עושה סדר</span>. בלי באזוורדס, רק תכל'ס.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-500 mb-8 max-w-2xl leading-relaxed">
+                    מערכות שעובדות בשבילך. אנחנו מחברים את המערכות שלכם כדי לחסוך זמן, למנוע טעויות אנוש, ולתת לכם בחזרה
+                    את השליטה על התפעול של העסק.
+                </p>
+
+                <!-- Compact lead-capture form (glassmorphism) -->
+                <form action="#"
+                    class="w-full max-w-3xl bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/60 p-5 mb-7">
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <input type="text" name="fullName" aria-label="שם מלא" placeholder="שם מלא" required
+                            class="flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-200 bg-white/70 focus:ring-2 focus:ring-accent focus:border-accent outline-none text-sm placeholder-gray-400">
+                        <input type="email" name="email" aria-label="אימייל" placeholder="אימייל" required dir="ltr"
+                            class="flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-200 bg-white/70 focus:ring-2 focus:ring-accent focus:border-accent outline-none text-sm text-left placeholder-gray-400">
+                        <input type="tel" name="phone" aria-label="טלפון" placeholder="טלפון" required dir="ltr"
+                            class="flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-200 bg-white/70 focus:ring-2 focus:ring-accent focus:border-accent outline-none text-sm text-left placeholder-gray-400">
+                        <button type="submit" aria-label="שלח פרטים"
+                            class="px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-[#152a45] transition-colors duration-300 whitespace-nowrap text-sm shadow-md flex-shrink-0">
+                            שלח פרטים ←
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Secondary CTA -->
+                <a href="#process" aria-label="גלול לאיך זה עובד"
+                    class="inline-flex items-center gap-2 px-7 py-3 border-2 border-primary text-primary font-medium rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-sm">
+                    איך זה עובד?
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </a>
+            </div>
         </section>
 
-        <!-- Section 2: The Pain / Problem -->
-        <section class="py-20 px-6 bg-alt border-y border-gray-200">
+        <!-- ── Trust Banner ── -->
+        <section class="py-12 px-6 bg-white border-y border-gray-100">
+            <div class="container mx-auto max-w-4xl">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 text-center">
+
+                    <div class="flex flex-col items-center gap-1 py-6 md:py-0 md:px-8">
+                        <svg class="w-7 h-7 text-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <p class="text-5xl font-black text-primary">100%</p>
+                        <p class="text-sm text-gray-500 font-medium mt-1">ייעול תהליכים</p>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-1 py-6 md:py-0 md:px-8">
+                        <svg class="w-7 h-7 text-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-5xl font-black text-primary">50%+</p>
+                        <p class="text-sm text-gray-500 font-medium mt-1">חיסכון בזמן יקר</p>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-1 py-6 md:py-0 md:px-8">
+                        <svg class="w-7 h-7 text-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-5xl font-black text-primary">0</p>
+                        <p class="text-sm text-gray-500 font-medium mt-1">אפס טעויות אנוש</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Section 2: Pain / Problem ── -->
+        <section class="py-20 px-6 bg-alt border-b border-gray-200">
             <div class="container mx-auto max-w-5xl">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-semibold text-primary mb-4">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-primary">
                         הופכים כאוס לבהירות: העסק צומח, אבל התפעול תוקע אתכם?
                     </h2>
                 </div>
-                
-                <div class="flex flex-col md:flex-row gap-8 justify-center mt-12 px-4 md:px-0">
-                    <ul class="space-y-6 text-lg text-gray-700 w-full md:w-3/4 mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                        <li class="flex items-start">
-                            <span class="text-red-500 ml-4 mt-1 flex-shrink-0">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </span>
-                            <span>לידים נופלים בין הכיסאות כי שוכחים לחזור אליהם.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-red-500 ml-4 mt-1 flex-shrink-0">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </span>
-                            <span>העברת מידע בין מחלקות נעשית ידנית (וכוללת טעויות).</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-red-500 ml-4 mt-1 flex-shrink-0">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </span>
-                            <span>קליטת לקוח חדש או עובד לוקחת שעות של ניירת.</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <p class="text-center text-xl text-primary font-medium mt-12 bg-accent/10 py-6 px-4 rounded-xl max-w-3xl mx-auto">
-                    זה לא חייב להיות ככה. <br class="md:hidden"> כשהמערכות מדברות אחת עם השנייה – דברים פשוט קורים.
+
+                <ul
+                    class="space-y-6 text-lg text-gray-700 w-full md:w-3/4 mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/50">
+                    <li class="flex items-start gap-4">
+                        <span class="text-red-400 mt-1 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                        <span>לידים נופלים בין הכיסאות כי שוכחים לחזור אליהם.</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-red-400 mt-1 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                        <span>העברת מידע בין מחלקות נעשית ידנית (וכוללת טעויות).</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-red-400 mt-1 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                        <span>קליטת לקוח חדש או עובד לוקחת שעות של ניירת.</span>
+                    </li>
+                </ul>
+
+                <p
+                    class="text-center text-xl text-primary font-medium mt-12 bg-white/80 backdrop-blur-sm py-6 px-6 rounded-2xl max-w-3xl mx-auto border border-white/50 shadow-sm">
+                    זה לא חייב להיות ככה. כשהמערכות מדברות אחת עם השנייה – דברים פשוט קורים.
                 </p>
             </div>
         </section>
 
-        <!-- Section 3: Core Services & Process -->
-        <section class="py-20 px-6 bg-surface">
+        <!-- ── Section 3: Bento 3-Step Process ── -->
+        <section id="process" class="py-20 px-6 bg-surface">
             <div class="container mx-auto max-w-6xl">
-                <div class="text-center mb-16">
+                <div class="text-center mb-14">
                     <h2 class="text-3xl md:text-4xl font-semibold text-primary">
                         מתהליך מסורבל לזרימה חלקה ב-3 שלבים:
                     </h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                    
-                    <!-- Card 1 -->
-                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-primary to-accent"></div>
-                        <div class="w-12 h-12 bg-alt rounded-full flex items-center justify-center text-xl font-bold text-primary mb-6">1</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">מיפוי, אפיון וסדר בבלאגן</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            שיחת עומק שבה מפרקים את תהליכי העבודה הקיימים, מזהים איפה מבזבזים זמן, ובונים תוכנית פעולה מציאותית.
-                        </p>
-                        <div class="mt-auto pt-6 border-t border-gray-100">
-                            <p class="text-sm font-medium text-accent italic">
-                                המסר: לא מתחילים לבנות כלום לפני שמבינים את הצורך.
-                            </p>
+                <!-- Bento grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 auto-rows-fr">
+
+                    <!-- Card 1 — wide (col-span-2) -->
+                    <div
+                        class="md:col-span-2 bg-white rounded-3xl p-8 shadow-2xl border border-white/50 relative overflow-hidden hover:shadow-[0_25px_60px_rgba(30,58,95,0.12)] transition-shadow duration-300">
+                        <div
+                            class="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-primary to-accent rounded-t-3xl">
                         </div>
+                        <div
+                            class="w-12 h-12 bg-alt rounded-2xl flex items-center justify-center text-xl font-bold text-primary mb-5">
+                            1</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">מיפוי, אפיון וסדר בבלאגן</h3>
+                        <p class="text-gray-500 leading-relaxed max-w-lg">
+                            שיחת עומק שבה מפרקים את תהליכי העבודה הקיימים, מזהים איפה מבזבזים זמן, ובונים תוכנית פעולה
+                            מציאותית.
+                        </p>
                     </div>
 
-                    <!-- Card 2 -->
-                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-primary to-accent"></div>
-                        <div class="w-12 h-12 bg-alt rounded-full flex items-center justify-center text-xl font-bold text-primary mb-6">2</div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">בניית אוטומציות וחיבור מערכות</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            בניית תהליכים אוטומטיים במערכות (כמו Make). קליטת לידים ל-CRM, הפקת חשבוניות, ותהליכי Onboarding מסודרים.
+                    <!-- Card 2 — Deep Blue, tall (row-span-2) -->
+                    <div
+                        class="md:row-span-2 bg-primary text-white rounded-3xl p-8 shadow-2xl border border-[#2A4C7A] relative overflow-hidden hover:shadow-[0_25px_60px_rgba(30,58,95,0.35)] transition-shadow duration-300">
+                        <div class="absolute -top-12 -right-12 w-48 h-48 bg-white opacity-5 rounded-full"></div>
+                        <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-white opacity-5 rounded-full"></div>
+                        <div
+                            class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-xl font-bold text-white mb-5">
+                            2</div>
+                        <h3 class="text-2xl font-bold text-white mb-3">בניית אוטומציות וחיבור מערכות</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            בניית תהליכים אוטומטיים במערכות (כמו Make). קליטת לידים ל-CRM, הפקת חשבוניות, ותהליכי
+                            Onboarding מסודרים.
                         </p>
-                        <div class="mt-auto pt-6 border-t border-gray-100">
-                            <p class="text-sm font-medium text-accent italic">
-                                המסר: המערכות עובדות כדי שאתם לא תעשו עבודה שחורה פעמיים.
-                            </p>
-                        </div>
                     </div>
 
-                    <!-- Card 3 (Highlight) -->
-                    <div class="bg-primary text-white rounded-2xl p-8 shadow-xl transform md:-translate-y-2 relative overflow-hidden group border border-[#2A4C7A]">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-10 -mt-10"></div>
-                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-xl font-bold text-white mb-6 backdrop-blur-sm">3</div>
-                        <h3 class="text-xl font-bold text-white mb-4">הדרכה והעברת מקל</h3>
-                        <p class="text-[#E2E8F0] mb-6 leading-relaxed">
+                    <!-- Card 3 — wide (col-span-2) -->
+                    <div
+                        class="md:col-span-2 bg-white rounded-3xl p-8 shadow-2xl border border-white/50 relative overflow-hidden hover:shadow-[0_25px_60px_rgba(30,58,95,0.12)] transition-shadow duration-300">
+                        <div
+                            class="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-accent to-blue-300 rounded-t-3xl">
+                        </div>
+                        <div
+                            class="w-12 h-12 bg-alt rounded-2xl flex items-center justify-center text-xl font-bold text-primary mb-5">
+                            3</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">הדרכה והעברת מקל</h3>
+                        <p class="text-gray-500 leading-relaxed max-w-lg">
                             לאחר ההטמעה, העברת הדרכה מסודרת לצוות על תפעול המערכת ביום-יום. ליווי קרוב בחודש הראשון.
                         </p>
-                        <div class="mt-auto pt-6 border-t border-white/20">
-                            <p class="text-sm font-medium text-blue-200 italic">
-                                המסר: לא משאירים אתכם עם "קופסה שחורה". נותנים לכם את השליטה.
-                            </p>
-                        </div>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Contact Form -->
-        <section id="contact" class="py-24 px-6 bg-white relative overflow-hidden">
-            <div class="absolute left-0 top-0 w-64 h-64 bg-accent/5 rounded-full -ml-32 -mt-32 blur-3xl"></div>
-            
-            <div class="container mx-auto max-w-xl relative z-10">
+        <!-- ── Section 4: Contact Form (Glassmorphism + Mesh) ── -->
+        <section id="contact" class="py-24 px-6 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
+            <!-- Mesh gradient blobs -->
+            <div
+                class="absolute -top-20 -right-20 w-[450px] h-[450px] bg-blue-200 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 blob pointer-events-none">
+            </div>
+            <div
+                class="absolute -bottom-20 -left-20 w-[450px] h-[450px] bg-indigo-200 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 blob blob-delay pointer-events-none">
+            </div>
+
+            <div class="container mx-auto max-w-lg relative z-10">
                 <div class="text-center mb-10">
-                    <h2 class="text-3xl md:text-4xl font-semibold text-primary mb-4">
+                    <h2 class="text-3xl md:text-4xl font-semibold text-primary mb-3">
                         מוכנים להפסיק לבזבז זמן?
                     </h2>
-                    <p class="text-gray-600">השאירו פרטים ונחזור אליכם בהקדם לתכנון השלב הבא.</p>
+                    <p class="text-gray-500">השאירו פרטים ונחזור אליכם בהקדם לתכנון השלב הבא.</p>
                 </div>
 
-                <form action="#" class="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100 space-y-6">
+                <form action="#"
+                    class="bg-white/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl shadow-2xl border border-white/60 space-y-5">
                     <div>
                         <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">שם מלא</label>
                         <input type="text" id="fullName" name="fullName" aria-label="שם מלא" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-shadow bg-surface">
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white/70 focus:ring-2 focus:ring-accent focus:border-accent outline-none">
                     </div>
-                    
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-2">אימייל</label>
-                        <input type="email" id="email" name="email" aria-label="אימייל" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-shadow bg-surface text-left" dir="ltr">
+                        <input type="email" id="email" name="email" aria-label="אימייל" required dir="ltr"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white/70 focus:ring-2 focus:ring-accent focus:border-accent outline-none text-left">
                     </div>
-
                     <div>
                         <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">טלפון</label>
-                        <input type="tel" id="phone" name="phone" aria-label="טלפון" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-shadow bg-surface text-left" dir="ltr">
+                        <input type="tel" id="phone" name="phone" aria-label="טלפון" required dir="ltr"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white/70 focus:ring-2 focus:ring-accent focus:border-accent outline-none text-left">
                     </div>
-
                     <button type="submit" aria-label="שלח הודעה"
-                        class="w-full py-4 bg-primary text-white font-medium text-lg rounded-xl shadow-md hover:bg-[#152a45] hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary mt-4">
+                        class="w-full py-4 bg-primary text-white font-semibold text-lg rounded-xl shadow-md hover:bg-[#152a45] hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
                         שלח הודעה
                     </button>
                 </form>
@@ -209,12 +338,13 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-primary text-slate-300 py-8 border-t border-[#152a45]">
+    <!-- ── Footer ── -->
+    <footer class="bg-primary text-slate-400 py-8 border-t border-[#152a45]">
         <div class="container mx-auto px-6 text-center text-sm">
             <p>&copy; 2026 ClearFlow. כל הזכויות שמורות.</p>
         </div>
     </footer>
 
 </body>
+
 </html>
