@@ -832,7 +832,7 @@
                     fullName: document.getElementById('contactFullName').value,
                     email: document.getElementById('contactEmail').value,
                     phone: document.getElementById('contactPhone').value,
-                    source: 'Footer Form'
+                    source: 'Footer Contact'
                 };
 
                 const success = await submitToWebhook(payload, submitBtn);
@@ -855,7 +855,7 @@
                     fullName: heroForm.querySelector('input[name="name"]').value,
                     email: '', // Hero form does not have an email field
                     phone: heroForm.querySelector('input[name="phone"]').value,
-                    source: 'Hero Form'
+                    source: 'Main Hero'
                 };
 
                 const success = await submitToWebhook(payload, submitBtn);
