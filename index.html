@@ -788,30 +788,84 @@
         </div>
     </footer>
 
-    <!-- Form Logic -->
+    <!-- Form Logic & Webhook Integration -->
     <script>
-        // Footer Form Success State
+        const WEBHOOK_URL = 'https://hook.eu1.make.com/p3evkp5wlspqvo3g1ln8qyxanf23h7as';
+
+        async function submitToWebhook(payload, submitBtn) {
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'שולח...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return true;
+            } catch (error) {
+                console.error('Webhook submission error:', error);
+                alert('אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.');
+                return false;
+            } finally {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Footer Form Logic
         const form = document.getElementById('contactForm');
         const successMessage = document.getElementById('contactFormSuccess');
         if (form && successMessage) {
-            form.addEventListener('submit', (e) => {
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                form.classList.add('hidden');
-                successMessage.classList.remove('hidden');
-                successMessage.classList.add('form-success');
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const payload = {
+                    fullName: document.getElementById('contactFullName').value,
+                    email: document.getElementById('contactEmail').value,
+                    phone: document.getElementById('contactPhone').value,
+                    source: 'Footer Form'
+                };
+
+                const success = await submitToWebhook(payload, submitBtn);
+                if (success) {
+                    form.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('form-success');
+                }
             });
         }
 
         // Hero Form Logic
         const heroForm = document.querySelector('section form');
         if (heroForm) {
-            heroForm.addEventListener('submit', (e) => {
+            heroForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                document.getElementById('heroFormInputs').classList.add('hidden');
-                const successMsg = document.getElementById('heroFormSuccess');
-                if (successMsg) {
-                    successMsg.classList.remove('hidden');
-                    successMsg.classList.add('form-success');
+
+                const submitBtn = heroForm.querySelector('button[type="submit"]');
+                const payload = {
+                    fullName: heroForm.querySelector('input[name="name"]').value,
+                    email: '', // Hero form does not have an email field
+                    phone: heroForm.querySelector('input[name="phone"]').value,
+                    source: 'Hero Form'
+                };
+
+                const success = await submitToWebhook(payload, submitBtn);
+                if (success) {
+                    document.getElementById('heroFormInputs').classList.add('hidden');
+                    const successMsg = document.getElementById('heroFormSuccess');
+                    if (successMsg) {
+                        successMsg.classList.remove('hidden');
+                        successMsg.classList.add('form-success');
+                    }
                 }
             });
         }
