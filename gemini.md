@@ -2,78 +2,86 @@
 
 Build a high-conversion, professional landing page MVP for a B2B Business Automation agency in Israel named ClearFlow. Output a single `index.html` file using HTML5 and Tailwind CSS (via CDN).
 
-# Vibe & UI/UX Guidelines (Version 2 - Premium SaaS)
+# Vibe & UI/UX Guidelines
 
-- **Aesthetic:** Modern, premium B2B SaaS. We are moving away from flat/rigid layouts.
-- **Backgrounds:** Use a modern "mesh gradient" effect. Create large, brightly colored blur blobs (`blur-[100px]`, `opacity-30`) in Deep Blue (`#1E3A5F`) and Slate (`#4A6FA5`) behind the main content to create depth.
-- **Glassmorphism:** Use `bg-white/80` (or similar) combined with `backdrop-blur-xl` on the header, hero form, and cards so they look like frosted glass floating over the background gradients.
-- **Components:** Extreme rounded corners (`rounded-3xl`), ultra-soft, large, low-opacity drop shadows, and delicate 1px borders (`border-white/50`).
+- **Aesthetic:** Modern, premium B2B SaaS. Clean, authoritative, and minimalist.
+- **Rule:** DO NOT use small "pill" tags above H2s. Rely on typography and spacing.
+- **Rule:** DO NOT use cheap, colorful clipart. If icons are needed, use ONLY premium, minimalist, thin-stroke (stroke-width: 1.5) monochrome SVGs.
+- **Backgrounds:** Deep Blue (`#1E3A5F`) and Slate (`#4A6FA5`) mesh gradients with glassmorphism (`backdrop-blur-xl`, `bg-white/80`).
 - **Direction & Typography:** RTL layout (`dir="rtl" lang="he"`). Google Fonts: 'Rubik' or 'Heebo'.
 
-# Accessibility (A11y) Infrastructure (CRITICAL)
+# Accessibility (A11y) & Legal Infrastructure
 
-- Semantic HTML5 (`<header>`, `<main>`, `<section>`, `<footer>`).
-- Strict heading hierarchy (One `<h1>`, followed by `<h2>`, then `<h3>`).
-- `aria-label` on all inputs, buttons, and links.
+- **Tabnav Widget:** Inject this exact script into the `<head>`:
+  `<script src="https://widget.tabnav.com/limited-widget.min.js.gz" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#405ec3","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>`
+  `<noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>`
+- **Cookie Banner:** A sleek, fixed banner at the bottom. **CRITICAL:** Use CSS (`flex-nowrap`) to force a single line on desktop. Text must use this exact phrasing to avoid hanging letters: "אנו משתמשים בעוגיות (Cookies) כדי להעניק לך את החוויה הטובה ביותר. בהמשך הגלישה, הנך מסכים/ה לשימוש בהן. לקריאה נוספת: [מדיניות הפרטיות] שלנו." (Make bracketed text the button).
+- **Legal Modals:** `<dialog>` modals with working "X" close buttons. Use this exact compliant Israeli text:
+
+  - **מדיניות פרטיות:** "**מדיניות פרטיות - ClearFlow**<br>
+    חברת ClearFlow ('אנחנו', 'אותנו' או 'שלנו') מכבדת את פרטיותך ומחויבת להגנה על מידע אישי שאתה משתף איתנו. מדיניות זו מסבירה כיצד אנו אוספים ומשתמשים במידע.<br><br>
+    **1. המידע שאנו אוספים:** אנו עשויים לאסוף שם מלא, כתובת דוא״ל, מספר טלפון, ומידע על השימוש באתר הנאסף אוטומטית באמצעות עוגיות (Cookies).<br>
+    **2. מטרות השימוש במידע:** מתן שירותים, יצירת קשר, תמיכה, ושליחת חומרים שיווקיים (בכפוף להסכמתך).<br>
+    **3. שיתוף מידע:** אנו לא נמכור או נשכיר מידע אישי לצדדים שלישיים. מידע עשוי להיות מועבר לספקי שירותים חיצוניים לצורך תפעול האתר בלבד, או לרשויות החוק אם נדרש.<br>
+    **4. אבטחת מידע:** אנו נוקטים באמצעי אבטחה מתקדמים להגנה על המידע האישי.<br>
+    **5. זכויות המשתמש:** יש לך זכות לעיין במידע, לבקש את תיקונו או מחיקתו.<br>
+    **6. יצירת קשר:** לשאלות, ניתן לפנות אלינו בטלפון [הכנס טלפון] או בדוא״ל [הכנס אימייל]."
+
+  - **הצהרת נגישות:** "**הצהרת נגישות - ClearFlow**<br>
+    אנו ב-ClearFlow מייחסים חשיבות עליונה להנגשת אתר האינטרנט שלנו. אתר זה הונגש בהתאם להמלצות התקן הישראלי (ת״י 5568) לנגישות תכנים באינטרנט ברמת AA, וכן עומד בהנחיות WCAG 2.0.<br><br>
+    **פירוט התאמות:** האתר כולל תמיכה בניווט מקלדת, התאמה לקוראי מסך, ואפשרות להגדלת גופנים ושינוי ניגודיות באמצעות תוסף הנגישות (Tabnav) המותקן באתר.<br>
+    **סייגים:** למרות מאמצינו להנגיש את כלל דפי האתר, ייתכן ויתגלו חלקים שטרם הונגשו במלואם.<br>
+    **פרטי רכז נגישות:** במידה ונתקלתם בבעיית נגישות, נשמח לקבל משוב ולתקן זאת בהקדם. <br>
+    שם הרכז: שי ישראל<br>
+    טלפון: [הכנס טלפון]<br>
+    דוא״ל: [הכנס אימייל]"
 
 # Page Structure & Exact Hebrew Content
 
 ## Global Elements
 
-- **Top Navigation Bar:** Right side: ClearFlow logo. Left side: Solid pill button with phone number (052-1234567) and a WhatsApp icon. (Leave links as `href="#"` for now).
-- **Sticky WhatsApp:** A floating, circular green WhatsApp icon locked to the bottom-left corner (`href="#"`).
-- **Legal Modals:** Create two hidden modals (use HTML `<dialog>` or fixed overlays) for "מדיניות פרטיות" (Privacy Policy) and "הצהרת נגישות" (Accessibility Statement). Leave placeholder text inside them for now. Ensure they have a clear "X" button to close.
-- **Accessibility Widget (Tabnav):** Inject this exact script into the code:
-  `<script src="https://widget.tabnav.com/limited-widget.min.js.gz" tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#405ec3","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}' defer></script>`
-  `<noscript> פתרונות נגישות לאתרי אינטרנט לפי התקן הישראלי 5568<a href="https://tabnav.com/he">הנגשת אתרים</a> </noscript>`
+- **Top Navigation Bar:** Transparent transitioning to solid dark blue (`bg-[#11223A]`) on scroll. Text `text-white`. 3-part flex layout. The phone number MUST be a high-contrast pill (`bg-amber-500 text-white`).
+- **Sticky WhatsApp:** Locked to bottom-left. **CRITICAL:** Use a completely new, perfectly symmetrical SVG path for the WhatsApp icon and center it flawlessly using `flex items-center justify-center`.
 
-## Section 1: Hero (Above the Fold)
+## Section 1: Hero (Dark Enterprise Theme)
 
-- **H1:** אוטומציה עסקית שעושה סדר בבלאגן. פחות עבודה סיזיפית, יותר שליטה. *(Apply a vibrant accent gradient to the words "עושה סדר" to make them pop).*
-- **Subtitle:** מערכות מתקדמות (כמו CRM ו-Make) הן רק כלים. אנחנו מחברים אותן כדי למנוע מלידים ליפול בין הכיסאות, לחסוך עשרות שעות בחודש, ולהחזיר לכם את השליטה המלאה על תפעול העסק.
-- **Hero Form:** A compact, inline lead capture form (שם מלא, אימייל, טלפון). Dummy submit (`action="#"`).
-  - **Checkbox (Mandatory):** Add a required checkbox above the submit button with this text: "הנני מאשר/ת בזאת כי עם מילוי הפרטים ושליחתם אני מסכים/ה לקבל שיחות שיווקיות, הודעות פרסום ב-SMS ו/או במייל גם אם מספר הטלפון שלי רשום במאגר "אל תתקשרו אליי" של הרשות להגנת הצרכן."
-  - **Submit Button:** "קבעו שיחת אפיון חינם"
-  - **Micro-copy (under button):** *הפרטים שלכם בטוחים איתנו. ללא ספאם.*
+- **Background:** Rich, dark blue gradient (`bg-gradient-to-b from-[#11223A] to-primary`).
+- **H1:** אוטומציה עסקית שעושה סדר. *(Text white. Apply an amber gradient to "עושה סדר").*
+- **Subtitle:** פחות עבודה ידנית, יותר שליטה. אנחנו חוסכים לכם שעות, מונעים מלידים ליפול, ומחזירים לכם את השליטה המלאה על התפעול. (`text-blue-100`).
+- **Inline Hero Form:**
+  - **Wrapper:** Premium glass effect (`bg-white/10 backdrop-blur-md border border-white/20`), heavily rounded.
+  - **Title:** `text-4xl` or `text-5xl` white text ABOVE the inputs: "לקביעת שיחת ייעוץ ללא עלות".
+  - **Inputs Layout:** Single horizontal row. Submit button text: "שליחה".
+  - **JS Logic:** Form submits locally (hides inputs, shows inline "תודה!" message).
 
-## Section 1.5: Social Proof (Trust Building)
+## Section 2: The Pain vs. The Solution
 
-- Add a subtle, greyscale ticker/row of client logos (or standard placeholders) right below the Hero section to build immediate trust.
-
-## Section 2: Trust Banner & Pain Points
-
-- **Trust Banner:** 3 minimal, icon-driven stats bridging the Hero and Pain sections.
-  - "מקסימום" / סדר ארגוני וחיסכון בזמן
-  - "100%" / שליטה וסגירת עסקאות
-  - "מינימום" / טעויות אנוש והזנת נתונים
 - **H2:** העסק צומח, אבל התפעול תוקע אתכם מאחור?
-- **Pain Points:** - לידים חמים נופלים בין הכיסאות כי אין מעקב מסודר.
-  - עובדים שורפים שעות יקרות על העתק-הדבק והעברת מידע ידנית.
-  - תהליכי קליטת לקוחות (Onboarding) מסורבלים שלוקחים ימים במקום דקות.
-- **Agitation & Solution Statement:** כל יום שעובר ככה, אתם מפסידים לקוחות למתחרים ושורפים כסף על זמן עבודה מבוזבז. זה לא חייב להיות ככה.
+- **Comparison Layout:** Side-by-side boxes.
+  - **Box 1 (The Problem - Red 'X' marks):** - לידים חמים נופלים בין הכיסאות. | עובדים שורפים שעות על העתק-הדבק. | תהליכי קליטת לקוחות מסורבלים ואיטיים.
+  - **Box 2 (The Solution - Green 'Check' marks):** - מעקב אוטומטי אחר כל פנייה וליד. | סנכרון נתונים שקוף בין כל המערכות. | תהליכי Onboarding מהירים ואוטומטיים.
 
-## Section 3: Core Services (Bento-Box Layout)
+## Section 3: Our Services (Premium Redesign)
+
+- **Anchor:** `id="services"`
+- **H2:** השירותים שלנו
+- **Design Rules:** Clean 2x2 grid. To fix the "dull" look, cards must have a soft background tint (e.g., `bg-slate-50`), a thick accent border on the right, and a smooth hover lift. **NEW:** Add a premium, thin-stroke (Lucide style) monochrome SVG icon to the top-right of each card in the primary brand color to act as a visual anchor.
+  - **Card 1: דפי נחיתה** - עיצוב ובניית דפי נחיתה מהירים ומתקדמים, שבנויים פסיכולוגית וטכנית להמיר גולשים ללקוחות. *(Icon idea: Browser window or Layout)*
+  - **Card 2: אוטומציות** - חיבור חכם בין כל המערכות שלכם (Make/Zapier) כדי למנוע פעולות כפולות ולחסוך שעות של עבודה ידנית. *(Icon idea: Lightning bolt or Workflow nodes)*
+  - **Card 3: מערכות CRM** - אפיון, הקמה והטמעה של מערכות ניהול לקוחות (CRM) שמותאמות בדיוק למידות של העסק שלכם. *(Icon idea: Users or Database)*
+  - **Card 4: הדרכה והטמעה** - אנחנו לא משאירים אתכם באוויר. העברת מקל מסודרת והדרכה מקיפה לצוות כדי שתנהלו את המערכת בעצמאות. *(Icon idea: Graduation cap or Presentation board)*
+
+## Section 4: The Process (3-Step Grid)
 
 - **H2:** מתהליך מסורבל למכונה משומנת ב-3 שלבים:
-- **Design:** Build this as a dynamic, modern "bento-box" grid rather than 3 identical columns.
-- **Step 1:** מיפוי חסר פשרות (לא מתחילים לבנות לפני שמבינים. שיחת עומק אסטרטגית שבה מפרקים את צווארי הבקבוק, מזהים איפה הכסף בורח, ובונים תוכנית פעולה תכל'ס.)
-- **Step 2:** ארכיטקטורה ואוטומציה (בניית תהליכים אוטומטיים שקופים ואמינים. קליטת לידים ישירות ל-CRM, הפקת חשבוניות אוטומטית, וסנכרון מלא בין כל מחלקות העסק.)
-- **Step 3:** הדרכה, שקיפות והעברת מקל (אנחנו לא משאירים אתכם עם קופסה שחורה. בסיום ההטמעה, הצוות שלכם מקבל הדרכה מקיפה וליווי צמוד כדי שהם ינהלו את המערכת בעצמאות ובביטחון מלא.)
+- *(Keep existing 3 steps exactly the same)*
 
-## Section 4: FAQ (Handling Objections)
+## Section 5: FAQ
 
-- **H2:** שאלות נפוצות
-- **UI Component:** Interactive Accordion style (click a question to expand/collapse the answer). Use `<details>` and `<summary>` tags or JS with smooth CSS transitions for the opening and closing animation.
-- **Q1:** האם צריך ידע טכני כדי להשתמש במערכת?
-  - **A:** ממש לא. אנחנו בונים את המערכת כך שתהיה פשוטה ואינטואיטיבית, ודואגים להדריך את הצוות שלכם עד שהם שולטים בה לחלוטין.
-- **Q2:** כמה זמן לוקח תהליך ההטמעה?
-  - **A:** משתנה בהתאם למורכבות, אבל לרוב מדובר בתהליך ממוקד ומהיר שמתחיל לייצר תוצאות וחיסכון בזמן כבר בשבועות הראשונים.
+- *(Keep existing 5 questions exactly the same)*
 
-## Section 5: Footer / Full Contact Form
+## Section 6: Footer / Full Contact Form
 
-- **H2:** מוכנים להפסיק לבזבז זמן?
-- **Subtitle:** השאירו פרטים לשיחת מיפוי קצרה (ללא עלות), בה נזהה איפה הכסף והזמן שלכם בורחים.
-- **Form:** Full-size safety net form: שם מלא, אימייל, טלפון.
-  - **Checkbox (Mandatory):** Add a required checkbox above the submit button with this text: "הנני מאשר/ת בזאת כי עם מילוי הפרטים ושליחתם אני מסכים/ה לקבל שיחות שיווקיות, הודעות פרסום ב-SMS ו/או במייל גם אם מספר הטלפון שלי רשום במאגר "אל תתקשרו אליי" של הרשות להגנת הצרכן."
-  - **Submit Button:** "בואו נדבר תכל'ס"
-- **Footer Links:** At the very bottom of the page, add simple text links for "מדיניות פרטיות" and "הצהרת נגישות" that trigger their respective modals when clicked. Add a copyright line: "© 2026 ClearFlow. כל הזכויות שמורות."
+- **H2:** מוכנים להתחיל לחסוך בזמן?
+- **Subtitle:** השאירו פרטים לשיחת מיפוי קצרה (ללא עלות), בה נזהה איפה הכסף והזמן שלכם בורחים. Button: "בואו נדבר תכל'ס". (JS success state implemented).
+- **Minimalist Bottom Footer:** `border-t border-slate-700`, `flex justify-between`. Text `text-slate-300`. Copyright flush right. Links (פרטיות, הצהרת נגישות, עוגיות) flush left.
