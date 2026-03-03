@@ -813,10 +813,9 @@
             } catch (error) {
                 console.error('Webhook submission error:', error);
                 alert('אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.');
-                return false;
-            } finally {
                 submitBtn.innerText = originalText;
                 submitBtn.disabled = false;
+                return false;
             }
         }
 
