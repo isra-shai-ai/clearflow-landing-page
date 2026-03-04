@@ -166,7 +166,7 @@
             אתרים</a></noscript>
 
     <!-- ── Floating WhatsApp (Bottom-Left) ── -->
-    <a href="https://wa.me/972521234567?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%A6%D7%99%D7%94%20%D7%A2%D7%A1%D7%A7%D7%99%D7%AA..."
+    <a href="https://wa.me/972522296269?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%A6%D7%99%D7%94%20%D7%A2%D7%A1%D7%A7%D7%99%D7%AA..."
         target="_blank" rel="noopener noreferrer" aria-label="פתח שיחה בוואטסאפ"
         class="fixed bottom-5 left-6 z-40 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center p-0 shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300">
         <svg viewBox="0 0 16 16" fill="white" class="w-8 h-8">
@@ -837,11 +837,21 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
+                const fullNameVal = document.getElementById('contactFullName').value.trim();
+                const emailVal = document.getElementById('contactEmail').value.trim();
+                const phoneVal = document.getElementById('contactPhone').value.trim();
+
+                // Validation
+                if (!fullNameVal || !phoneVal || !emailVal || phoneVal.length < 9 || !emailVal.includes('@')) {
+                    alert('אנא מלאו את כל שדות החובה ווודאו שמספר הטלפון תקין (לפחות 9 ספרות).');
+                    return;
+                }
+
                 const submitBtn = form.querySelector('button[type="submit"]');
                 const payload = {
-                    fullName: document.getElementById('contactFullName').value,
-                    email: document.getElementById('contactEmail').value,
-                    phone: document.getElementById('contactPhone').value,
+                    fullName: fullNameVal,
+                    email: emailVal,
+                    phone: phoneVal,
                     source: 'Footer Contact'
                 };
 
@@ -860,11 +870,20 @@
             heroForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
+                const fullNameVal = heroForm.querySelector('input[name="name"]').value.trim();
+                const phoneVal = heroForm.querySelector('input[name="phone"]').value.trim();
+
+                // Validation
+                if (!fullNameVal || !phoneVal || phoneVal.length < 9) {
+                    alert('אנא מלאו את כל שדות החובה ווודאו שמספר הטלפון תקין (לפחות 9 ספרות).');
+                    return;
+                }
+
                 const submitBtn = heroForm.querySelector('button[type="submit"]');
                 const payload = {
-                    fullName: heroForm.querySelector('input[name="name"]').value,
+                    fullName: fullNameVal,
                     email: '', // Hero form does not have an email field
-                    phone: heroForm.querySelector('input[name="phone"]').value,
+                    phone: phoneVal,
                     source: 'Main Hero'
                 };
 
