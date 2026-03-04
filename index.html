@@ -317,6 +317,11 @@
                                     שליחה
                                 </button>
                             </div>
+                            <!-- Error Message -->
+                            <p class="hero-error-message"
+                                style="display: none; color: #ff4d4d; font-size: 0.9rem; margin-top: 10px; text-align: center;">
+                            </p>
+
                             <div class="mt-6 flex justify-center items-center gap-3">
                                 <input type="checkbox" required aria-label="אישור מדיניות פרטיות"
                                     class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-accent flex-shrink-0 cursor-pointer">
@@ -762,6 +767,10 @@
                             class="w-full py-5 mt-4 bg-primary text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-2xl hover:bg-[#152a45] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/30">
                             בואו נדבר תכל'ס
                         </button>
+                        <!-- Error Message -->
+                        <p class="footer-error-message"
+                            style="display: none; color: #ff4d4d; font-size: 0.9rem; margin-top: 10px; text-align: center;">
+                        </p>
                     </form>
                     <!-- Success message -->
                     <div id="contactFormSuccess"
@@ -833,7 +842,14 @@
         // Footer Form Logic
         const form = document.getElementById('contactForm');
         const successMessage = document.getElementById('contactFormSuccess');
-        if (form && successMessage) {
+        const footerError = form ? form.querySelector('.footer-error-message') : null;
+
+        if (form && successMessage && footerError) {
+            // Hide error when typing resumes
+            form.addEventListener('input', () => {
+                footerError.style.display = 'none';
+            });
+
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
@@ -843,7 +859,8 @@
 
                 // Validation
                 if (!fullNameVal || !phoneVal || !emailVal || phoneVal.length < 9 || !emailVal.includes('@')) {
-                    alert('אנא מלאו את כל שדות החובה ווודאו שמספר הטלפון תקין (לפחות 9 ספרות).');
+                    footerError.innerText = 'אנא מלאו את כל שדות החובה ווודאו שמספר הטלפון תקין (לפחות 9 ספרות).';
+                    footerError.style.display = 'block';
                     return;
                 }
 
@@ -866,7 +883,14 @@
 
         // Hero Form Logic
         const heroForm = document.querySelector('section form');
-        if (heroForm) {
+        const heroError = heroForm ? heroForm.querySelector('.hero-error-message') : null;
+
+        if (heroForm && heroError) {
+            // Hide error when typing resumes
+            heroForm.addEventListener('input', () => {
+                heroError.style.display = 'none';
+            });
+
             heroForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
@@ -875,7 +899,8 @@
 
                 // Validation
                 if (!fullNameVal || !phoneVal || phoneVal.length < 9) {
-                    alert('אנא מלאו את כל שדות החובה ווודאו שמספר הטלפון תקין (לפחות 9 ספרות).');
+                    heroError.innerText = 'אנא מלאו את כל שדות החובה ווודאו שמספר הטלפון תקין (לפחות 9 ספרות).';
+                    heroError.style.display = 'block';
                     return;
                 }
 
