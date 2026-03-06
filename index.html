@@ -848,7 +848,7 @@
     <script>
         const WEBHOOK_URL = 'https://hook.eu1.make.com/p3evkp5wlspqvo3g1ln8qyxanf23h7as';
 
-        async function submitToWebhook(payload, submitBtn) {
+        async function submitToWebhook(payload, submitBtn, errorElement) {
             const originalText = submitBtn.innerText;
             submitBtn.innerText = 'שולח...';
             submitBtn.disabled = true;
@@ -867,8 +867,10 @@
                 }
                 return true;
             } catch (error) {
-                console.error('Webhook submission error:', error);
-                alert('אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.');
+                if (errorElement) {
+                    errorElement.innerText = 'אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.';
+                    errorElement.style.display = 'block';
+                }
                 submitBtn.innerText = originalText;
                 submitBtn.disabled = false;
                 return false;
@@ -908,7 +910,7 @@
                     source: 'Footer Contact'
                 };
 
-                const success = await submitToWebhook(payload, submitBtn);
+                const success = await submitToWebhook(payload, submitBtn, footerError);
                 if (success) {
                     form.classList.add('hidden');
                     successMessage.classList.remove('hidden');
@@ -948,7 +950,7 @@
                     source: 'Main Hero'
                 };
 
-                const success = await submitToWebhook(payload, submitBtn);
+                const success = await submitToWebhook(payload, submitBtn, heroError);
                 if (success) {
                     document.getElementById('heroFormInputs').classList.add('hidden');
                     const successMsg = document.getElementById('heroFormSuccess');
