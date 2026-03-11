@@ -1,5 +1,6 @@
 ---
 description: Main copywriting workflow — handles all channels (landing page, email, social, ads, blog/SEO, WhatsApp/SMS) with a structured 4-phase process (Brief → Strategy → Draft → Visual).
+---
 
 # /copy — ClearFlow Copywriting Workflow
 
