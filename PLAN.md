@@ -1,38 +1,29 @@
-# 📝 PLAN.md - Make.com Webhook Integration
+# ⚡ Mobile Form Alignment Fixes (PLAN.md)
 
-## 🎯 Phase 1: Explore & Plan
+## Objective
 
-### Goals
+Address the alignment issues in the Hero form and Footer form when viewed on mobile devices (specifically the `tel` input alignment and the `checkbox` label text wrapping layout).
 
-1. **Connect forms to Make.com Webhook**: Replace dummy logic in both Hero and Footer forms with a live `fetch()` request to the provided Make.com URL (`https://hook.eu1.make.com/p3evkp5wlspqvo3g1ln8qyxanf23h7as`).
-2. **Standardize Payload (`formData`)**: Ensure the request payload structure contains `fullName`, `email`, and `phone` values.
-3. **Preserve UI State**: Ensure the form disappears and the "Thank You!" success message appears upon a successful fetch response.
-4. **Error Handling**: Add `console.error` logging and a Hebrew `alert()` for any fetch failures.
+## CTO Reality Check
 
-### Identified Gap (Please Note)
+The screenshot perfectly reveals the issue:
 
-- **The Hero Form currently does not have an Email field.** (It only asks for Name and Phone).
-- *Solution:* To satisfy the webhook's structure expectation, the script will pass an empty string `""` for the `email` field when the submission originates from the Hero Form. The Make.com scenario should be prepared to handle an empty email when `source` is "Hero Form".
+1. **The Phone Input:** I added `md:text-right md:focus:text-left` previously. Because of the `md:` prefix, the `text-right` property was *only* applying to desktop screens (`md` and up), leaving the mobile view to inherit default browser LTR left-alignment.
+2. **The Checkbox Line:** We grouped the text into a `flex flex-wrap` container to remove the gaps. However, on narrow mobile screens, wrapping text causes the flex items to behave unexpectedly based on the parent's alignment. We need to restructure this so the checkbox and the text act as a strict 2-column grid or flex row with `items-start`.
 
-### Scope of Changes
+## Proposed Changes
 
-- **`index.html`**:
-  - Update the `<script>` tag at the bottom of the document.
-  - Create a reusable `submitToWebhook(formElement, payload, successCallback)` async function.
-  - Capture values explicitly from the inputs (using native DOM querying targeting ID or `name` attributes).
-  - Handle the `submit` event for `#contactForm` (Footer).
-  - Handle the `submit` event for `section form` (Hero).
-  - Implement `try/catch` with `alert('אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.')` and console logging.
-  - Disable the submit button and show "שולח..." during the fetch to prevent duplicate submissions.
+### 1. Fix Phone Input Alignment (Mobile)
 
----
+- **Target:** `index.html` (Hero Form & Footer Form)
+- **Change:** Remove the `md:` breakpoint constraint from the alignment classes. Change it from `text-left md:text-right md:focus:text-left` directly to `text-right focus:text-left`. This forces the placeholder to the right side on *all* device sizes unconditionally.
 
-## 🚀 Execution Steps (Phase 3)
+### 2. Fix Checkbox Text Wrapping (Mobile)
 
-| Status | File | Task Description |
-| :---: | :--- | :--- |
-| ✅ | `index.html` | Create the shared webhook submission function (`fetch` wrapper with error handling). |
-| ✅ | `index.html` | Update Footer form logic to build payload and call webhook. |
-| ✅ | `index.html` | Update Hero form logic to build payload (with empty email) and call webhook. |
+- **Target:** `index.html` (Hero Form & Footer Form)
+- **Change:** Refactor the checkbox layout to use an `items-start` flex approach. The checkbox acts as a fixed-width icon on the right, and the text (the label + button + span) wraps naturally as a single continuous paragraph (`<p>`) beside it, rather than individual flex items wrapping out of order.
 
-*Status tracking:* ⏳ Pending | 🚧 In Progress | ✅ Completed | ❌ Blocked
+## User Review Required
+>
+> [!IMPORTANT]
+> The flex text wrapping on mobile is a common Tailwind RTL trap. Does this 2-step layout plan look approved to execute?
