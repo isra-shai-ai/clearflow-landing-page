@@ -1,29 +1,41 @@
-# ⚡ Mobile Form Alignment Fixes (PLAN.md)
+# ✍️ Copy Review Execution (PLAN.md)
 
 ## Objective
-
-Address the alignment issues in the Hero form and Footer form when viewed on mobile devices (specifically the `tel` input alignment and the `checkbox` label text wrapping layout).
-
-## CTO Reality Check
-
-The screenshot perfectly reveals the issue:
-
-1. **The Phone Input:** I added `md:text-right md:focus:text-left` previously. Because of the `md:` prefix, the `text-right` property was *only* applying to desktop screens (`md` and up), leaving the mobile view to inherit default browser LTR left-alignment.
-2. **The Checkbox Line:** We grouped the text into a `flex flex-wrap` container to remove the gaps. However, on narrow mobile screens, wrapping text causes the flex items to behave unexpectedly based on the parent's alignment. We need to restructure this so the checkbox and the text act as a strict 2-column grid or flex row with `items-start`.
+Implement high-converting, low-friction copy updates across the ClearFlow landing page (`index.html`), ensuring strict alignment with the new Voice & Tone guidelines.
 
 ## Proposed Changes
 
-### 1. Fix Phone Input Alignment (Mobile)
+### 1. Hero Form Optimization
+- **Target:** `index.html` (Section 1)
+- **Changes:**
+  - Update H2 to: "מוכנים לעשות סדר בעסק? בואו נדבר."
+  - Change Submit Button text to: "לשיחת הכרות קצרה"
+  - Inject Micro-copy text alongside the privacy checkbox: "שיחה קצרה של 15 דקות. בלי התחייבות ובלי חפירות."
 
-- **Target:** `index.html` (Hero Form & Footer Form)
-- **Change:** Remove the `md:` breakpoint constraint from the alignment classes. Change it from `text-left md:text-right md:focus:text-left` directly to `text-right focus:text-left`. This forces the placeholder to the right side on *all* device sizes unconditionally.
+### 2. Services Section "Benefit-First" Rewrite
+- **Target:** `index.html` (Section 3)
+- **Changes:**
+  - "דפי נחיתה" ➔ "דפי נחיתה שממירים יותר"
+  - "אוטומציות" ➔ "אוטומציה לחיסכון של שעות"
+  - "מערכות CRM" ➔ "מרכז ניהול לקוחות (CRM) מאורגן"
+  - "הדרכה והטמעה" ➔ "ליווי והדרכת הצוות שלכם"
 
-### 2. Fix Checkbox Text Wrapping (Mobile)
+### 3. FAQ Section Restructuring
+- **Target:** `index.html` (Section 4: FAQ)
+- **Changes:**
+  - **Q1:** Update answer to focus on "not adding another software to learn", building behind the scenes.
+  - **Q2:** Update answer to explain we focus on "bottlenecks" to save hours within the first few weeks.
+  - **Q3:** Update answer to name-drop secure platforms (Make/Zapier) for maximum trust.
+  - **Q4:** Update answer to frame automation as the crucial "virtual employee" for small teams.
+  - **Q5:** Update answer to emphasize long-term white-glove support and onboarding.
 
-- **Target:** `index.html` (Hero Form & Footer Form)
-- **Change:** Refactor the checkbox layout to use an `items-start` flex approach. The checkbox acts as a fixed-width icon on the right, and the text (the label + button + span) wraps naturally as a single continuous paragraph (`<p>`) beside it, rather than individual flex items wrapping out of order.
+### 4. Footer Contact Form Friction Reduction
+- **Target:** `index.html` (Section 5)
+- **Changes:**
+  - Update H2 to: "מוכנים להחזיר לעצמכם עשרות שעות בחודש?"
+  - Update/Add Subtitle: "השאירו פרטים לשיחת מיפוי קצרה (חינם), ונגלה ביחד איפה הכסף והזמן שלכם בורחים היום."
+  - Change Submit Button text to: "בואו נדבר תכל'ס"
 
 ## User Review Required
->
 > [!IMPORTANT]
-> The flex text wrapping on mobile is a common Tailwind RTL trap. Does this 2-step layout plan look approved to execute?
+> The `/copy-review` changes are designed to align with the "ClearFlow Transformation" persona — direct, low friction, and focused on business value. Review the proposed text changes in the plan. Reply "The plan is approved" to trigger the execution phase.
