@@ -4,7 +4,7 @@ description: Main copywriting workflow — handles all channels (landing page, e
 
 # /copy — ClearFlow Copywriting Workflow
 
-> **Pre-requisite**: Read `.agent/copy-agent.md`, `.agent/brand/voice-and-tone.md`, and `.agent/brand/context.md` before starting.
+> **Pre-requisite**: Read `.agents/skills/clearflow-copy-skill` before starting. It contains all brand context, voice rules, tone guidelines, and the visual identity spec.
 
 ---
 
@@ -33,43 +33,50 @@ Wait for user selection before proceeding.
 
 Ask **channel-specific** questions. Use the base questions below + the channel-specific additions.
 
-### Base Questions (all channels):
+### Base Questions (all channels)
+
 1. מה המטרה? (מודעות / engagement / לידים / מכירות ישירות?)
 2. למי פונים? (אם שונה מה-ICP ב-`context.md` — פרטו)
 3. יש טקסט קיים לשיפור? (אם כן — הדביקו)
 4. העדפת טון מיוחדת? (ברירת מחדל: מקצועי, ישיר, בגובה העיניים)
 
-### Channel-Specific Additions:
+### Channel-Specific Additions
 
 #### 🖥️ Landing Page
+
 5. איזה סוג עמוד? (מוצר / שירות / קמפיין / Event)
-6. מה ה-CTA הרצוי? (טופס / WhatsApp / הזמנה / הורדה)
-7. יש הוכחה חברתית? (ציטוטים / לוגואים / מספרים)
+2. מה ה-CTA הרצוי? (טופס / WhatsApp / הזמנה / הורדה)
+3. יש הוכחה חברתית? (ציטוטים / לוגואים / מספרים)
 
 #### 📧 Email
+
 5. סוג: אימייל בודד / סיקוונס / ניוזלטר?
-6. אם סיקוונס — כמה מיילים? מה הטריגר?
-7. טמפרטורת קהל: קר / חם / לוהט?
+2. אם סיקוונס — כמה מיילים? מה הטריגר?
+3. טמפרטורת קהל: קר / חם / לוהט?
 
 #### 📱 Social
+
 5. איזו פלטפורמה? (LinkedIn / Facebook / Instagram / X)
-6. פורמט: פוסט טקסט / קרוסלה / סטורי / Reel?
-7. יש ויז׳ואל מתוכנן? (תמונה / סרטון / גרפיקה)
+2. פורמט: פוסט טקסט / קרוסלה / סטורי / Reel?
+3. יש ויז׳ואל מתוכנן? (תמונה / סרטון / גרפיקה)
 
 #### 📣 Ads
+
 5. פלטפורמה: Google Search / Google Display / Meta (FB+IG)?
-6. סוג מודעה: Search / Display / Video / Stories?
-7. יש לנדינג פייג׳ שאליו מפנים? (שתפו URL)
+2. סוג מודעה: Search / Display / Video / Stories?
+3. יש לנדינג פייג׳ שאליו מפנים? (שתפו URL)
 
 #### 📝 Blog / SEO
+
 5. מילת מפתח מרכזית (Target Keyword)?
-6. כוונת חיפוש: מידעית / ניווטית / מסחרית?
-7. אורך רצוי: קצר (500) / בינוני (1,000) / ארוך (2,000+)?
+2. כוונת חיפוש: מידעית / ניווטית / מסחרית?
+3. אורך רצוי: קצר (500) / בינוני (1,000) / ארוך (2,000+)?
 
 #### 💬 WhatsApp / SMS
+
 5. מה הטריגר? (ליד חדש / תזכורת / מעקב / מבצע)
-6. הודעה בודדת או סיקוונס?
-7. יש Merge Fields? (שם, שם עסק, תאריך)
+2. הודעה בודדת או סיקוונס?
+3. יש Merge Fields? (שם, שם עסק, תאריך)
 
 ---
 
@@ -77,7 +84,7 @@ Ask **channel-specific** questions. Use the base questions below + the channel-s
 
 After receiving the brief, present a strategic analysis. **Do NOT write copy yet.**
 
-### Output format:
+### Output format
 
 ```markdown
 ## 🧠 ניתוח אסטרטגי
@@ -101,6 +108,7 @@ After receiving the brief, present a strategic analysis. **Do NOT write copy yet
 ### ⏸️ GATE — אישור המשתמש
 
 Present the strategy and ask:
+
 ```
 ✅ מאשרים את הכיוון? או רוצים לשנות משהו?
 ```
@@ -267,6 +275,7 @@ Write the copy according to the approved strategy. Use **channel-specific output
 ### ⏸️ GATE — אישור הדראפט
 
 After presenting the draft:
+
 ```
 ✍️ הקופי מוכן! כמה אפשרויות:
 
@@ -282,18 +291,11 @@ After presenting the draft:
 
 > **Applies to**: Landing Page, Ads, Social, Blog, Email (minimal). **Skip for**: WhatsApp/SMS.
 
-After the user approves the draft copy, generate an **English** image prompt based on the ClearFlow Transformation visual concept (see `copy-agent.md > זהות ויז׳ואלית`).
+After the user approves the draft copy, generate an **English** image prompt using the **ClearFlow Transformation visual concept** defined in `.agents/skills/clearflow-copy-skill` (Visual Identity section).
 
-### Channel-specific visual approach:
+Refer to the skill for: brand colors, fixed visual elements, style rules, what to avoid, and channel-specific prompt types.
 
-| Channel | Visual Type | Prompt Focus |
-|---------|-----------|-------------|
-| 🖥️ Landing / 📣 Ads | Full Transformation scene | Complete chaos→order vortex, dashboard, hand pointing at amber node |
-| 📱 Social | Focused variation | One of: close-up on dashboard, before/after split, detail shot of hand + node |
-| 📝 Blog | Topic-adapted | Hero image that fits the article topic, in ClearFlow's visual style |
-| 📧 Email | Minimal | Simple header strip using brand colors (navy, slate, amber accents) |
-
-### Output format:
+### Output format
 
 ```markdown
 ## 🎨 Visual Prompt
@@ -302,15 +304,10 @@ After the user approves the draft copy, generate an **English** image prompt bas
 **Visual Type:** [Full scene / Focused variation / Topic-adapted / Minimal]
 
 **Prompt (English):**
-> [Full English prompt for AI image generator, incorporating:
-> - ClearFlow Transformation concept
-> - Brand colors: deep navy #1E3A5F, slate #4A6FA5, amber #F59E0B
-> - Style: cinematic, shallow DoF, natural lighting
-> - NO: glowing neon, sci-fi robots, 3D cartoon hands, generic smiling people
-> - Channel-appropriate composition and framing]
+> [Full English prompt per the visual spec in the skill file]
 
 **Recommended aspect ratio:** [16:9 / 1:1 / 9:16 / 4:5]
-**Recommended tool:** [Nano Banana / Midjourney / DALL-E]
+**Recommended tool:** [Midjourney / DALL-E / other]
 ```
 
 ---

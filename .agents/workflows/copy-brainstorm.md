@@ -4,7 +4,7 @@ description: Creative brainstorming for copy concepts — generates multiple ang
 
 # /copy-brainstorm — ClearFlow Copy Brainstorm Workflow
 
-> **Pre-requisite**: Read `.agent/copy-agent.md`, `.agent/brand/voice-and-tone.md`, and `.agent/brand/context.md` before starting.
+> **Pre-requisite**: Read `.agents/skills/clearflow-copy-skill` before starting. It contains all brand context, voice rules, tone guidelines, and the visual identity spec.
 
 ---
 
@@ -29,7 +29,7 @@ Ask the user:
 
 Generate **5-8 copy concepts**. Each concept is a mini-pitch, not a full copy.
 
-### Output format:
+### Output format
 
 ```markdown
 ## 🎨 קונספטים — [נושא/מטרה]
@@ -49,7 +49,8 @@ Generate **5-8 copy concepts**. Each concept is a mini-pitch, not a full copy.
 ...
 ```
 
-### Concept diversity rules:
+### Concept diversity rules
+
 - At least 1 concept that's **provocative/bold**
 - At least 1 concept that's **empathetic/soft**
 - At least 1 concept that's **data-driven/logical**
