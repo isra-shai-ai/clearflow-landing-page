@@ -5,12 +5,38 @@ A high-conversion, professional landing page MVP for a B2B Business Automation a
 ## Tech Stack
 
 - HTML5
-- Tailwind CSS (via CDN)
+- Tailwind CSS (pre-compiled)
+
+## Project Structure
+
+```
+├── public/           # Static output directory (deployed to Vercel)
+│   ├── index.html    # Landing page
+│   └── styles.css    # Compiled Tailwind CSS (auto-generated)
+├── input.css         # Tailwind source directives
+├── tailwind.config.js
+├── package.json
+└── .gitignore
+```
+
+## Local Development
+
+```bash
+npm install
+npm run dev        # Watch mode — auto-recompiles on changes
+```
+
+Open `public/index.html` in your browser to preview.
+
+## Production Build
+
+```bash
+npm run build      # Compiles and minifies CSS into public/styles.css
+```
 
 ## Deployment Notes (Vercel)
 
-**Important considerations for deploying to Vercel:**
-
-- The `package.json` file was explicitly removed from this repository.
-- **Why?** Vercel attempts to install dependencies and run build scripts if it detects a `package.json`. In our case, `axe-core` in the `test:ally` script caused the Vercel build to fail because Vercel instances do not have a full Chrome Headless environment installed out-of-the-box (resulting in an exit code 127).
-- By removing `package.json`, Vercel recognizes this as a static site and will deploy the `index.html` file seamlessly without trying to execute npm commands.
+- **Build Command:** `npm run build`
+- **Output Directory:** `public`
+- Vercel will automatically install dependencies, run the build script, and serve the `public/` directory.
+- The only devDependency is `tailwindcss` — no heavy testing frameworks that could break CI.
