@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "A high-conversion, professional landing page MVP for a B2B Business Automation agency in Israel named ClearFlow.",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss -i input.css -o styles.css --minify",
+    "dev": "npx tailwindcss -i input.css -o styles.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isra-shai-ai/clearflow-landing-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/isra-shai-ai/clearflow-landing-page/issues"
+  },
+  "homepage": "https://github.com/isra-shai-ai/clearflow-landing-page#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
