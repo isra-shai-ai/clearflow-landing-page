@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "brand_name": "ClearFlow",
+    "market": "B2B Israel",
+    "direction": "RTL",
+    "language": "he",
+    "description": "Core design tokens for ClearFlow landing page UI implementation."
+  },
+  "colors": {
+    "primary": {
+      "DEFAULT": "#1E3A5F",
+      "dark": "#11223A",
+      "light": "#4A6FA5",
+      "foreground": "#FFFFFF"
+    },
+    "accent": {
+      "DEFAULT": "#F59E0B",
+      "hover": "#D97706",
+      "foreground": "#FFFFFF",
+      "note": "amber-500 — used for CTA buttons and phone number pill"
+    },
+    "accessibility_widget": "#405EC3",
+    "background": {
+      "hero": "gradient-to-b from-[#11223A] to-[#1E3A5F]",
+      "section_light": "#F8FAFC",
+      "card": "#F8FAFC"
+    },
+    "text": {
+      "primary": "#11223A",
+      "secondary": "#4A6FA5",
+      "muted": "#64748B",
+      "on_dark": "#FFFFFF",
+      "on_dark_subtle": "text-blue-100"
+    },
+    "status": {
+      "success": "#10B981",
+      "destructive": "#EF4444"
+    }
+  },
+  "typography": {
+    "font_family_primary": ["Heebo", "Rubik", "sans-serif"],
+    "note": "Hebrew RTL fonts. Prefer Heebo for body, Rubik for headings if available.",
+    "font_weight_bold": "700",
+    "font_weight_semibold": "600",
+    "font_weight_normal": "400",
+    "hero_h1_size": "text-4xl md:text-6xl",
+    "section_h2_size": "text-3xl"
+  },
+  "ui": {
+    "border_radius_default": "0.75rem",
+    "border_radius_large": "1.5rem",
+    "glassmorphism": "bg-white/10 backdrop-blur-md border border-white/20",
+    "card_hover": "hover:-translate-y-1 transition-transform duration-200",
+    "card_accent_border": "border-r-4 border-r-[#1E3A5F]",
+    "nav_scroll_bg": "bg-[#11223A]",
+    "icon_style": "monochrome SVG, thin-stroke (stroke-width: 1.5), Lucide style",
+    "spacing_base": "4px"
+  },
+  "components": {
+    "cta_primary": "bg-amber-500 hover:bg-amber-600 text-white font-bold",
+    "cta_phone_pill": "bg-amber-500 text-white rounded-full px-4 py-1",
+    "glass_card": "bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl",
+    "card_standard": "bg-slate-50 border-r-4 border-r-[#1E3A5F] rounded-xl hover:-translate-y-1 transition-all",
+    "nav": "transparent → solid bg-[#11223A] on scroll, text-white"
+  },
+  "accessibility": {
+    "tabnav_widget_color": "#405EC3",
+    "tabnav_button_color": "#405EC3",
+    "standard": "Israeli standard WCAG 2.0 AA / ת״י 5568"
+  }
+}
