@@ -119,6 +119,9 @@
         .blob-delay {
             animation-delay: 4s;
         }
+        .marquee-container:hover .animate-marquee-rtl {
+            animation-play-state: paused !important;
+        }
 
         /* Dialog backdrop styling */
         dialog::backdrop {
@@ -476,10 +479,10 @@
 
         <!-- ── Tech Integration Ticker ── -->
         <section class="py-6 bg-[#f8fafc] w-full reveal-element border-y border-slate-200">
-            <div class="flex overflow-hidden relative group" dir="ltr">
+            <div class="flex overflow-hidden relative marquee-container" dir="ltr">
                 <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#f8fafc] to-transparent z-10 pointer-events-none"></div>
                 <!-- FIXED LOGIC HERE -->
-                <div class="animate-marquee-rtl flex items-center justify-start gap-12 px-6 flex-nowrap w-max whitespace-nowrap group-hover:[animation-play-state:paused]">
+                <div class="animate-marquee-rtl flex items-center justify-start gap-12 px-6 flex-nowrap w-max whitespace-nowrap">
                     
                     <!-- ■■■ Set 1 ■■■ -->
                     <!-- Make.com -->
@@ -990,15 +993,15 @@
                     <ul class="space-y-5 text-blue-50/90 text-lg md:text-xl font-medium tracking-wide inline-block text-right mx-auto">
                         <li class="flex items-start gap-4">
                             <span class="text-amber-400 mt-1 flex-shrink-0 drop-shadow-md"><svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg></span>
-                            <span>7 הסימנים המובהקים לעסק שצריך מערכת</span>
+                            <span>7 נורות האזהרה התפעוליות שמעכבות את העסק שלכם</span>
                         </li>
                         <li class="flex items-start gap-4">
                             <span class="text-amber-400 mt-1 flex-shrink-0 drop-shadow-md"><svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg></span>
-                            <span>הטעויות הנפוצות בסנכרון בין ה-CRM לחשבוניות</span>
+                            <span>האמת העירומה: למה אסור לעולם לאטמט תהליך שבור?</span>
                         </li>
                          <li class="flex items-start gap-4">
                             <span class="text-amber-400 mt-1 flex-shrink-0 drop-shadow-md"><svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg></span>
-                            <span>איך למדוד כמה שעות אפשר לחסוך באמת</span>
+                            <span>חוק ה-80/20 של האוטומציה המודרנית ליצירת צמיחה</span>
                         </li>
                     </ul>
                 </div>
