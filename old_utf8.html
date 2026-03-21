@@ -1,0 +1,966 @@
+﻿<!DOCTYPE html>
+<html dir="rtl" lang="he" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearFlow | ╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö ╫ó╫í╫º╫Ö╫¬ ╫⌐╫ó╫ò╫⌐╫ö ╫í╫ô╫¿</title>
+    <meta name="description"
+        content="ClearFlow - ╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö ╫ó╫í╫º╫Ö╫¬ ╫£╫ù╫æ╫¿╫ò╫¬ ╫æ╫Ö╫⌐╫¿╫É╫£. ╫ù╫Ö╫æ╫ò╫¿ ╫₧╫ó╫¿╫¢╫ò╫¬, ╫ù╫Ö╫í╫¢╫ò╫ƒ ╫æ╫û╫₧╫ƒ, ╫ò╫₧╫á╫Ö╫ó╫¬ ╫ÿ╫ó╫ò╫Ö╫ò╫¬ ╫É╫á╫ò╫⌐. ╫⌐╫Ö╫ù╫¬ ╫É╫ñ╫Ö╫ò╫ƒ ╫ù╫Ö╫á╫¥.">
+    <!-- Non-Blocking Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap" media="print"
+        onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap">
+    </noscript>
+
+    <!-- Deferred Google Analytics -->
+    <script>
+        window.addEventListener('load', function () {
+            var gaScript = document.createElement('script');
+            gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-BXPWS2RHVV";
+            gaScript.async = true;
+            document.head.appendChild(gaScript);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-BXPWS2RHVV');
+        });
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Rubik', 'sans-serif'] },
+                    colors: {
+                        primary: '#1E3A5F',
+                        accent: '#4A6FA5',
+                        surface: '#F8FAFC',
+                        alt: '#F1F5F9',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8FAFC;
+        }
+
+        ::selection {
+            background-color: #4A6FA5;
+            color: white;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #F59E0B, #EA580C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Mesh gradient blob animation */
+        @keyframes blob {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(24px, -24px) scale(1.06);
+            }
+
+            66% {
+                transform: translate(-12px, 12px) scale(0.96);
+            }
+        }
+
+        .blob {
+            animation: blob 9s infinite ease-in-out;
+        }
+
+        .blob-delay {
+            animation-delay: 4s;
+        }
+
+        /* Dialog backdrop styling */
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        /* FAQ Accordion smooth open/close */
+        details .faq-answer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.35s ease-in-out, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        details[open] .faq-answer {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+
+        details .faq-answer>div {
+            overflow: hidden;
+        }
+
+        /* FAQ icon rotation */
+        details .faq-icon-plus {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        details .faq-icon-minus {
+            display: none;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] .faq-icon-plus {
+            display: none;
+        }
+
+        details[open] .faq-icon-minus {
+            display: block;
+        }
+
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details>summary::marker {
+            display: none;
+            content: '';
+        }
+
+        /* Form success animation */
+        .form-success {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Tabnav Accessibilty Widget -->
+    <script src="https://widget.tabnav.com/limited-widget.min.js.gz"
+        tnv-data-config='{"language":"he","color":"#405ec3","buttonColor":"#405ec3","buttonSize":"small","widgetSize":"small","widgetLocation":"right","buttonLocation":"bottom"}'
+        defer></script>
+</head>
+
+<body class="font-sans text-gray-800 antialiased flex flex-col min-h-screen">
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary">
+        ╫ô╫£╫Æ ╫£╫¬╫ò╫¢╫ƒ ╫ö╫₧╫¿╫¢╫û╫Ö
+    </a>
+
+    <noscript>╫ñ╫¬╫¿╫ò╫á╫ò╫¬ ╫á╫Æ╫Ö╫⌐╫ò╫¬ ╫£╫É╫¬╫¿╫Ö ╫É╫Ö╫á╫ÿ╫¿╫á╫ÿ ╫£╫ñ╫Ö ╫ö╫¬╫º╫ƒ ╫ö╫Ö╫⌐╫¿╫É╫£╫Ö 5568<a href="https://tabnav.com/he">╫ö╫á╫Æ╫⌐╫¬
+            ╫É╫¬╫¿╫Ö╫¥</a></noscript>
+
+    <!-- ΓöÇΓöÇ Floating WhatsApp (Bottom-Left) ΓöÇΓöÇ -->
+    <a href="https://wa.me/972522296269?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%A6%D7%99%D7%94%20%D7%A2%D7%A1%D7%A7%D7%99%D7%AA..."
+        target="_blank" rel="noopener noreferrer" aria-label="╫ñ╫¬╫ù ╫⌐╫Ö╫ù╫ö ╫æ╫ò╫ò╫É╫ÿ╫í╫É╫ñ (╫á╫ñ╫¬╫ù ╫æ╫ù╫£╫ò╫ƒ ╫ù╫ô╫⌐)"
+        title="(╫á╫ñ╫¬╫ù ╫æ╫ù╫£╫ò╫ƒ ╫ù╫ô╫⌐)"
+        class="fixed bottom-5 left-6 z-40 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center p-0 shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300">
+        <span class="sr-only">(╫á╫ñ╫¬╫ù ╫æ╫ù╫£╫ò╫ƒ ╫ù╫ô╫⌐)</span>
+        <svg aria-hidden="true" viewBox="0 0 16 16" fill="white" class="w-8 h-8">
+            <path
+                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+        </svg>
+    </a>
+
+    <!-- ΓöÇΓöÇ Cookie Banner ΓöÇΓöÇ -->
+    <div id="cookieBanner"
+        class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] py-4 px-6 transform transition-transform duration-500 translate-y-0">
+        <div
+            class="container mx-auto max-w-6xl flex flex-col lg:flex-row lg:flex-nowrap items-center justify-between gap-6">
+            <p class="text-sm text-slate-600 flex-1">
+                ╫É╫á╫ò ╫₧╫⌐╫¬╫₧╫⌐╫Ö╫¥ ╫æ╫ó╫ò╫Æ╫Ö╫ò╫¬ (Cookies) ╫¢╫ô╫Ö ╫£╫ö╫ó╫á╫Ö╫º ╫£╫Ü ╫É╫¬ ╫ö╫ù╫ò╫ò╫Ö╫ö ╫ö╫ÿ╫ò╫æ╫ö ╫æ╫Ö╫ò╫¬╫¿. ╫æ╫ö╫₧╫⌐╫Ü ╫ö╫Æ╫£╫Ö╫⌐╫ö, ╫ö╫á╫Ü ╫₧╫í╫¢╫Ö╫¥/╫ö ╫£╫⌐╫Ö╫₧╫ò╫⌐ ╫æ╫ö╫ƒ.
+                ╫£╫º╫¿╫Ö╫É╫ö ╫á╫ò╫í╫ñ╫¬: <button onclick="document.getElementById('privacyModal').showModal()"
+                    class="text-primary font-semibold hover:underline">╫₧╫ô╫Ö╫á╫Ö╫ò╫¬ ╫ö╫ñ╫¿╫ÿ╫Ö╫ò╫¬</button> ╫⌐╫£╫á╫ò.
+            </p>
+            <button
+                onclick="document.getElementById('cookieBanner').style.transform = 'translateY(100%)'; setTimeout(()=> document.getElementById('cookieBanner').style.display = 'none', 500);"
+                class="bg-primary text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#152a45] transition-colors whitespace-nowrap flex-shrink-0">
+                ╫ö╫æ╫á╫¬╫Ö ╫¬╫ò╫ô╫ö
+            </button>
+        </div>
+    </div>
+
+    <!-- ΓöÇΓöÇ Legal Modals ΓöÇΓöÇ -->
+    <dialog id="privacyModal"
+        class="w-[90vw] max-w-lg rounded-3xl bg-white/90 backdrop-blur-xl border border-white/60 shadow-2xl p-0 text-gray-700">
+        <div class="flex items-center justify-between p-6 border-b border-gray-100">
+            <h2 class="text-xl font-bold text-primary">╫₧╫ô╫Ö╫á╫Ö╫ò╫¬ ╫ñ╫¿╫ÿ╫Ö╫ò╫¬</h2>
+            <button onclick="document.getElementById('privacyModal').close()" aria-label="╫í╫Æ╫ò╫¿ ╫ù╫£╫ò╫ƒ"
+                class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="p-6 space-y-4 text-sm leading-relaxed max-h-[60vh] overflow-y-auto">
+            <p><strong>╫₧╫ô╫Ö╫á╫Ö╫ò╫¬ ╫ñ╫¿╫ÿ╫Ö╫ò╫¬ - ClearFlow</strong><br>
+                ╫ù╫æ╫¿╫¬ ClearFlow ('╫É╫á╫ù╫á╫ò', '╫É╫ò╫¬╫á╫ò' ╫É╫ò '╫⌐╫£╫á╫ò') ╫₧╫¢╫æ╫ô╫¬ ╫É╫¬ ╫ñ╫¿╫ÿ╫Ö╫ò╫¬╫Ü ╫ò╫₧╫ù╫ò╫Ö╫æ╫¬ ╫£╫ö╫Æ╫á╫ö ╫ó╫£ ╫₧╫Ö╫ô╫ó ╫É╫Ö╫⌐╫Ö ╫⌐╫É╫¬╫ö ╫₧╫⌐╫¬╫ú ╫É╫Ö╫¬╫á╫ò.
+                ╫₧╫ô╫Ö╫á╫Ö╫ò╫¬ ╫û╫ò ╫₧╫í╫æ╫Ö╫¿╫ö ╫¢╫Ö╫ª╫ô ╫É╫á╫ò ╫É╫ò╫í╫ñ╫Ö╫¥ ╫ò╫₧╫⌐╫¬╫₧╫⌐╫Ö╫¥ ╫æ╫₧╫Ö╫ô╫ó.<br><br>
+                <strong>1. ╫ö╫₧╫Ö╫ô╫ó ╫⌐╫É╫á╫ò ╫É╫ò╫í╫ñ╫Ö╫¥:</strong> ╫É╫á╫ò ╫ó╫⌐╫ò╫Ö╫Ö╫¥ ╫£╫É╫í╫ò╫ú ╫⌐╫¥ ╫₧╫£╫É, ╫¢╫¬╫ò╫æ╫¬ ╫ô╫ò╫É╫┤╫£, ╫₧╫í╫ñ╫¿ ╫ÿ╫£╫ñ╫ò╫ƒ, ╫ò╫₧╫Ö╫ô╫ó ╫ó╫£ ╫ö╫⌐╫Ö╫₧╫ò╫⌐
+                ╫æ╫É╫¬╫¿ ╫ö╫á╫É╫í╫ú ╫É╫ò╫ÿ╫ò╫₧╫ÿ╫Ö╫¬ ╫æ╫É╫₧╫ª╫ó╫ò╫¬ ╫ó╫ò╫Æ╫Ö╫ò╫¬ (Cookies).<br>
+                <strong>2. ╫₧╫ÿ╫¿╫ò╫¬ ╫ö╫⌐╫Ö╫₧╫ò╫⌐ ╫æ╫₧╫Ö╫ô╫ó:</strong> ╫₧╫¬╫ƒ ╫⌐╫Ö╫¿╫ò╫¬╫Ö╫¥, ╫Ö╫ª╫Ö╫¿╫¬ ╫º╫⌐╫¿, ╫¬╫₧╫Ö╫¢╫ö, ╫ò╫⌐╫£╫Ö╫ù╫¬ ╫ù╫ò╫₧╫¿╫Ö╫¥ ╫⌐╫Ö╫ò╫ò╫º╫Ö╫Ö╫¥ (╫æ╫¢╫ñ╫ò╫ú
+                ╫£╫ö╫í╫¢╫₧╫¬╫Ü).<br>
+                <strong>3. ╫⌐╫Ö╫¬╫ò╫ú ╫₧╫Ö╫ô╫ó:</strong> ╫É╫á╫ò ╫£╫É ╫á╫₧╫¢╫ò╫¿ ╫É╫ò ╫á╫⌐╫¢╫Ö╫¿ ╫₧╫Ö╫ô╫ó ╫É╫Ö╫⌐╫Ö ╫£╫ª╫ô╫ô╫Ö╫¥ ╫⌐╫£╫Ö╫⌐╫Ö╫Ö╫¥. ╫₧╫Ö╫ô╫ó ╫ó╫⌐╫ò╫Ö ╫£╫ö╫Ö╫ò╫¬ ╫₧╫ò╫ó╫æ╫¿
+                ╫£╫í╫ñ╫º╫Ö ╫⌐╫Ö╫¿╫ò╫¬╫Ö╫¥ ╫ù╫Ö╫ª╫ò╫á╫Ö╫Ö╫¥ ╫£╫ª╫ò╫¿╫Ü ╫¬╫ñ╫ó╫ò╫£ ╫ö╫É╫¬╫¿ ╫æ╫£╫æ╫ô, ╫É╫ò ╫£╫¿╫⌐╫ò╫Ö╫ò╫¬ ╫ö╫ù╫ò╫º ╫É╫¥ ╫á╫ô╫¿╫⌐.<br>
+                <strong>4. ╫É╫æ╫ÿ╫ù╫¬ ╫₧╫Ö╫ô╫ó:</strong> ╫É╫á╫ò ╫á╫ò╫º╫ÿ╫Ö╫¥ ╫æ╫É╫₧╫ª╫ó╫Ö ╫É╫æ╫ÿ╫ù╫ö ╫₧╫¬╫º╫ô╫₧╫Ö╫¥ ╫£╫ö╫Æ╫á╫ö ╫ó╫£ ╫ö╫₧╫Ö╫ô╫ó ╫ö╫É╫Ö╫⌐╫Ö.<br>
+                <strong>5. ╫û╫¢╫ò╫Ö╫ò╫¬ ╫ö╫₧╫⌐╫¬╫₧╫⌐:</strong> ╫Ö╫⌐ ╫£╫Ü ╫û╫¢╫ò╫¬ ╫£╫ó╫Ö╫Ö╫ƒ ╫æ╫₧╫Ö╫ô╫ó, ╫£╫æ╫º╫⌐ ╫É╫¬ ╫¬╫Ö╫º╫ò╫á╫ò ╫É╫ò ╫₧╫ù╫Ö╫º╫¬╫ò.<br>
+                <strong>6. ╫Ö╫ª╫Ö╫¿╫¬ ╫º╫⌐╫¿:</strong> ╫£╫⌐╫É╫£╫ò╫¬, ╫á╫Ö╫¬╫ƒ ╫£╫ñ╫á╫ò╫¬ ╫É╫£╫Ö╫á╫ò ╫æ╫ÿ╫£╫ñ╫ò╫ƒ 052-229-6269 ╫É╫ò ╫æ╫ô╫ò╫É╫┤╫£
+                shai@clearflow.co.il.
+            </p>
+        </div>
+    </dialog>
+
+    <dialog id="accessibilityModal"
+        class="w-[90vw] max-w-lg rounded-3xl bg-white/90 backdrop-blur-xl border border-white/60 shadow-2xl p-0 text-gray-700">
+        <div class="flex items-center justify-between p-6 border-b border-gray-100">
+            <h2 class="text-xl font-bold text-primary">╫ö╫ª╫ö╫¿╫¬ ╫á╫Æ╫Ö╫⌐╫ò╫¬</h2>
+            <button onclick="document.getElementById('accessibilityModal').close()" aria-label="╫í╫Æ╫ò╫¿ ╫ù╫£╫ò╫ƒ"
+                class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="p-6 space-y-4 text-sm leading-relaxed max-h-[60vh] overflow-y-auto">
+            <p><strong>╫ö╫ª╫ö╫¿╫¬ ╫á╫Æ╫Ö╫⌐╫ò╫¬ - ClearFlow</strong><br>
+                ╫É╫á╫ò ╫æ-ClearFlow ╫₧╫Ö╫Ö╫ù╫í╫Ö╫¥ ╫ù╫⌐╫Ö╫æ╫ò╫¬ ╫ó╫£╫Ö╫ò╫á╫ö ╫£╫ö╫á╫Æ╫⌐╫¬ ╫É╫¬╫¿ ╫ö╫É╫Ö╫á╫ÿ╫¿╫á╫ÿ ╫⌐╫£╫á╫ò. ╫É╫¬╫¿ ╫û╫ö ╫ö╫ò╫á╫Æ╫⌐ ╫æ╫ö╫¬╫É╫¥ ╫£╫ö╫₧╫£╫ª╫ò╫¬ ╫ö╫¬╫º╫ƒ ╫ö╫Ö╫⌐╫¿╫É╫£╫Ö
+                (╫¬╫┤╫Ö 5568) ╫£╫á╫Æ╫Ö╫⌐╫ò╫¬ ╫¬╫¢╫á╫Ö╫¥ ╫æ╫É╫Ö╫á╫ÿ╫¿╫á╫ÿ ╫æ╫¿╫₧╫¬ AA, ╫ò╫¢╫ƒ ╫ó╫ò╫₧╫ô ╫æ╫ö╫á╫ù╫Ö╫ò╫¬ WCAG 2.0.<br><br>
+                <strong>╫ñ╫Ö╫¿╫ò╫ÿ ╫ö╫¬╫É╫₧╫ò╫¬:</strong> ╫ö╫É╫¬╫¿ ╫¢╫ò╫£╫£ ╫¬╫₧╫Ö╫¢╫ö ╫æ╫á╫Ö╫ò╫ò╫ÿ ╫₧╫º╫£╫ô╫¬, ╫ö╫¬╫É╫₧╫ö ╫£╫º╫ò╫¿╫É╫Ö ╫₧╫í╫Ü, ╫ò╫É╫ñ╫⌐╫¿╫ò╫¬ ╫£╫ö╫Æ╫ô╫£╫¬ ╫Æ╫ò╫ñ╫á╫Ö╫¥
+                ╫ò╫⌐╫Ö╫á╫ò╫Ö ╫á╫Ö╫Æ╫ò╫ô╫Ö╫ò╫¬ ╫æ╫É╫₧╫ª╫ó╫ò╫¬ ╫¬╫ò╫í╫ú ╫ö╫á╫Æ╫Ö╫⌐╫ò╫¬ (Tabnav) ╫ö╫₧╫ò╫¬╫º╫ƒ ╫æ╫É╫¬╫¿.<br>
+                <strong>╫í╫Ö╫Ö╫Æ╫Ö╫¥:</strong> ╫£╫₧╫¿╫ò╫¬ ╫₧╫É╫₧╫ª╫Ö╫á╫ò ╫£╫ö╫á╫Æ╫Ö╫⌐ ╫É╫¬ ╫¢╫£╫£ ╫ô╫ñ╫Ö ╫ö╫É╫¬╫¿, ╫Ö╫Ö╫¬╫¢╫ƒ ╫ò╫Ö╫¬╫Æ╫£╫ò ╫ù╫£╫º╫Ö╫¥ ╫⌐╫ÿ╫¿╫¥ ╫ö╫ò╫á╫Æ╫⌐╫ò
+                ╫æ╫₧╫£╫ò╫É╫¥.<br>
+                <strong>╫ñ╫¿╫ÿ╫Ö ╫¿╫¢╫û ╫á╫Æ╫Ö╫⌐╫ò╫¬:</strong> ╫æ╫₧╫Ö╫ô╫ö ╫ò╫á╫¬╫º╫£╫¬╫¥ ╫æ╫æ╫ó╫Ö╫Ö╫¬ ╫á╫Æ╫Ö╫⌐╫ò╫¬, ╫á╫⌐╫₧╫ù ╫£╫º╫æ╫£ ╫₧╫⌐╫ò╫æ ╫ò╫£╫¬╫º╫ƒ ╫û╫É╫¬ ╫æ╫ö╫º╫ô╫¥. <br>
+                ╫⌐╫¥ ╫ö╫¿╫¢╫û: ╫⌐╫Ö ╫Ö╫⌐╫¿╫É╫£<br>
+                ╫ÿ╫£╫ñ╫ò╫ƒ: 052-229-6269<br>
+                ╫ô╫ò╫É╫┤╫£: shai@clearflow.co.il
+            </p>
+        </div>
+    </dialog>
+
+    <!-- ΓöÇΓöÇ Header ΓöÇΓöÇ -->
+    <header id="mainHeader"
+        class="fixed top-0 w-full z-40 bg-white/40 backdrop-blur-xl border-b border-transparent py-4 transition-all duration-300">
+        <div class="container mx-auto px-6 max-w-6xl flex items-center justify-between">
+            <div class="flex-1 flex justify-start items-center">
+                <!-- Logo -->
+                <div id="headerLogo" lang="en" dir="ltr"
+                    class="text-2xl font-bold text-white tracking-tight transition-colors duration-300">ClearFlow
+                </div>
+            </div>
+
+            <div class="flex-1 flex justify-center hidden md:flex">
+                <!-- Desktop Nav -->
+                <nav id="headerNav"
+                    class="flex items-center gap-6 text-sm font-medium text-white/90 transition-colors duration-300">
+                    <a href="#main-content" class="hover:text-white transition-colors">╫æ╫Ö╫¬</a>
+                    <a href="#services" class="hover:text-white transition-colors">╫⌐╫Ö╫¿╫ò╫¬╫Ö╫¥</a>
+                    <a href="#contact" class="hover:text-white transition-colors">╫Ö╫ª╫Ö╫¿╫¬ ╫º╫⌐╫¿</a>
+                </nav>
+            </div>
+
+            <div class="flex-1 flex justify-end items-center">
+                <a href="tel:0522296269" aria-label="╫ÿ╫£╫ñ╫ò╫ƒ"
+                    class="bg-amber-500 text-gray-900 px-6 py-2 rounded-full font-bold text-lg shadow-sm hover:scale-105 hover:bg-amber-600 transition-all">
+                    <span dir="ltr">052-2296269</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="flex-grow">
+
+        <!-- ΓöÇΓöÇ Section 1: Hero (Ryse-Style) ΓöÇΓöÇ -->
+        <section
+            class="relative py-32 px-6 overflow-hidden flex flex-col items-center justify-center min-h-[85vh] bg-gradient-to-b from-[#11223A] to-primary">
+            <div
+                class="absolute -top-20 -right-20 w-[500px] h-[500px] bg-[#1E3A5F] rounded-full mix-blend-multiply filter blur-[100px] opacity-30 blob pointer-events-none">
+            </div>
+            <div
+                class="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-[#4A6FA5] rounded-full mix-blend-multiply filter blur-[100px] opacity-30 blob blob-delay pointer-events-none">
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center text-center w-full max-w-4xl mx-auto">
+                <h1 class="text-6xl md:text-8xl font-black text-white leading-none tracking-tight mb-8">
+                    ╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö ╫ó╫í╫º╫Ö╫¬ ╫⌐<span class="gradient-text">╫ó╫ò╫⌐╫ö ╫í╫ô╫¿</span>.
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl leading-relaxed">
+                    ╫ñ╫ù╫ò╫¬ ╫ó╫æ╫ò╫ô╫ö ╫Ö╫ô╫á╫Ö╫¬, ╫Ö╫ò╫¬╫¿ ╫⌐╫£╫Ö╫ÿ╫ö. ╫É╫á╫ù╫á╫ò ╫ù╫ò╫í╫¢╫Ö╫¥ ╫£╫¢╫¥ ╫⌐╫ó╫ò╫¬, ╫₧╫ò╫á╫ó╫Ö╫¥ ╫₧╫£╫Ö╫ô╫Ö╫¥ ╫£╫Ö╫ñ╫ò╫£, ╫ò╫₧╫ù╫û╫Ö╫¿╫Ö╫¥ ╫£╫¢╫¥ ╫É╫¬ ╫ö╫⌐╫£╫Ö╫ÿ╫ö
+                    ╫ö╫₧╫£╫É╫ö ╫ó╫£ ╫ö╫¬╫ñ╫ó╫ò╫£.
+                </p>
+
+                <!-- Horizontal Inline Hero Form -->
+                <div class="w-full max-w-3xl filter drop-shadow-2xl">
+                    <form action="#" aria-label="╫ÿ╫ò╫ñ╫í ╫Ö╫ª╫Ö╫¿╫¬ ╫º╫⌐╫¿ ╫¿╫É╫⌐╫Ö"
+                        class="bg-white/10 backdrop-blur-md p-8 rounded-[2rem] border border-white/20 shadow-2xl">
+                        <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-6">╫£╫º╫æ╫Ö╫ó╫¬ ╫⌐╫Ö╫ù╫¬ ╫Ö╫Ö╫ó╫ò╫Ñ ╫£╫£╫É ╫ó╫£╫ò╫¬</h2>
+                        <div id="heroFormInputs">
+                            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4">
+                                <input type="text" name="name" placeholder="╫⌐╫¥ ╫₧╫£╫É" required aria-label="╫⌐╫¥ ╫₧╫£╫É"
+                                    class="w-full px-6 py-4 rounded-2xl md:rounded-xl border border-gray-100 bg-white placeholder:text-slate-500 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all text-lg">
+                                <input type="tel" name="phone" placeholder="╫ÿ╫£╫ñ╫ò╫ƒ" required aria-label="╫ÿ╫£╫ñ╫ò╫ƒ" dir="ltr"
+                                    class="w-full px-6 py-4 rounded-2xl md:rounded-xl border border-gray-100 bg-white placeholder:text-slate-500 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all text-lg text-right focus:text-left">
+                                <button type="submit" aria-label="╫⌐╫£╫Ö╫ù╫ö"
+                                    class="w-full px-8 py-4 bg-primary text-white font-bold text-xl rounded-2xl md:rounded-xl shadow-md hover:bg-[#152a45] transition-all flex items-center justify-center whitespace-nowrap">
+                                    ╫⌐╫£╫Ö╫ù╫ö
+                                </button>
+                            </div>
+                            <!-- Error Message -->
+                            <p class="hero-error-message"
+                                style="display: none; color: #ff4d4d; font-size: 0.9rem; margin-top: 10px; text-align: center;">
+                            </p>
+
+                            <div class="mt-6 flex flex-col items-start gap-2">
+                                <div class="flex justify-start items-start gap-3">
+                                    <input type="checkbox" id="privacy-hero" required aria-required="true"
+                                        aria-label="╫É╫Ö╫⌐╫ò╫¿ ╫₧╫ô╫Ö╫á╫Ö╫ò╫¬ ╫ñ╫¿╫ÿ╫Ö╫ò╫¬"
+                                        class="w-5 h-5 mt-0.5 rounded border-gray-300 text-primary focus:ring-accent flex-shrink-0 cursor-pointer">
+                                    <div class="text-sm text-blue-100 text-right leading-relaxed">
+                                        <label for="privacy-hero" class="cursor-pointer inline">╫É╫á╫Ö ╫₧╫É╫⌐╫¿/╫¬ ╫⌐╫º╫¿╫É╫¬╫Ö ╫É╫¬</label>
+                                        <button type="button" onclick="document.getElementById('privacyModal').showModal()"
+                                            class="text-white font-medium inline hover:underline focus:outline-none px-1">╫¬╫á╫É╫Ö
+                                            ╫₧╫ô╫Ö╫á╫Ö╫ò╫¬ ╫ö╫ñ╫¿╫ÿ╫Ö╫ò╫¬</button>
+                                        <span class="inline">╫ò╫É╫¬ ╫º╫æ╫£╫¬ ╫ö╫ô╫Ö╫ò╫ò╫¿.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="heroFormSuccess" class="hidden text-center py-6">
+                            <h4 class="text-3xl font-bold text-green-400 mb-2">╫¬╫ò╫ô╫ö!</h4>
+                            <p class="text-xl text-blue-100">╫ö╫ñ╫¿╫ÿ╫Ö╫¥ ╫ö╫¬╫º╫æ╫£╫ò ╫æ╫ö╫ª╫£╫ù╫ö.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ΓöÇΓöÇ Trust Banner ΓöÇΓöÇ -->
+        <section class="py-16 px-6 bg-white relative z-20 shadow-sm">
+            <div class="container mx-auto max-w-5xl">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-gray-100 text-center gap-y-10">
+                    <div class="flex flex-col items-center gap-2 md:px-8">
+                        <svg aria-hidden="true" class="w-8 h-8 text-accent mb-3" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-3xl font-black text-primary tracking-tight">╫í╫ô╫¿ ╫ò╫É╫¿╫Æ╫ò╫ƒ</p>
+                        <p class="text-base text-slate-500 font-medium mt-1">╫ù╫Ö╫í╫¢╫ò╫ƒ ╫æ╫⌐╫ó╫ò╫¬ ╫ó╫æ╫ò╫ô╫ö</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 md:px-8">
+                        <svg aria-hidden="true" class="w-8 h-8 text-accent mb-3" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <p class="text-3xl font-black text-primary tracking-tight">╫⌐╫£╫Ö╫ÿ╫ö ╫₧╫£╫É╫ö</p>
+                        <p class="text-base text-slate-500 font-medium mt-1">╫₧╫ó╫º╫æ ╫É╫ù╫¿╫Ö ╫¢╫£ ╫£╫Ö╫ô</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 md:px-8">
+                        <svg aria-hidden="true" class="w-8 h-8 text-accent mb-3" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                        </svg>
+                        <p class="text-3xl font-black text-primary tracking-tight">╫É╫ñ╫í ╫ö╫¬╫ó╫í╫º╫ò╫¬</p>
+                        <p class="text-base text-slate-500 font-medium mt-1">╫₧╫Ö╫á╫Ö╫₧╫ò╫¥ ╫ÿ╫ó╫ò╫Ö╫ò╫¬ ╫É╫á╫ò╫⌐</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ΓöÇΓöÇ Section 2: Pain vs Solution ΓöÇΓöÇ -->
+        <section class="py-24 px-6 relative overflow-hidden bg-alt">
+            <div
+                class="absolute top-0 right-0 w-[400px] h-[400px] bg-[#1E3A5F] rounded-full mix-blend-multiply filter blur-[100px] opacity-10 blob pointer-events-none">
+            </div>
+
+            <div class="container mx-auto max-w-6xl relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">╫ö╫ó╫í╫º ╫ª╫ò╫₧╫ù, ╫É╫æ╫£ ╫ö╫¬╫ñ╫ó╫ò╫£ ╫¬╫ò╫º╫ó
+                        ╫É╫¬╫¢╫¥ ╫₧╫É╫ù╫ò╫¿?</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Box 1: The Problem -->
+                    <div
+                        class="bg-white/80 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-red-100 shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-red-400"></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 border-b border-gray-100 pb-4">╫ö╫₧╫ª╫æ ╫ö╫Ö╫ò╫¥
+                            (╫ö╫æ╫£╫É╫Æ╫ƒ)</h3>
+                        <ul class="space-y-6 text-lg text-slate-600">
+                            <li class="flex items-start gap-4">
+                                <span class="text-red-500 mt-1 flex-shrink-0 bg-red-50 p-1.5 rounded-full"><svg
+                                        aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg></span>
+                                <span>╫£╫Ö╫ô╫Ö╫¥ ╫ù╫₧╫Ö╫¥ ╫á╫ò╫ñ╫£╫Ö╫¥ ╫æ╫Ö╫ƒ ╫ö╫¢╫Ö╫í╫É╫ò╫¬.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-red-500 mt-1 flex-shrink-0 bg-red-50 p-1.5 rounded-full"><svg
+                                        aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg></span>
+                                <span>╫ó╫ò╫æ╫ô╫Ö╫¥ ╫⌐╫ò╫¿╫ñ╫Ö╫¥ ╫⌐╫ó╫ò╫¬ ╫ó╫£ ╫ö╫ó╫¬╫º-╫ö╫ô╫æ╫º.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-red-500 mt-1 flex-shrink-0 bg-red-50 p-1.5 rounded-full"><svg
+                                        aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg></span>
+                                <span>╫¬╫ö╫£╫Ö╫¢╫Ö ╫º╫£╫Ö╫ÿ╫¬ ╫£╫º╫ò╫ù╫ò╫¬ ╫₧╫í╫ò╫¿╫æ╫£╫Ö╫¥ ╫ò╫É╫Ö╫ÿ╫Ö╫Ö╫¥.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Box 2: The Solution -->
+                    <div
+                        class="bg-white/80 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-green-100 shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-green-500"></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 border-b border-gray-100 pb-4">╫ö╫ñ╫¬╫¿╫ò╫ƒ (╫É╫ù╫¿╫Ö
+                            ╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö)</h3>
+                        <ul class="space-y-6 text-lg text-slate-600">
+                            <li class="flex items-start gap-4">
+                                <span class="text-green-500 mt-1 flex-shrink-0 bg-green-50 p-1.5 rounded-full"><svg
+                                        aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg></span>
+                                <span>╫₧╫ó╫º╫æ ╫É╫ò╫ÿ╫ò╫₧╫ÿ╫Ö ╫É╫ù╫¿ ╫¢╫£ ╫ñ╫á╫Ö╫Ö╫ö ╫ò╫£╫Ö╫ô.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-green-500 mt-1 flex-shrink-0 bg-green-50 p-1.5 rounded-full"><svg
+                                        aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg></span>
+                                <span>╫í╫á╫¢╫¿╫ò╫ƒ ╫á╫¬╫ò╫á╫Ö╫¥ ╫⌐╫º╫ò╫ú ╫æ╫Ö╫ƒ ╫¢╫£ ╫ö╫₧╫ó╫¿╫¢╫ò╫¬.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-green-500 mt-1 flex-shrink-0 bg-green-50 p-1.5 rounded-full"><svg
+                                        aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg></span>
+                                <span>╫¬╫ö╫£╫Ö╫¢╫Ö Onboarding ╫₧╫ö╫Ö╫¿╫Ö╫¥ ╫ò╫É╫ò╫ÿ╫ò╫₧╫ÿ╫Ö╫Ö╫¥.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ΓöÇΓöÇ Section 3: Our Services ΓöÇΓöÇ -->
+        <section id="services" class="py-24 px-6 bg-white relative z-20 shadow-sm border-t border-gray-100">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">╫ö╫⌐╫Ö╫¿╫ò╫¬╫Ö╫¥ ╫⌐╫£╫á╫ò</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" dir="rtl">
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-slate-50 rounded-3xl p-10 border border-gray-100 border-r-4 border-r-accent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
+                        <svg aria-hidden="true" class="w-8 h-8 mb-4 text-primary" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                            <line x1="3" x2="21" y1="9" y2="9" />
+                            <line x1="9" x2="9" y1="21" y2="9" />
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 tracking-tight">╫ô╫ñ╫Ö ╫á╫ù╫Ö╫¬╫ö ╫⌐╫₧╫₧╫Ö╫¿╫Ö╫¥ ╫Ö╫ò╫¬╫¿</h3>
+                        <p class="text-lg text-slate-500 leading-relaxed flex-grow">
+                            ╫ó╫Ö╫ª╫ò╫æ ╫ò╫æ╫á╫Ö╫Ö╫¬ ╫ô╫ñ╫Ö ╫á╫ù╫Ö╫¬╫ö ╫₧╫ö╫Ö╫¿╫Ö╫¥ ╫ò╫₧╫¬╫º╫ô╫₧╫Ö╫¥, ╫⌐╫æ╫á╫ò╫Ö╫Ö╫¥ ╫ñ╫í╫Ö╫¢╫ò╫£╫ò╫Æ╫Ö╫¬ ╫ò╫ÿ╫¢╫á╫Ö╫¬ ╫£╫ö╫₧╫Ö╫¿ ╫Æ╫ò╫£╫⌐╫Ö╫¥ ╫£╫£╫º╫ò╫ù╫ò╫¬.
+                        </p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div
+                        class="bg-slate-50 rounded-3xl p-10 border border-gray-100 border-r-4 border-r-accent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
+                        <svg aria-hidden="true" class="w-8 h-8 mb-4 text-primary" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 tracking-tight">╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö ╫£╫ù╫Ö╫í╫¢╫ò╫ƒ ╫⌐╫£ ╫⌐╫ó╫ò╫¬</h3>
+                        <p class="text-lg text-slate-500 leading-relaxed flex-grow">
+                            ╫ù╫Ö╫æ╫ò╫¿ ╫ù╫¢╫¥ ╫æ╫Ö╫ƒ ╫¢╫£ ╫ö╫₧╫ó╫¿╫¢╫ò╫¬ ╫⌐╫£╫¢╫¥ (Make/Zapier) ╫¢╫ô╫Ö ╫£╫₧╫á╫ò╫ó ╫ñ╫ó╫ò╫£╫ò╫¬ ╫¢╫ñ╫ò╫£╫ò╫¬ ╫ò╫£╫ù╫í╫ò╫Ü ╫⌐╫ó╫ò╫¬ ╫⌐╫£ ╫ó╫æ╫ò╫ô╫ö
+                            ╫Ö╫ô╫á╫Ö╫¬.
+                        </p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-slate-50 rounded-3xl p-10 border border-gray-100 border-r-4 border-r-accent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
+                        <svg aria-hidden="true" class="w-8 h-8 mb-4 text-primary" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3" />
+                            <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+                            <path d="M3 12A9 3 0 0 0 21 12" />
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 tracking-tight">╫₧╫¿╫¢╫û ╫á╫Ö╫ö╫ò╫£ ╫£╫º╫ò╫ù╫ò╫¬ (CRM) ╫₧╫É╫ò╫¿╫Æ╫ƒ</h3>
+                        <p class="text-lg text-slate-500 leading-relaxed flex-grow">
+                            ╫É╫ñ╫Ö╫ò╫ƒ, ╫ö╫º╫₧╫ö ╫ò╫ö╫ÿ╫₧╫ó╫ö ╫⌐╫£ ╫₧╫ó╫¿╫¢╫ò╫¬ ╫á╫Ö╫ö╫ò╫£ ╫£╫º╫ò╫ù╫ò╫¬ (CRM) ╫⌐╫₧╫ò╫¬╫É╫₧╫ò╫¬ ╫æ╫ô╫Ö╫ò╫º ╫£╫₧╫Ö╫ô╫ò╫¬ ╫⌐╫£ ╫ö╫ó╫í╫º ╫⌐╫£╫¢╫¥.
+                        </p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div
+                        class="bg-slate-50 rounded-3xl p-10 border border-gray-100 border-r-4 border-r-accent hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
+                        <svg aria-hidden="true" class="w-8 h-8 mb-4 text-primary" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 tracking-tight">╫£╫Ö╫ò╫ò╫Ö ╫ò╫ö╫ô╫¿╫¢╫¬ ╫ö╫ª╫ò╫ò╫¬ ╫⌐╫£╫¢╫¥</h3>
+                        <p class="text-lg text-slate-500 leading-relaxed flex-grow">
+                            ╫É╫á╫ù╫á╫ò ╫£╫É ╫₧╫⌐╫É╫Ö╫¿╫Ö╫¥ ╫É╫¬╫¢╫¥ ╫æ╫É╫ò╫ò╫Ö╫¿. ╫ö╫ó╫æ╫¿╫¬ ╫₧╫º╫£ ╫₧╫í╫ò╫ô╫¿╫¬ ╫ò╫ö╫ô╫¿╫¢╫ö ╫₧╫º╫Ö╫ñ╫ö ╫£╫ª╫ò╫ò╫¬ ╫¢╫ô╫Ö ╫⌐╫¬╫á╫ö╫£╫ò ╫É╫¬ ╫ö╫₧╫ó╫¿╫¢╫¬
+                            ╫æ╫ó╫ª╫₧╫É╫ò╫¬.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ΓöÇΓöÇ Section 4: The Process ΓöÇΓöÇ -->
+        <section id="process" class="py-24 px-6 bg-surface relative overflow-hidden">
+            <div
+                class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#4A6FA5] rounded-full mix-blend-multiply filter blur-[100px] opacity-10 blob pointer-events-none">
+            </div>
+
+            <div class="container mx-auto max-w-6xl relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">╫₧╫¬╫ö╫£╫Ö╫Ü ╫₧╫í╫ò╫¿╫æ╫£ ╫£╫₧╫¢╫ò╫á╫ö ╫₧╫⌐╫ò╫₧╫á╫¬
+                        ╫æ-3 ╫⌐╫£╫æ╫Ö╫¥:</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" dir="rtl">
+                    <!-- Step 1 -->
+                    <div
+                        class="bg-white/80 backdrop-blur-xl rounded-3xl p-10 shadow-xl border border-white/50 relative overflow-hidden h-full flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 tracking-tight">1. ╫₧╫Ö╫ñ╫ò╫Ö ╫ù╫í╫¿ ╫ñ╫⌐╫¿╫ò╫¬</h3>
+                        <p class="text-lg text-slate-500 leading-relaxed flex-grow">
+                            ╫⌐╫Ö╫ù╫¬ ╫ó╫ò╫₧╫º ╫É╫í╫ÿ╫¿╫ÿ╫Æ╫Ö╫¬ ╫⌐╫æ╫ö ╫₧╫ñ╫¿╫º╫Ö╫¥ ╫É╫¬ ╫ª╫ò╫ò╫É╫¿╫Ö ╫ö╫æ╫º╫æ╫ò╫º, ╫₧╫û╫ö╫Ö╫¥ ╫É╫Ö╫ñ╫ö ╫ö╫¢╫í╫ú ╫æ╫ò╫¿╫ù, ╫ò╫æ╫ò╫á╫Ö╫¥ ╫¬╫ò╫¢╫á╫Ö╫¬ ╫ñ╫ó╫ò╫£╫ö
+                            ╫¬╫¢╫£'╫í.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div
+                        class="bg-white/80 backdrop-blur-xl rounded-3xl p-10 shadow-xl border border-white/50 relative overflow-hidden h-full flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 tracking-tight">2. ╫É╫¿╫¢╫Ö╫ÿ╫º╫ÿ╫ò╫¿╫ö ╫ò╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö</h3>
+                        <p class="text-lg text-slate-500 leading-relaxed flex-grow">
+                            ╫æ╫á╫Ö╫Ö╫¬ ╫¬╫ö╫£╫Ö╫¢╫Ö╫¥ ╫⌐╫º╫ò╫ñ╫Ö╫¥. ╫º╫£╫Ö╫ÿ╫¬ ╫£╫Ö╫ô╫Ö╫¥ ╫£-CRM, ╫ö╫ñ╫º╫¬ ╫ù╫⌐╫æ╫ò╫á╫Ö╫ò╫¬, ╫ò╫í╫á╫¢╫¿╫ò╫ƒ ╫₧╫£╫É ╫æ╫Ö╫ƒ ╫₧╫ù╫£╫º╫ò╫¬ ╫ö╫ó╫í╫º.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div
+                        class="bg-white/80 backdrop-blur-xl rounded-3xl p-10 shadow-xl border border-white/50 relative overflow-hidden h-full flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 tracking-tight">3. ╫ö╫ô╫¿╫¢╫ö ╫ò╫ö╫ó╫æ╫¿╫¬ ╫₧╫º╫£</h3>
+                        <p class="text-lg text-slate-500 leading-relaxed flex-grow">
+                            ╫æ╫í╫Ö╫ò╫¥ ╫ö╫ö╫ÿ╫₧╫ó╫ö, ╫ö╫ª╫ò╫ò╫¬ ╫⌐╫£╫¢╫¥ ╫₧╫º╫æ╫£ ╫ö╫ô╫¿╫¢╫ö ╫₧╫º╫Ö╫ñ╫ö ╫ò╫£╫Ö╫ò╫ò╫Ö ╫ª╫₧╫ò╫ô ╫¢╫ô╫Ö ╫⌐╫Ö╫á╫ö╫£╫ò ╫É╫¬ ╫ö╫₧╫ó╫¿╫¢╫¬ ╫æ╫ó╫ª╫₧╫É╫ò╫¬ ╫₧╫£╫É╫ö.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ΓöÇΓöÇ Section 4: FAQ ΓöÇΓöÇ -->
+        <section class="py-24 px-6 bg-alt relative overflow-hidden">
+            <div class="container mx-auto max-w-3xl relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">╫⌐╫É╫£╫ò╫¬ ╫á╫ñ╫ò╫ª╫ò╫¬</h2>
+                </div>
+
+                <div class="space-y-5">
+                    <!-- Q1 -->
+                    <details
+                        class="bg-white/80 backdrop-blur-xl rounded-2xl border border-white/50 shadow-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-6 md:px-8 text-xl font-semibold text-primary">
+                            <span>╫ö╫É╫¥ ╫ª╫¿╫Ö╫Ü ╫Ö╫ô╫ó ╫ÿ╫¢╫á╫Ö ╫¢╫ô╫Ö ╫£╫ö╫⌐╫¬╫₧╫⌐ ╫æ╫₧╫ó╫¿╫¢╫¬?</span>
+                            <span class="bg-alt p-2 rounded-full"><svg aria-hidden="true"
+                                    class="faq-icon-plus w-5 h-5 text-accent flex-shrink-0" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M12 4v16m8-8H4" />
+                                </svg><svg aria-hidden="true" class="faq-icon-minus w-5 h-5 text-accent flex-shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M20 12H4" />
+                                </svg></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <div>
+                                <p class="px-6 md:px-8 pb-8 text-lg text-slate-600 leading-relaxed">╫₧╫₧╫⌐ ╫£╫É. ╫ö╫₧╫ÿ╫¿╫ö ╫⌐╫£╫á╫ò ╫ö╫Ö╫É ╫£╫ö╫ò╫¿╫Ö╫ô ╫₧╫¢╫¥ ╫ó╫æ╫ò╫ô╫ö, ╫£╫É ╫£╫ö╫ò╫í╫Ö╫ú ╫£╫¢╫¥ ╫ó╫ò╫ô ╫¬╫ò╫¢╫á╫ö ╫£╫£╫₧╫ò╫ô. ╫É╫á╫ù╫á╫ò ╫æ╫ò╫á╫Ö╫¥ ╫ö╫¢╫£ ╫₧╫É╫ù╫ò╫¿╫Ö ╫ö╫º╫£╫ó╫Ö╫¥, ╫ò╫É╫¬╫¥ ╫₧╫º╫æ╫£╫Ö╫¥ ╫¬╫ò╫ª╫É╫ö ╫ó╫ò╫æ╫ô╫¬ (╫ò╫ñ╫⌐╫ò╫ÿ╫ö) ╫Ö╫ù╫ô ╫ó╫¥ ╫ö╫ô╫¿╫¢╫ö ╫₧╫£╫É╫ö ╫£╫ª╫ò╫ò╫¬.</p>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- Q2 -->
+                    <details
+                        class="bg-white/80 backdrop-blur-xl rounded-2xl border border-white/50 shadow-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-6 md:px-8 text-xl font-semibold text-primary">
+                            <span>╫¢╫₧╫ö ╫û╫₧╫ƒ ╫£╫ò╫º╫ù ╫¬╫ö╫£╫Ö╫Ü ╫ö╫ö╫ÿ╫₧╫ó╫ö?</span>
+                            <span class="bg-alt p-2 rounded-full"><svg aria-hidden="true"
+                                    class="faq-icon-plus w-5 h-5 text-accent flex-shrink-0" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M12 4v16m8-8H4" />
+                                </svg><svg aria-hidden="true" class="faq-icon-minus w-5 h-5 text-accent flex-shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M20 12H4" />
+                                </svg></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <div>
+                                <p class="px-6 md:px-8 pb-8 text-lg text-slate-700 leading-relaxed">╫₧╫ö╫¿ ╫₧╫⌐╫ù╫⌐╫æ╫¬╫¥. ╫æ╫₧╫º╫ò╫¥ ╫ñ╫¿╫ò╫Ö╫º╫ÿ ╫⌐╫£ ╫ù╫ò╫ô╫⌐╫Ö╫¥, ╫É╫á╫ù╫á╫ò ╫₧╫¬╫₧╫º╫ô╫Ö╫¥ ╫º╫ò╫ô╫¥ ╫æ╫ª╫ò╫ò╫É╫¿╫Ö ╫ö╫æ╫º╫æ╫ò╫º ╫ö╫₧╫¿╫¢╫û╫Ö╫Ö╫¥. ╫¢╫Ü ╫⌐╫¬╫ò╫¢╫£╫ò ╫£╫ö╫¿╫Æ╫Ö╫⌐ ╫É╫¬ ╫ö╫ù╫Ö╫í╫¢╫ò╫ƒ ╫æ╫⌐╫ó╫ò╫¬ ╫¢╫æ╫¿ ╫æ╫⌐╫æ╫ò╫ó╫ò╫¬ ╫ö╫¿╫É╫⌐╫ò╫á╫Ö╫¥ ╫£╫ö╫ÿ╫₧╫ó╫ö.</p>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- Q3 -->
+                    <details
+                        class="bg-white/80 backdrop-blur-xl rounded-2xl border border-white/50 shadow-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-6 md:px-8 text-xl font-semibold text-primary">
+                            <span>╫ö╫É╫¥ ╫ö╫₧╫Ö╫ô╫ó ╫⌐╫£ ╫ö╫ó╫í╫º ╫⌐╫£╫Ö ╫₧╫É╫ò╫æ╫ÿ╫ù?</span>
+                            <span class="bg-alt p-2 rounded-full"><svg aria-hidden="true"
+                                    class="faq-icon-plus w-5 h-5 text-accent flex-shrink-0" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M12 4v16m8-8H4" />
+                                </svg><svg aria-hidden="true" class="faq-icon-minus w-5 h-5 text-accent flex-shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M20 12H4" />
+                                </svg></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <div>
+                                <p class="px-6 md:px-8 pb-8 text-lg text-slate-700 leading-relaxed">╫ö╫₧╫Ö╫ô╫ó ╫⌐╫£╫¢╫¥ ╫á╫⌐╫É╫¿ ╫æ╫Ö╫ô╫Ö╫Ö╫¥ ╫⌐╫£╫¢╫¥. ╫É╫á╫ù╫á╫ò ╫ó╫ò╫æ╫ô╫Ö╫¥ ╫ó╫¥ ╫ñ╫£╫ÿ╫ñ╫ò╫¿╫₧╫ò╫¬ ╫ö╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö ╫ö╫Æ╫£╫ò╫æ╫£╫Ö╫ò╫¬ ╫ò╫ö╫₧╫É╫ò╫æ╫ÿ╫ù╫ò╫¬ ╫æ╫Ö╫ò╫¬╫¿ (╫¢╫₧╫ò Make ╫É╫ò Zapier), ╫ò╫£╫É ╫⌐╫ò╫₧╫¿╫Ö╫¥ ╫É╫ú ╫₧╫Ö╫ô╫ó ╫¿╫Æ╫Ö╫⌐ ╫⌐╫£ ╫ö╫£╫º╫ò╫ù╫ò╫¬ ╫⌐╫£╫¢╫¥ ╫É╫ª╫£╫á╫ò ╫ó╫£ ╫ö╫⌐╫¿╫¬╫Ö╫¥.</p>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- Q4 -->
+                    <details
+                        class="bg-white/80 backdrop-blur-xl rounded-2xl border border-white/50 shadow-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-6 md:px-8 text-xl font-semibold text-primary">
+                            <span>╫ö╫É╫¥ ╫û╫ö ╫₧╫¬╫É╫Ö╫¥ ╫£╫ó╫í╫º ╫º╫ÿ╫ƒ ╫É╫ò ╫¿╫º ╫£╫ù╫æ╫¿╫ò╫¬ ╫ó╫á╫º?</span>
+                            <span class="bg-alt p-2 rounded-full"><svg aria-hidden="true"
+                                    class="faq-icon-plus w-5 h-5 text-accent flex-shrink-0" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M12 4v16m8-8H4" />
+                                </svg><svg aria-hidden="true" class="faq-icon-minus w-5 h-5 text-accent flex-shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M20 12H4" />
+                                </svg></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <div>
+                                <p class="px-6 md:px-8 pb-8 text-lg text-slate-700 leading-relaxed">╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö ╫ö╫Ö╫É ╫º╫¿╫Ö╫ÿ╫Ö╫¬ ╫æ╫₧╫Ö╫ò╫ù╫ô ╫£╫ó╫í╫º╫Ö╫¥ ╫º╫ÿ╫á╫Ö╫¥ (2-50 ╫ó╫ò╫æ╫ô╫Ö╫¥). ╫¢╫⌐╫É╫Ö╫ƒ ╫í╫ò╫£╫£╫¬ ╫ó╫ò╫æ╫ô╫Ö╫¥ ╫⌐╫ù╫ò╫£╫⌐╫Ö╫¥ ╫ó╫£ ╫¢╫£ ╫₧╫⌐╫Ö╫₧╫ö, ╫É╫ò╫ÿ╫ò╫₧╫ª╫Ö╫ö ╫₧╫¬╫ñ╫º╫ô╫¬ ╫¢╫₧╫ò '╫ö╫ó╫ò╫æ╫ô ╫ö╫ò╫ò╫Ö╫¿╫ÿ╫ò╫É╫£╫Ö' ╫⌐╫₧╫ò╫ò╫ô╫É ╫⌐╫⌐╫ò╫¥ ╫ô╫æ╫¿ ╫£╫É ╫á╫ò╫ñ╫£ ╫æ╫Ö╫ƒ ╫ö╫¢╫Ö╫í╫É╫ò╫¬.</p>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- Q5 -->
+                    <details
+                        class="bg-white/80 backdrop-blur-xl rounded-2xl border border-white/50 shadow-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between cursor-pointer p-6 md:px-8 text-xl font-semibold text-primary">
+                            <span>╫₧╫ö ╫º╫ò╫¿╫ö ╫É╫¥ ╫Ö╫⌐ ╫¬╫º╫£╫ö ╫æ╫₧╫ó╫¿╫¢╫¬?</span>
+                            <span class="bg-alt p-2 rounded-full"><svg aria-hidden="true"
+                                    class="faq-icon-plus w-5 h-5 text-accent flex-shrink-0" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M12 4v16m8-8H4" />
+                                </svg><svg aria-hidden="true" class="faq-icon-minus w-5 h-5 text-accent flex-shrink-0"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M20 12H4" />
+                                </svg></span>
+                        </summary>
+                        <div class="faq-answer">
+                            <div>
+                                <p class="px-6 md:px-8 pb-8 text-lg text-slate-700 leading-relaxed">╫É╫á╫ù╫á╫ò ╫£╫É ╫á╫ó╫£╫₧╫Ö╫¥ ╫É╫ù╫¿╫Ö ╫ö╫ö╫⌐╫º╫ö. ╫¬╫º╫æ╫£╫ò ╫₧╫É╫Ö╫¬╫á╫ò ╫₧╫ó╫ÿ╫ñ╫¬ ╫¬╫₧╫Ö╫¢╫ö, ╫ö╫ô╫¿╫¢╫ò╫¬ ╫₧╫í╫ò╫ô╫¿╫ò╫¬, ╫ò╫£╫Ö╫ò╫ò╫Ö ╫º╫¿╫ò╫æ ╫¢╫ô╫Ö ╫£╫ò╫ò╫ô╫É ╫⌐╫ö╫₧╫ó╫¿╫¢╫¬ ╫ó╫ò╫æ╫ô╫¬ ╫ù╫£╫º ╫æ╫⌐╫æ╫Ö╫£╫¢╫¥, ╫ò╫⌐╫É╫á╫ù╫á╫ò ╫û╫₧╫Ö╫á╫Ö╫¥ ╫£╫¢╫£ ╫⌐╫É╫£╫ö ╫æ╫ö╫₧╫⌐╫Ü ╫ö╫ô╫¿╫Ü.</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ΓöÇΓöÇ Section 5: Contact Form ΓöÇΓöÇ -->
+        <section id="contact" class="py-32 px-6 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
+            <div
+                class="absolute -top-20 -right-20 w-[600px] h-[600px] bg-[#1E3A5F] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 blob pointer-events-none">
+            </div>
+            <div
+                class="absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-[#4A6FA5] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 blob blob-delay pointer-events-none">
+            </div>
+
+            <div class="container mx-auto max-w-xl relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary tracking-tight mb-5">╫₧╫ò╫¢╫á╫Ö╫¥ ╫£╫ö╫ù╫û╫Ö╫¿ ╫£╫ó╫ª╫₧╫¢╫¥ ╫ó╫⌐╫¿╫ò╫¬ ╫⌐╫ó╫ò╫¬ ╫æ╫ù╫ò╫ô╫⌐?</h2>
+                    <p class="text-xl text-slate-600 mb-8 max-w-lg mx-auto">╫ö╫⌐╫É╫Ö╫¿╫ò ╫ñ╫¿╫ÿ╫Ö╫¥ ╫£╫⌐╫Ö╫ù╫¬ ╫₧╫Ö╫ñ╫ò╫Ö ╫º╫ª╫¿╫ö (╫ù╫Ö╫á╫¥), ╫ò╫á╫Æ╫£╫ö ╫æ╫Ö╫ù╫ô ╫É╫Ö╫ñ╫ö ╫ö╫¢╫í╫ú ╫ò╫ö╫û╫₧╫ƒ ╫⌐╫£╫¢╫¥ ╫æ╫ò╫¿╫ù╫Ö╫¥ ╫ö╫Ö╫ò╫¥.</p>
+                </div>
+
+                <div id="contactFormWrapper">
+                    <form id="contactForm" action="#" aria-label="╫ÿ╫ò╫ñ╫í ╫Ö╫ª╫Ö╫¿╫¬ ╫º╫⌐╫¿ ╫¬╫ù╫¬╫ò╫ƒ"
+                        class="bg-white/90 backdrop-blur-xl p-10 md:p-14 rounded-[2rem] shadow-2xl border border-white/80 space-y-6">
+                        <div>
+                            <input type="text" id="contactFullName" name="fullName" aria-label="╫⌐╫¥ ╫₧╫£╫É" required
+                                placeholder="╫⌐╫¥ ╫₧╫£╫É"
+                                class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg">
+                        </div>
+                        <div>
+                            <input type="email" id="contactEmail" name="email" aria-label="╫É╫Ö╫₧╫Ö╫Ö╫£" required dir="ltr"
+                                placeholder="╫ô╫ò╫É╫┤╫£"
+                                class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg text-right focus:text-left">
+                        </div>
+                        <div>
+                            <input type="tel" id="contactPhone" name="phone" aria-label="╫ÿ╫£╫ñ╫ò╫ƒ" required dir="ltr"
+                                placeholder="╫ÿ╫£╫ñ╫ò╫ƒ"
+                                class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg text-right focus:text-left">
+                        </div>
+                        <div class="flex justify-start items-start gap-3 py-2">
+                            <input type="checkbox" id="privacy-footer" required aria-required="true"
+                                aria-label="╫É╫Ö╫⌐╫ò╫¿ ╫₧╫ô╫Ö╫á╫Ö╫ò╫¬ ╫ñ╫¿╫ÿ╫Ö╫ò╫¬"
+                                class="w-5 h-5 mt-0.5 rounded border-gray-300 text-primary focus:ring-accent flex-shrink-0 cursor-pointer">
+                            <div class="text-sm text-slate-500 text-right leading-relaxed">
+                                <label for="privacy-footer" class="cursor-pointer inline">╫É╫á╫Ö ╫₧╫É╫⌐╫¿/╫¬ ╫⌐╫º╫¿╫É╫¬╫Ö ╫É╫¬</label>
+                                <button type="button" onclick="document.getElementById('privacyModal').showModal()"
+                                    class="text-primary font-medium inline hover:underline focus:outline-none px-1">╫¬╫á╫É╫Ö
+                                    ╫₧╫ô╫Ö╫á╫Ö╫ò╫¬ ╫ö╫ñ╫¿╫ÿ╫Ö╫ò╫¬</button>
+                                <span class="inline">╫ò╫É╫¬ ╫º╫æ╫£╫¬ ╫ö╫ô╫Ö╫ò╫ò╫¿.</span>
+                            </div>
+                        </div>
+                        <button type="submit" aria-label="╫æ╫ò╫É╫ò ╫á╫ô╫æ╫¿ ╫¬╫¢╫£'╫í"
+                            class="w-full py-5 mt-4 bg-primary text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-2xl hover:bg-[#152a45] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/30">
+                            ╫æ╫ò╫É╫ò ╫á╫ô╫æ╫¿ ╫¬╫¢╫£'╫í
+                        </button>
+                        <!-- Error Message -->
+                        <p class="footer-error-message"
+                            style="display: none; color: #ff4d4d; font-size: 0.9rem; margin-top: 10px; text-align: center;">
+                        </p>
+                    </form>
+                    <!-- Success message -->
+                    <div id="contactFormSuccess"
+                        class="hidden bg-white/90 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-white/80 p-16 text-center">
+                        <div class="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg aria-hidden="true" class="w-12 h-12 text-green-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 class="text-4xl font-bold text-primary mb-4 tracking-tight">╫¬╫ò╫ô╫ö!</h3>
+                        <p class="text-slate-500 text-xl leading-relaxed">╫ö╫ñ╫¿╫ÿ╫Ö╫¥ ╫ö╫¬╫º╫æ╫£╫ò ╫æ╫ö╫ª╫£╫ù╫ö.<br>╫á╫Ö╫ª╫ò╫¿ ╫º╫⌐╫¿ ╫æ╫ö╫º╫ô╫¥.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ΓöÇΓöÇ Minimalist Bottom Footer ΓöÇΓöÇ -->
+    <footer class="bg-[#11223A] py-6 border-t border-white/10 text-sm text-slate-300">
+        <div class="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-center md:text-right" lang="en" dir="ltr">
+                &copy; 2026 ClearFlow. All rights reserved.
+            </div>
+            <div class="flex items-center gap-6 text-left">
+                <button onclick="document.getElementById('privacyModal').showModal()"
+                    class="hover:text-white transition-colors focus:outline-none">╫ñ╫¿╫ÿ╫Ö╫ò╫¬</button>
+                <button onclick="document.getElementById('accessibilityModal').showModal()"
+                    class="hover:text-white transition-colors focus:outline-none">╫ö╫ª╫ö╫¿╫¬ ╫á╫Æ╫Ö╫⌐╫ò╫¬</button>
+                <button
+                    onclick="document.getElementById('cookieBanner').style.display='block'; setTimeout(()=> document.getElementById('cookieBanner').style.transform='translateY(0)', 10);"
+                    class="hover:text-white transition-colors focus:outline-none">╫ó╫ò╫Æ╫Ö╫ò╫¬</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Logic & Webhook Integration -->
+    <script>
+        const WEBHOOK_URL = 'https://hook.eu1.make.com/p3evkp5wlspqvo3g1ln8qyxanf23h7as';
+
+        async function submitToWebhook(payload, submitBtn, errorElement) {
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = '╫⌐╫ò╫£╫ù...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return true;
+            } catch (error) {
+                if (errorElement) {
+                    errorElement.innerText = '╫É╫Ö╫¿╫ó╫ö ╫⌐╫Æ╫Ö╫É╫ö ╫æ╫⌐╫£╫Ö╫ù╫¬ ╫ö╫ÿ╫ò╫ñ╫í. ╫É╫á╫É ╫á╫í╫ò ╫⌐╫ò╫æ ╫₧╫É╫ò╫ù╫¿ ╫Ö╫ò╫¬╫¿.';
+                    errorElement.style.display = 'block';
+                }
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                return false;
+            }
+        }
+
+        // Footer Form Logic
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('contactFormSuccess');
+        const footerError = form ? form.querySelector('.footer-error-message') : null;
+
+        if (form && successMessage && footerError) {
+            // Hide error when typing resumes
+            form.addEventListener('input', () => {
+                footerError.style.display = 'none';
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const fullNameVal = document.getElementById('contactFullName').value.trim();
+                const emailVal = document.getElementById('contactEmail').value.trim();
+                const phoneVal = document.getElementById('contactPhone').value.trim();
+
+                // Validation
+                if (!fullNameVal || !phoneVal || !emailVal || phoneVal.length < 9 || !emailVal.includes('@')) {
+                    footerError.innerText = '╫É╫á╫É ╫₧╫£╫É╫ò ╫É╫¬ ╫¢╫£ ╫⌐╫ô╫ò╫¬ ╫ö╫ù╫ò╫æ╫ö ╫ò╫ò╫ò╫ô╫É╫ò ╫⌐╫₧╫í╫ñ╫¿ ╫ö╫ÿ╫£╫ñ╫ò╫ƒ ╫¬╫º╫Ö╫ƒ (╫£╫ñ╫ù╫ò╫¬ 9 ╫í╫ñ╫¿╫ò╫¬).';
+                    footerError.style.display = 'block';
+                    return;
+                }
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const payload = {
+                    fullName: fullNameVal,
+                    email: emailVal,
+                    phone: phoneVal,
+                    source: 'Footer Contact'
+                };
+
+                const success = await submitToWebhook(payload, submitBtn, footerError);
+                if (success) {
+                    form.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('form-success');
+                }
+            });
+        }
+
+        // Hero Form Logic
+        const heroForm = document.querySelector('section form');
+        const heroError = heroForm ? heroForm.querySelector('.hero-error-message') : null;
+
+        if (heroForm && heroError) {
+            // Hide error when typing resumes
+            heroForm.addEventListener('input', () => {
+                heroError.style.display = 'none';
+            });
+
+            heroForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const fullNameVal = heroForm.querySelector('input[name="name"]').value.trim();
+                const phoneVal = heroForm.querySelector('input[name="phone"]').value.trim();
+
+                // Validation
+                if (!fullNameVal || !phoneVal || phoneVal.length < 9) {
+                    heroError.innerText = '╫É╫á╫É ╫₧╫£╫É╫ò ╫É╫¬ ╫¢╫£ ╫⌐╫ô╫ò╫¬ ╫ö╫ù╫ò╫æ╫ö ╫ò╫ò╫ò╫ô╫É╫ò ╫⌐╫₧╫í╫ñ╫¿ ╫ö╫ÿ╫£╫ñ╫ò╫ƒ ╫¬╫º╫Ö╫ƒ (╫£╫ñ╫ù╫ò╫¬ 9 ╫í╫ñ╫¿╫ò╫¬).';
+                    heroError.style.display = 'block';
+                    return;
+                }
+
+                const submitBtn = heroForm.querySelector('button[type="submit"]');
+                const payload = {
+                    fullName: fullNameVal,
+                    email: '', // Hero form does not have an email field
+                    phone: phoneVal,
+                    source: 'Main Hero'
+                };
+
+                const success = await submitToWebhook(payload, submitBtn, heroError);
+                if (success) {
+                    document.getElementById('heroFormInputs').classList.add('hidden');
+                    const successMsg = document.getElementById('heroFormSuccess');
+                    if (successMsg) {
+                        successMsg.classList.remove('hidden');
+                        successMsg.classList.add('form-success');
+                    }
+                }
+            });
+        }
+
+        // Dynamic Header Scroll Transition
+        const header = document.getElementById('mainHeader');
+        const headerLogo = document.getElementById('headerLogo');
+        const headerNavLinks = document.querySelectorAll('#headerNav a');
+
+        if (header && headerLogo && headerNavLinks.length > 0) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.remove('bg-white/40', 'border-transparent', 'py-4');
+                    header.classList.add('bg-[#11223A]', 'border-gray-100', 'shadow-md', 'py-3');
+                } else {
+                    header.classList.add('bg-white/40', 'border-transparent', 'py-4');
+                    header.classList.remove('bg-[#11223A]', 'border-gray-100', 'shadow-md', 'py-3');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

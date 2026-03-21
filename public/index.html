@@ -1175,37 +1175,32 @@
                         השאירו פרטים לשיחת מיפוי קצרה (ללא עלות), בה נזהה איפה הכסף והזמן שלכם בורחים.
                     </p>
                 </div>
-                <div class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-white/10">
+                <div class="bg-white/90 backdrop-blur-xl p-10 md:p-14 rounded-[2rem] shadow-2xl border border-white/80 max-w-xl mx-auto">
                     <form id="footerForm" action="#" aria-label="טופס יצירת קשר תחתון" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label for="foot-name" class="block text-sm font-bold text-gray-700 mr-1">שם מלא</label>
-                                <input id="foot-name" type="text" name="name" required class="w-full px-5 py-4 rounded-xl border border-gray-100 bg-slate-50 text-gray-900 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all text-lg shadow-sm">
-                            </div>
-                            <div class="space-y-2">
-                                <label for="foot-phone" class="block text-sm font-bold text-gray-700 mr-1">טלפון</label>
-                                <input id="foot-phone" type="tel" name="phone" required dir="ltr" class="w-full px-5 py-4 rounded-xl border border-gray-100 bg-slate-50 text-gray-900 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all text-lg text-right focus:text-left shadow-sm">
-                            </div>
+                        <div>
+                            <input id="foot-name" type="text" name="name" required placeholder="שם מלא" class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg">
                         </div>
-                        <div class="space-y-2">
-                            <label for="foot-email" class="block text-sm font-bold text-gray-700 mr-1">דוא״ל</label>
-                            <input id="foot-email" type="email" name="email" required dir="ltr" class="w-full px-5 py-4 rounded-xl border border-gray-100 bg-slate-50 text-gray-900 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all text-lg text-right focus:text-left shadow-sm">
+                        <div>
+                            <input id="foot-email" type="email" name="email" required dir="ltr" placeholder="דוא״ל" class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg text-right focus:text-left">
                         </div>
-                        <div class="space-y-2">
-                            <label for="foot-message" class="block text-sm font-bold text-gray-700 mr-1">ספרו לנו קצת על העסק (אופציונלי)</label>
-                            <textarea id="foot-message" name="message" rows="4" class="w-full px-5 py-4 rounded-xl border border-gray-100 bg-slate-50 text-gray-900 focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all text-lg shadow-sm resize-none"></textarea>
+                        <div>
+                            <input id="foot-phone" type="tel" name="phone" required dir="ltr" placeholder="טלפון" class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg text-right focus:text-left">
                         </div>
-                        <div class="pt-4">
-                            <button type="submit" aria-label="בואו נדבר תכל'ס" class="w-full py-5 bg-amber-500 text-gray-900 font-black text-xl rounded-2xl shadow-lg hover:bg-amber-400 hover:scale-[1.02] transform transition-all duration-300">בואו נדבר תכל'ס</button>
-                            <p class="footer-error-message" style="display: none; color: #ff4d4d; font-size: 0.9rem; margin-top: 10px; text-align: center;"></p>
-                        </div>
-                        <div class="flex items-start gap-3 mt-4 mr-1">
+                        <div class="flex justify-start items-start gap-3 py-2">
                             <input type="checkbox" id="privacy-footer" required class="w-5 h-5 mt-0.5 rounded border-gray-300 text-primary focus:ring-accent flex-shrink-0 cursor-pointer">
-                            <label for="privacy-footer" class="text-sm text-slate-500 leading-relaxed cursor-pointer">אני מאשר/ת שקראתי את <button type="button" onclick="document.getElementById('privacyModal').showModal()" class="text-primary font-bold hover:underline">מדיניות הפרטיות</button> ואת קבלת הדיוור.</label>
+                            <div class="text-sm text-slate-500 text-right leading-relaxed">
+                                <label for="privacy-footer" class="cursor-pointer inline">אני מאשר/ת שקראתי את</label>
+                                <button type="button" onclick="document.getElementById('privacyModal').showModal()" class="text-primary font-medium inline hover:underline focus:outline-none px-1">מדיניות הפרטיות</button>
+                                <span class="inline">ואת קבלת הדיוור.</span>
+                            </div>
                         </div>
+                        <button type="submit" aria-label="בואו נדבר תכל'ס" class="w-full py-5 mt-4 bg-primary text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-2xl hover:bg-[#152a45] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/30">
+                            בואו נדבר תכל'ס
+                        </button>
+                        <p class="footer-error-message mt-2" style="display: none; color: #ff4d4d; font-size: 0.9rem; text-align: center;"></p>
                     </form>
                     <div id="footerSuccess" class="hidden text-center py-12">
-                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"><svg aria-hidden="true" class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6"><svg aria-hidden="true" class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg></div>
                         <h4 class="text-3xl font-bold text-gray-900 mb-2">תודה רבה!</h4>
                         <p class="text-xl text-slate-500">הפרטים התקבלו. נחזור אליכם בהקדם לתיאום פגישה.</p>
                     </div>
