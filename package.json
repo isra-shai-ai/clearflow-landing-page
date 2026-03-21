@@ -4,9 +4,13 @@
   "description": "ClearFlow B2B Automation Landing Page",
   "scripts": {
     "build": "tailwindcss -i input.css -o public/styles.css --minify",
-    "dev": "tailwindcss -i input.css -o public/styles.css --watch"
+    "dev": "npm-run-all --parallel watch server",
+    "watch": "tailwindcss -i input.css -o public/styles.css --watch",
+    "server": "live-server public --port=3000"
   },
   "devDependencies": {
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
     "tailwindcss": "^3.4.17"
   }
 }

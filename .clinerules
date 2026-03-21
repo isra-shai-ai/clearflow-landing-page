@@ -1,0 +1,7 @@
+# Cline/RooCode Rules
+# These rules strictly govern the behavior of ANY AI agent working in this project.
+
+1. **NEVER modify `index.html` or any production source code files without EXPLICIT, direct approval from the user.**
+2. If working on a separate feature (e.g., a PDF guide or an isolated script), you must NOT unilaterally decide to "sync" or "update" the main `index.html` file.
+3. Always ask for permission before modifying files outside the immediate scope of the user's current request.
+4. When in doubt, STOP and ask the user. Do not assume.

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>האם העסק שלכם מוכן לאוטומציה | ClearFlow</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Rubik:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Heebo', 'sans-serif'],
+                        heading: ['Rubik', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#11223A',
+                            primary: '#1E3A5F',
+                            light: '#4A6FA5',
+                            accent: '#F59E0B',
+                            bg: '#F8FAFC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Exact A4 PDF Dimensions & Print Settings */
+        @page { size: A4; margin: 0; } 
+        
+        body { 
+            background: #e2e8f0; 
+            margin: 0; 
+            padding: 0;
+            -webkit-print-color-adjust: exact; 
+            print-color-adjust: exact;
+        }
+
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media print {
+            body { background: white; }
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                height: 297mm;
+            }
+            .a4-page:last-child {
+                page-break-after: auto;
+            }
+        }
+
+        .no-break {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+    </style>
+</head>
+<body class="text-brand-dark antialiased">
+    
+    <!-- ====================================== -->
+    <!-- PAGE 1: COVER                          -->
+    <!-- ====================================== -->
+    <div class="a4-page bg-gradient-to-b from-brand-dark to-brand-primary justify-center px-12 text-center text-white relative">
+        <div class="absolute top-16 left-0 right-0 flex justify-center">
+            <img src="public/assets/logos/white_orange_logo.svg" alt="ClearFlow" class="h-16 object-contain">
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-16 w-full shadow-2xl mt-12">
+            <div class="w-20 h-20 mx-auto mb-8 bg-brand-accent/20 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-brand-accent transform -rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+            
+            <h1 class="font-heading text-6xl leading-[1.2] mb-8 drop-shadow-lg">האם העסק שלכם מוכן לאוטומציה?</h1>
+            <div class="w-24 h-1 bg-brand-accent mx-auto mb-8 rounded-full"></div>
+            
+            <p class="text-2xl text-blue-100 font-sans leading-relaxed">
+                הצ'ק-ליסט המקצועי שיעזור לכם לזהות היכן<br> בורחות השעות (וההכנסות) בעסק.
+            </p>
+        </div>
+    </div>
+
+    <!-- ====================================== -->
+    <!-- PAGE 2: THICK INTRODUCTION             -->
+    <!-- ====================================== -->
+    <div class="a4-page p-16 relative">
+        <!-- Persistent small logo for inner pages -->
+        <img src="public/assets/logos/black_orange_logo.svg" alt="ClearFlow" class="absolute top-12 left-16 h-6 object-contain opacity-80">
+        
+        <h2 class="font-heading text-4xl text-brand-primary mb-6">מבוא: די להשאיר כסף על השולחן</h2>
+        <div class="w-16 h-1 bg-brand-accent mb-10 rounded-full"></div>
+        
+        <div class="prose max-w-none text-lg leading-relaxed text-gray-700 font-sans space-y-6">
+            <p>
+                לעתים קרובות עסקים פועלים תחת האשליה שאם הם לא משלמים על מערכות תוכנה חכמות, הם למעשה "חוסכים כסף" בהוצאות השוטפות. בפועל, הם משלמים את המחיר החבוי והיקר ביותר שיש: אובדן מוחלט של זמן פנוי, מיקוד ניהולי ושחיקת עובדים.
+            </p>
+            
+            <p>
+                תחשבו על התפתחות העסק שלכם בשנים האחרונות. העסק צמח, ההכנסות גדלו, כמות הלקוחות הוכפלה – אבל התשתית התפעולית נשארה בדיוק כפי שהייתה כשהייתם עסק קטן בהרבה. התוצאה? <strong class="text-brand-primary">הצוות שלכם הפך לצוואר הבקבוק המרכזי שמונע מהעסק לגדול.</strong>
+            </p>
+            
+            <div class="bg-brand-bg p-8 rounded-2xl border-r-4 border-brand-accent my-8">
+                <h3 class="font-heading text-2xl text-brand-dark mb-3">פרדוקס ה"עבודה השחורה"</h3>
+                <p>
+                    אנשי המכירות שלכם מבלים חצי מהיום בהקלדת נתונים ידנית ל-CRM; מנהלי התיקים מבזבזים שעות ברדיפה אחרי מסמכים; ואתם, בלחיצת כפתור של "סגירת חודש", מוצאים את עצמכם מתעסקים בהתאמות אקסל מתישות במקום בתכנון האסטרטגי של הרבעון הבא.
+                </p>
+            </div>
+            
+            <p>
+                המדריך הזה נכתב במיוחד עבור חברות ובעלי עסקים בישראל שכבר יודעים לעשות כסף, אבל מרגישים שהתפעול זולל להם את הרווחים המנטליים והכלכליים. 
+            </p>
+            
+            <p class="font-bold text-brand-primary text-[1.15rem]">
+                זה הזמן להפסיק לעבוד אצל העסק שלכם, ולתת למערכות לעבוד בשבילכם. בואו נבדוק עד כמה העסק שלכם סובל מדליפת שעות – ואיך אפשר לעצור אותה.
+            </p>
+        </div>
+    </div>
+
+    <!-- ====================================== -->
+    <!-- PAGE 3: THE 7 SIGNS (ALL IN ONE PAGE)  -->
+    <!-- ====================================== -->
+    <div class="a4-page p-16 relative">
+        <img src="public/assets/logos/black_orange_logo.svg" alt="ClearFlow" class="absolute top-12 left-16 h-6 object-contain opacity-80">
+        
+        <h2 class="font-heading text-4xl text-brand-primary mb-6 pt-8">נורות האזהרה התפעוליות של העסק:</h2>
+        <div class="w-16 h-1 bg-brand-accent mb-6 rounded-full"></div>
+        <p class="text-gray-600 mb-8 font-semibold text-lg">אם אתם מזהים לפחות 3 סימנים, אתם מאבדים כסף וזמן יקר:</p>
+        
+        <!-- Tight grid to keep it perfectly mapped on A4 -->
+        <div class="flex flex-col gap-[14px]">
+            <!-- 1 -->
+            <div class="bg-brand-bg rounded-xl p-4 border-r-4 border-brand-primary flex gap-4 items-center pl-6">
+                <div class="text-brand-accent font-heading text-4xl leading-none w-8 text-center bg-white h-12 w-12 flex items-center justify-center rounded-lg shadow-sm">1</div>
+                <div>
+                    <h3 class="font-heading text-lg mb-1 text-brand-dark">הקלדות כפולות ו"קופי-פייסט" אינסופי</h3>
+                    <p class="text-gray-600 text-sm leading-tight">העתקת נתונים ידנית ורובוטית בין תיבת המייל, ה-CRM, ומערכת החשבונות.</p>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="bg-brand-bg rounded-xl p-4 border-r-4 border-brand-primary flex gap-4 items-center">
+                <div class="text-brand-accent font-heading text-4xl leading-none w-8 text-center bg-white h-12 w-12 flex items-center justify-center rounded-lg shadow-sm">2</div>
+                <div>
+                    <h3 class="font-heading text-lg mb-1 text-brand-dark">תסמונת "הפולו-אפ האבוד"</h3>
+                    <p class="text-gray-600 text-sm leading-tight">פניות חמות נופלות בין הכיסאות כי מישהו שכח לחזור אליהן או שאין תהליך אוטומטי.</p>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="bg-brand-bg rounded-xl p-4 border-r-4 border-brand-primary flex gap-4 items-center">
+                <div class="text-brand-accent font-heading text-4xl leading-none w-8 text-center bg-white h-12 w-12 flex items-center justify-center rounded-lg shadow-sm">3</div>
+                <div>
+                    <h3 class="font-heading text-lg mb-1 text-brand-dark">הטירוף של "סגירת חודש"</h3>
+                    <p class="text-gray-600 text-sm leading-tight">שעות של בניית דוחות ואיסוף חשבונית-חשבונית לרואה חושבון. אפשר לשלוף הכל ב-API ישיר.</p>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="bg-brand-bg rounded-xl p-4 border-r-4 border-brand-primary flex gap-4 items-center">
+                <div class="text-brand-accent font-heading text-4xl leading-none w-8 text-center bg-white h-12 w-12 flex items-center justify-center rounded-lg shadow-sm">4</div>
+                <div>
+                    <h3 class="font-heading text-lg mb-1 text-brand-dark">תלות מוחלטת בעובד מפתח אחד</h3>
+                    <p class="text-gray-600 text-sm leading-tight">אם איש צוות מפתח יוצא לחופש (או למילואים הארוכים), כל שרשרת התפעול נעצרת ומתעכבת.</p>
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="bg-brand-bg rounded-xl p-4 border-r-4 border-brand-primary flex gap-4 items-center">
+                <div class="text-brand-accent font-heading text-4xl leading-none w-8 text-center bg-white h-12 w-12 flex items-center justify-center rounded-lg shadow-sm">5</div>
+                <div>
+                    <h3 class="font-heading text-lg mb-1 text-brand-dark">כיבוי שריפות במקום פיתוח עסקי</h3>
+                    <p class="text-gray-600 text-sm leading-tight">אתם כהנהלה מבזבזים זמן יקר על תיקון טעויות אנוש ידניות במקום לייצר מנועי צמיחה חדשים.</p>
+                </div>
+            </div>
+            <!-- 6 -->
+            <div class="bg-brand-bg rounded-xl p-4 border-r-4 border-brand-primary flex gap-4 items-center">
+                <div class="text-brand-accent font-heading text-4xl leading-none w-8 text-center bg-white h-12 w-12 flex items-center justify-center rounded-lg shadow-sm">6</div>
+                <div>
+                    <h3 class="font-heading text-lg mb-1 text-brand-dark">"קומבינות" של גיליונות אקסל ענקיים</h3>
+                    <p class="text-gray-600 text-sm leading-tight">יוצרים "גשרים" מאקסלים שקורסים בעומס, רק כי התוכנות שלכם עיוורות ולא מדברות אחת עם השנייה.</p>
+                </div>
+            </div>
+            <!-- 7 -->
+            <div class="bg-brand-bg rounded-xl p-4 border-r-4 border-brand-primary flex gap-4 items-center">
+                <div class="text-brand-accent font-heading text-4xl leading-none w-8 text-center bg-white h-12 w-12 flex items-center justify-center rounded-lg shadow-sm">7</div>
+                <div>
+                    <h3 class="font-heading text-lg mb-1 text-brand-dark">ניהול על עיוור</h3>
+                    <p class="text-gray-600 text-sm leading-tight">החלטות עסקיות גורליות מתקבלות מתחושת בטן או השערות כי חסר דשבורד מרכזי אמין ואונליין.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================== -->
+    <!-- PAGE 4: DEEP INSIGHTS + CTA            -->
+    <!-- ====================================== -->
+    <div class="a4-page p-16 flex flex-col justify-between bg-zinc-50 relative">
+        <img src="public/assets/logos/black_orange_logo.svg" alt="ClearFlow" class="absolute top-12 left-16 h-6 object-contain opacity-80">
+        
+        <div class="pt-8">
+            <h2 class="font-heading text-4xl text-brand-primary mb-6">האמת העירומה על אוטומציה</h2>
+            <div class="w-16 h-1 bg-brand-accent mb-12 rounded-full"></div>
+
+            <!-- Insight 1: Scale at Speed Trap -->
+            <section class="mb-10 bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div class="absolute -top-6 -right-4 w-12 h-12 rounded-full bg-brand-primary text-white flex items-center justify-center shadow-lg border-4 border-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                </div>
+                <h3 class="font-heading text-2xl text-brand-primary mb-3">מלכודת ה-"Scale at Speed"</h3>
+                <h4 class="text-brand-accent font-bold mb-3 text-lg">למה אסור לעולם לאטמט תהליך שבור?</h4>
+                <p class="text-gray-600 leading-relaxed mb-3">
+                    האינסטינקט של הרבה מנהלים הוא לחשוב שהפתרון הוא "לחבר את מערכת ה-CRM לתוכנת הנהלת החשבונות" באמצעות Zapier או Make, ולצפות שהכל יסתדר. אבל הנה סוד מהתעשייה: <strong class="text-brand-primary">אוטומציה של תהליך שבור לא מתקנת אותו - היא פשוט מאיצה את הבלגן, ומייצרת טעויות אסטרטגיות בקנה מידה עצום פי 100.</strong>
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    אם תהליך קליטת הלקוח שלכם מסורבל, לא עקבי, ודורש שיקול דעת אנושי בכל פעם מחדש - התוכנה תקרוס. רק תהליך מוגדר היטב, מתועד והגיוני לוגית - ראוי לעבור אוטומציה ויהפוך למכונת ייצור חלקה.
+                </p>
+            </section>
+
+            <!-- Insight 2: 80/20 Rule -->
+            <section class="mb-10 bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative">
+                <div class="absolute -top-6 -right-4 w-12 h-12 rounded-full bg-brand-primary text-white flex items-center justify-center shadow-lg border-4 border-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v8z" /></svg>
+                </div>
+                <h3 class="font-heading text-2xl text-brand-primary mb-3">חוק ה-80/20 של האוטומציה המודרנית</h3>
+                <h4 class="text-brand-accent font-bold mb-3 text-lg">התוכנה שעליה אתם משלמים שווה רק 20%. השאר זה הצוות.</h4>
+                <p class="text-gray-600 leading-relaxed mb-3">
+                    הנתונים מהחברות המובילות בעולם מראים שהטכנולוגיה (התוכנות עצמן) מספקת רק כ-20% מהערך במסע טרנספורמציה דיגיטלית. <strong class="text-brand-primary">מאיפה מגיעים ה-80% הנותרים?</strong> מעיצוב מחדש לחלוטין של צורת העבודה של האנשים שלכם.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    החזר ההשקעה האמיתי (ROI) אינו נמדד רק בחיסכון של "3 שעות הקלדת חשבוניות ביום". הוא נמדד מכך שהעובדים שלכם מפסיקים לעבוד כמו פקידים אפורים, ומתחילים להשקיע את 3 השעות הללו בשימור לקוחות, באפסיילים, ובטיפול מותאם אישית. <strong class="text-brand-primary">המערכת עושה את ה"עבודה השחורה" באופן אוטומטי - והעובדים מפנים לעצמם זמן יקר להתמקד בליבת העסק.</strong>
+                </p>
+            </section>
+        </div>
+
+        <!-- CTA footer (Anchored to bottom of page 4) -->
+        <div class="bg-brand-primary text-white rounded-3xl p-8 text-center no-break mt-auto shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/5 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between px-4">
+                <div class="text-right md:w-2/3">
+                    <h2 class="font-heading text-3xl mb-2">אל תשארו מאחור.</h2>
+                    <p class="text-blue-100 text-lg font-sans">
+                        הטכנולוגיה זמינה – אבל אפיון התהליך המדויק למידות שלכם הוא המפתח להצלחה. צרו קשר לשיחת מיפוי צרכים בה נגלה היכן העסק מעכב אתכם.
+                    </p>
+                </div>
+                <div class="md:w-1/3 mt-6 md:mt-0">
+                    <a href="https://wa.me/972522296269?text=%D7%94%D7%99%D7%99%2C%20%D7%A7%D7%A8%D7%90%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%93%D7%A8%D7%99%D7%9A%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%95%D7%A2%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%9E%D7%99%D7%A4%D7%95%D7%99." target="_blank" rel="noopener" class="inline-block bg-brand-accent text-white font-heading font-bold py-3 px-8 rounded-full text-lg hover:-translate-y-1 transition-transform border border-amber-400 w-full text-center">
+                        קביעת שיחת מיפוי ב-WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center text-gray-400 text-sm mt-4 font-sans" dir="ltr">
+            &copy; 2026 ClearFlow. כל הזכויות שמורות.
+        </div>
+
+    </div>
+</body>
+</html>

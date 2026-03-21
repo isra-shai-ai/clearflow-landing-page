@@ -1,41 +1,31 @@
-# ✍️ Copy Review Execution (PLAN.md)
+# Project Plan: The Secret Checklist Webpage
 
-## Objective
-Implement high-converting, low-friction copy updates across the ClearFlow landing page (`index.html`), ensuring strict alignment with the new Voice & Tone guidelines.
+## Goal
+Transform the existing A4 print-optimized `guide.html` into a fully responsive, mobile-first "Secret Webpage" (`public/checklist.html`) that delivers maximum user experience across all devices and drives immediate WhatsApp conversions.
 
-## Proposed Changes
+## Architecture
 
-### 1. Hero Form Optimization
-- **Target:** `index.html` (Section 1)
-- **Changes:**
-  - Update H2 to: "מוכנים לעשות סדר בעסק? בואו נדבר."
-  - Change Submit Button text to: "לשיחת הכרות קצרה"
-  - Inject Micro-copy text alongside the privacy checkbox: "שיחה קצרה של 15 דקות. בלי התחייבות ובלי חפירות."
+This will be a static HTML file served by Vercel directly from the `public/` directory, sharing the pre-compiled `styles.css` of the main landing page to ensure styling consistency and blistering fast load times.
 
-### 2. Services Section "Benefit-First" Rewrite
-- **Target:** `index.html` (Section 3)
-- **Changes:**
-  - "דפי נחיתה" ➔ "דפי נחיתה שממירים יותר"
-  - "אוטומציות" ➔ "אוטומציה לחיסכון של שעות"
-  - "מערכות CRM" ➔ "מרכז ניהול לקוחות (CRM) מאורגן"
-  - "הדרכה והטמעה" ➔ "ליווי והדרכת הצוות שלכם"
+## Step-by-Step Changes
 
-### 3. FAQ Section Restructuring
-- **Target:** `index.html` (Section 4: FAQ)
-- **Changes:**
-  - **Q1:** Update answer to focus on "not adding another software to learn", building behind the scenes.
-  - **Q2:** Update answer to explain we focus on "bottlenecks" to save hours within the first few weeks.
-  - **Q3:** Update answer to name-drop secure platforms (Make/Zapier) for maximum trust.
-  - **Q4:** Update answer to frame automation as the crucial "virtual employee" for small teams.
-  - **Q5:** Update answer to emphasize long-term white-glove support and onboarding.
+### 1. `tailwind.config.js`
+- **[MODIFY]** Update the `content` array to scan `public/checklist.html` so that any Tailwind utilities used in the guide are correctly bundled into `styles.css`.
 
-### 4. Footer Contact Form Friction Reduction
-- **Target:** `index.html` (Section 5)
-- **Changes:**
-  - Update H2 to: "מוכנים להחזיר לעצמכם עשרות שעות בחודש?"
-  - Update/Add Subtitle: "השאירו פרטים לשיחת מיפוי קצרה (חינם), ונגלה ביחד איפה הכסף והזמן שלכם בורחים היום."
-  - Change Submit Button text to: "בואו נדבר תכל'ס"
+### 2. `public/checklist.html`
+- **[NEW]** Create this file by duplicating `guide.html`.
+- **Modifications:**
+    - **SEO Blocking:** Inject `<meta name="robots" content="noindex, nofollow">` to hide the page from search engines.
+    - **Remove Print Styling:** Strip out all `@page`, `.a4-page`, `210mm` width, and page-break CSS.
+    - **Make Responsive:** Wrap the body content in a standard `div class="container mx-auto max-w-3xl px-6 py-12"`. This will convert the rigid A4 layout into a fluid, mobile-stacking article format perfect for phones and desktop.
+    - **Link Stylesheet:** Remove the Tailwind CDN script from the `<head>` and link directly to `<link rel="stylesheet" href="styles.css">`.
+    - **WhatsApp CTA:** Update the bottom CTA link to use the exact pre-filled WhatsApp link: `https://wa.me/972522296269?text=...` ensuring the entire CTA section uses highly visible, rounded buttons perfect for thumb-tapping.
 
-## User Review Required
-> [!IMPORTANT]
-> The `/copy-review` changes are designed to align with the "ClearFlow Transformation" persona — direct, low friction, and focused on business value. Review the proposed text changes in the plan. Reply "The plan is approved" to trigger the execution phase.
+### 3. Build & Verification
+- Run `npm run build` to re-compile `public/styles.css` with the new classes extracted from `checklist.html`.
+- Verify the responsive fluid layout on mobile widths.
+
+## Verification Required
+- You will need to confirm the WhatsApp number `972522296269` currently hardcoded in the guide is correct.
+
+**Reply "The plan is approved" to begin execution.**
