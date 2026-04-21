@@ -116,7 +116,7 @@
                     class="text-primary font-semibold hover:underline">Privacy Policy</button>.
             </p>
             <button
-                onclick="document.getElementById('cookieBanner').style.transform = 'translateY(100%)'; setTimeout(()=> document.getElementById('cookieBanner').style.display = 'none', 500);"
+                onclick="localStorage.setItem('cookieAccepted', 'true'); document.getElementById('cookieBanner').style.transform = 'translateY(100%)'; setTimeout(()=> document.getElementById('cookieBanner').style.display = 'none', 500);"
                 class="bg-primary text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#152a45] transition-colors whitespace-nowrap flex-shrink-0">
                 Got it, thanks
             </button>
@@ -327,5 +327,12 @@
         });
     </script>
     
+
+    <script>
+        if (localStorage.getItem('cookieAccepted') === 'true') {
+            const banner = document.getElementById('cookieBanner');
+            if (banner) banner.style.display = 'none';
+        }
+    </script>
 </body>
 </html>

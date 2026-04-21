@@ -201,5 +201,12 @@
         </footer>
     </main>
 
+
+    <script>
+        if (localStorage.getItem('cookieAccepted') === 'true') {
+            const banner = document.getElementById('cookieBanner');
+            if (banner) banner.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
