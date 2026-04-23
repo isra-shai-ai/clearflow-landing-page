@@ -14,6 +14,17 @@ All notable changes to the ClearFlow Landing Page project will be documented in 
 
 ## [Unreleased] MVP - V2 Polish
 
+### Added
+- **AI Agents Service:** Created a new dedicated service page (`ai-agents.html`) focusing on autonomous digital workers, complete with custom 3D abstract illustrations.
+- **Navigation:** Added the "AI Agents" service to the global dropdown menu across all pages.
+
+### Changed
+- **Homepage Layout:** Redesigned the "Our Services" grid into a "1 + 4 Hero Layout". The new AI Agents card spans the full top width to serve as an anchor, while the legacy 4 services sit symmetrically beneath it.
+- **Copywriting:** Rewrote all service cards on the homepage to be strictly outcome-led (e.g. "Digital infrastructure that converts" instead of "Landing Pages").
+- **Typography:** Updated sub-headline text constraints on service pages, introducing `text-balance` and wider max-widths to prevent typographical orphans while maintaining readability.
+- **UX Consistency:** Changed all card CTAs from "Read More" to the gender-neutral, professional "לפרטים נוספים".
+- **Asset Pipeline:** Re-compiled the Tailwind `styles.css` and injected cache-busting `?v=2` query strings to ensure returning visitors fetch the newly structured grid CSS.
+
 ### Changed
 
 - **Performance:** Deferred Google Analytics and preloaded Google Fonts to improve mobile LCP and unblock the main rendering thread.
