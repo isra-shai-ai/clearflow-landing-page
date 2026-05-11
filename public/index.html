@@ -261,6 +261,7 @@
                         <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-6">לקביעת שיחת ייעוץ ללא עלות</h2>
                         <!-- You must never alter these specific values in any future updates or refactoring. -->
                         <input type="hidden" name="source" value="Hero">
+                        <input type="text" name="b_title" tabindex="-1" value="" class="opacity-0 absolute -z-10 w-0 h-0" autocomplete="off" aria-hidden="true">
                         <div id="heroFormInputs">
                             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4">
                                 <input type="text" name="name" placeholder="שם מלא" required aria-label="שם מלא"
@@ -727,6 +728,7 @@
                         <form id="leadMagnetForm" action="#" aria-label="טופס הורדת מדריך" class="space-y-6 relative z-10">
                             <!-- You must never alter these specific values in any future updates or refactoring. -->
                             <input type="hidden" name="source" value="Lead Magnet">
+                            <input type="text" name="b_title" tabindex="-1" value="" class="opacity-0 absolute -z-10 w-0 h-0" autocomplete="off" aria-hidden="true">
                             <h3 class="text-2xl lg:text-3xl font-bold text-white text-center mb-8 drop-shadow-sm tracking-tight">לקבלת הצ'ק-ליסט למייל</h3>
                             
                             <!-- Inputs -->
@@ -895,6 +897,7 @@
                     <form id="footerForm" action="#" aria-label="טופס יצירת קשר תחתון" class="space-y-6">
                         <!-- You must never alter these specific values in any future updates or refactoring. -->
                         <input type="hidden" name="source" value="Footer">
+                        <input type="text" name="b_title" tabindex="-1" value="" class="opacity-0 absolute -z-10 w-0 h-0" autocomplete="off" aria-hidden="true">
                         <div>
                             <input id="foot-name" type="text" name="name" required placeholder="שם מלא" class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg">
                         </div>
@@ -992,6 +995,12 @@
         if (heroForm) {
             heroForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                const botCheck = heroForm.querySelector('input[name="b_title"]')?.value;
+                if (botCheck) {
+                    document.getElementById('heroFormInputs').classList.add('hidden');
+                    document.getElementById('heroFormSuccess').classList.remove('hidden');
+                    return;
+                }
                 const nameVal = heroForm.querySelector('input[name="name"]').value.trim();
                 const phoneVal = heroForm.querySelector('input[name="phone"]').value.trim();
                 const privacyChecked = heroForm.querySelector('#privacy-hero').checked;
@@ -1016,6 +1025,12 @@
         if (footerForm) {
             footerForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                const botCheck = footerForm.querySelector('input[name="b_title"]')?.value;
+                if (botCheck) {
+                    footerForm.classList.add('hidden');
+                    document.getElementById('footerSuccess').classList.remove('hidden');
+                    return;
+                }
                 const nameVal = footerForm.querySelector('input[name="name"]').value.trim();
                 const phoneVal = footerForm.querySelector('input[name="phone"]').value.trim();
                 const emailVal = footerForm.querySelector('input[name="email"]').value.trim();
@@ -1045,6 +1060,12 @@
         if (leadForm) {
             leadForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                const botCheck = leadForm.querySelector('input[name="b_title"]')?.value;
+                if (botCheck) {
+                    leadForm.classList.add('hidden');
+                    document.getElementById('leadMagnetSuccess').classList.remove('hidden');
+                    return;
+                }
                 const nameVal = leadForm.querySelector('input[name="fullName"]').value.trim();
                 const emailVal = leadForm.querySelector('input[name="email"]').value.trim();
                 const privacyChecked = leadForm.querySelector('input[name="privacyAgreement"]').checked;
