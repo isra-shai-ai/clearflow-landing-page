@@ -1,6 +1,6 @@
 # Feature Implementation Plan - Phase 2: Robust Hebrew Content
 
-**Overall Progress:** `40%`
+**Overall Progress:** `50%`
 
 ## TLDR
 
@@ -39,12 +39,12 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
   - [x] 🟩 Add contextual CTA block at the bottom of the article.
   - Verified across all 5 service pages: each carries H1 → Problem ("למה רוב X נכשלים?") → Solution → real-world example ("בשטח: …") → ROI list ("השורה התחתונה") → `<!-- Contextual CTA -->` block. Structure only; the copy inside it is Steps 4-8.
 
-- [ ] 🟥 **Step 4: Write & Inject AI Agents Copy** — ⚠️ **URGENT: page currently shows automations copy**
-  - `public/services/ai-agents.html` is a near-exact duplicate of `public/services/automations.html`. Diffing the two from `<h1>` to `<footer>` yields 4 differing lines, all `<img>` swaps. Every Hebrew heading, paragraph, example, ROI bullet and CTA on the page is Automations copy, as are the `<title>` and meta description.
-  - Impact: the AI Agents service has no real content, and the two pages compete in Google for the same terms.
-  - [ ] 🟥 Write full Hebrew copy for the four-part structure (Problem / Solution / "בשטח" example / "השורה התחתונה" ROI) plus the contextual CTA.
-  - [ ] 🟥 Rewrite `<title>`, meta description, and OG/Twitter title+description so they no longer duplicate Automations.
-  - [ ] 🟥 Get user approval on the copy before touching the file (CLAUDE.md hard rule).
+- [x] 🟩 **Step 4: Write & Inject AI Agents Copy**
+  - Was a near-exact duplicate of `public/services/automations.html` (4 differing lines, all `<img>` swaps). Resolved in commit `7399fc5`.
+  - Positioning: automations execute a process defined in advance; an AI agent decides what to do when the enquiry does not fit any template.
+  - [x] 🟩 Write full Hebrew copy for the four-part structure (Problem / Solution / "בשטח" example / "השורה התחתונה" ROI) plus the contextual CTA.
+  - [x] 🟩 Rewrite `<title>`, meta description, and OG/Twitter title+description so they no longer duplicate Automations.
+  - [x] 🟩 Get user approval on the copy before touching the file (CLAUDE.md hard rule).
 
 - [ ] 🟥 **Step 5: Write & Inject Landing Pages Copy**
   - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
@@ -62,3 +62,8 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
   - [ ] 🟥 Ensure responsive design holds up with the expanded text.
   - [ ] 🟥 **Mandatory Step**: Run an accessibility audit checking for keyboard focus trapping, ARIA labels, and contrast ratios.
   - [ ] 🟥 Verify `input.css` compilation cleanly handles any new native Tailwind classes.
+
+## Findings
+
+- **No em dashes or en dashes in user-facing copy.** Shai flags them as an AI writing tell. Use commas, periods or colons instead. Applies to every Hebrew string across the site.
+- **Automations page still stars an AI agent** in its own `בשטח` example ("תשתמש בסוכן בינה מלאכותית..."). Now that Step 4 claims the judgment ground for AI Agents, trim that mention in Step 6 or the two pages still blur.
