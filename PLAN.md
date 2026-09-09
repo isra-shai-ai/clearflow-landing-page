@@ -1,6 +1,6 @@
 # Feature Implementation Plan - Phase 2: Robust Hebrew Content
 
-**Overall Progress:** `15%`
+**Overall Progress:** `30%`
 
 ## TLDR
 
@@ -20,9 +20,10 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
   - [x] 🟩 Outline the core arguments and 1 concrete real-world example for each of the 4 services.
   - [x] 🟩 Get user approval on the written concepts.
 
-- [ ] 🟨 **Step 2: Implement Navigation Dropdown (Global)**
-  - [ ] 🟥 Update `public/index.html` and `public/services/*.html` headers to include an accessible dropdown menu for "שירותים".
-  - [ ] 🟥 Ensure `aria-expanded`, tabindex, and keyboard navigability are correctly implemented.
+- [x] 🟩 **Step 2: Implement Navigation Dropdown (Global)**
+  - [x] 🟩 Update `public/index.html` and `public/services/*.html` headers to include an accessible dropdown menu for "שירותים".
+  - [x] 🟩 Ensure `aria-expanded`, tabindex, and keyboard navigability are correctly implemented.
+  - [ ] 🟥 **Open gap:** there is no mobile nav below `md` (768px) — the header nav is `hidden md:flex` and no hamburger exists, so the dropdown is unreachable on phones. Needs its own step.
 
 - [ ] 🟥 **Step 3: Restructure Service Page HTML**
   - [ ] 🟥 Update the HTML layout templates to support deeper content (Problem/Solution/Example/ROI framework).

@@ -82,7 +82,7 @@
         });
     </script>
 
-    <link rel="stylesheet" href="../styles.css?v=2">
+    <link rel="stylesheet" href="../styles.css?v=3">
 
     <!-- Tabnav Accessibilty Widget -->
     <script src="https://widget.tabnav.com/limited-widget.min.js.gz"
@@ -206,21 +206,24 @@
                     class="flex items-center gap-6 text-base font-medium text-white/90 transition-colors duration-300">
                     <a href="../index.html" class="hover:text-white transition-colors">בית</a>
                     
-                    <div class="relative group">
-                        <button class="hover:text-white transition-colors inline-flex items-center gap-1 focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                    <div class="relative" data-services-dropdown>
+                        <button type="button" id="servicesMenuButton" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="servicesMenu"
+                            class="hover:text-white transition-colors inline-flex items-center gap-1 focus:outline-none">
                             שירותים
-                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            <svg data-services-chevron class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </button>
-                        
-                        <div class="absolute right-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible focus-within:opacity-100 focus-within:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-50">
+
+                        <div id="servicesMenu" role="menu" aria-label="תפריט שירותים"
+                            data-services-menu class="absolute right-0 mt-2 w-56 z-50">
                             <div class="absolute -top-4 left-0 w-full h-4"></div>
-                            
+
                             <div class="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden flex flex-col py-2">
-                                <a href="landing-pages.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right">דפי נחיתה</a>
-                                <a href="ai-agents.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right">סוכני AI</a>
-                                <a href="automations.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right">אוטומציות מתקדמות</a>
-                                <a href="crm-systems.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right">מערכות CRM</a>
-                                <a href="training.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right">הדרכה והטמעה</a>
+                                <a role="menuitem" tabindex="-1" href="ai-agents.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right focus:outline-none focus:bg-slate-50 focus:text-primary">סוכני AI</a>
+                                <a role="menuitem" tabindex="-1" href="automations.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right focus:outline-none focus:bg-slate-50 focus:text-primary">אוטומציות</a>
+                                <a role="menuitem" tabindex="-1" href="crm-systems.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right focus:outline-none focus:bg-slate-50 focus:text-primary">מערכות CRM</a>
+                                <a role="menuitem" tabindex="-1" href="landing-pages.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right focus:outline-none focus:bg-slate-50 focus:text-primary">דפי נחיתה</a>
+                                <a role="menuitem" tabindex="-1" href="training.html" class="px-5 py-2.5 text-gray-700 hover:text-primary hover:bg-slate-50 font-medium transition-colors text-sm text-right focus:outline-none focus:bg-slate-50 focus:text-primary">הדרכה והטמעה</a>
                             </div>
                         </div>
                     </div>
@@ -505,6 +508,92 @@
             if (banner) banner.style.display = 'none';
         }
     </script>
+    <script>
+        // Services nav dropdown: click + hover (pointer devices), arrow-key roving focus,
+        // Escape to close, Tab to exit. aria-expanded mirrors the open state.
+        (function () {
+            const root = document.querySelector('[data-services-dropdown]');
+            if (!root) return;
+            const button = document.getElementById('servicesMenuButton');
+            const menu = document.getElementById('servicesMenu');
+            const items = Array.prototype.slice.call(menu.querySelectorAll('[role="menuitem"]'));
+            const pointerFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+            let closeTimer;
+            // Hover opens the menu on pointer devices; a click/keypress pins it open so
+            // the pointer leaving (or the same click) does not immediately close it.
+            let pinned = false;
+
+            function isOpen() {
+                return root.getAttribute('data-open') === 'true';
+            }
+
+            function open(focusIndex) {
+                clearTimeout(closeTimer);
+                root.setAttribute('data-open', 'true');
+                button.setAttribute('aria-expanded', 'true');
+                if (typeof focusIndex === 'number' && items[focusIndex]) items[focusIndex].focus();
+            }
+
+            function close(returnFocus) {
+                clearTimeout(closeTimer);
+                pinned = false;
+                root.removeAttribute('data-open');
+                button.setAttribute('aria-expanded', 'false');
+                if (returnFocus) button.focus();
+            }
+
+            function move(delta) {
+                const current = items.indexOf(document.activeElement);
+                const next = (current + delta + items.length) % items.length;
+                items[next].focus();
+            }
+
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                if (pinned) { close(false); } else { pinned = true; open(); }
+            });
+
+            button.addEventListener('keydown', function (event) {
+                if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    pinned = true;
+                    open(0);
+                } else if (event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    pinned = true;
+                    open(items.length - 1);
+                } else if (event.key === 'Escape') {
+                    close(true);
+                }
+            });
+
+            menu.addEventListener('keydown', function (event) {
+                if (event.key === 'ArrowDown') { event.preventDefault(); move(1); }
+                else if (event.key === 'ArrowUp') { event.preventDefault(); move(-1); }
+                else if (event.key === 'Home') { event.preventDefault(); items[0].focus(); }
+                else if (event.key === 'End') { event.preventDefault(); items[items.length - 1].focus(); }
+                else if (event.key === 'Escape') { event.preventDefault(); close(true); }
+                else if (event.key === 'Tab') { close(false); }
+            });
+
+            document.addEventListener('click', function (event) {
+                if (isOpen() && !root.contains(event.target)) close(false);
+            });
+
+            root.addEventListener('focusout', function (event) {
+                if (!root.contains(event.relatedTarget)) close(false);
+            });
+
+            if (pointerFine.matches) {
+                root.addEventListener('mouseenter', function () { open(); });
+                root.addEventListener('mouseleave', function () {
+                    if (pinned) return;
+                    closeTimer = setTimeout(function () { close(false); }, 150);
+                });
+            }
+        })();
+    </script>
+
 </body>
         
 

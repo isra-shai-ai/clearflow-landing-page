@@ -220,3 +220,44 @@ body {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(50%, 0, 0); }
         }
+        /* ---- Services nav dropdown ----
+           Visibility is driven by JS via [data-open] on the wrapper, not by
+           :hover, so click/tap works on touch devices and aria-expanded can
+           stay in sync. Lives here because Tailwind's content scan never
+           reads input.css, so these rules always ship. */
+        [data-services-menu] {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(0.5rem);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+        }
+
+        [data-services-dropdown][data-open="true"] [data-services-menu] {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        [data-services-dropdown][data-open="true"] [data-services-chevron] {
+            transform: rotate(180deg);
+        }
+
+        /* Keyboard focus ring on the trigger - focus:outline-none is set for
+           mouse users, so give keyboard users something visible back. */
+        [data-services-dropdown] > button:focus-visible {
+            outline: 2px solid #F59E0B;
+            outline-offset: 3px;
+            border-radius: 0.25rem;
+        }
+
+        [data-services-menu] a:focus-visible {
+            outline: 2px solid #1E3A5F;
+            outline-offset: -2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            [data-services-menu],
+            [data-services-chevron] {
+                transition: none;
+            }
+        }
