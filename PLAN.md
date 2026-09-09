@@ -1,6 +1,6 @@
 # Feature Implementation Plan - Phase 2: Robust Hebrew Content
 
-**Overall Progress:** `60%`
+**Overall Progress:** `70%`
 
 ## TLDR
 
@@ -50,8 +50,9 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
   - [x] 🟩 Write full Hebrew copy based on the approved strategy and inject it.
   - Body copy already existed and was page-specific. What was outstanding and is now done: page-specific `meta description`, `og:title`/`og:description` and `twitter:title`/`twitter:description` (commit `8799b20`), one en dash removed by rewriting an ungrammatical sentence, and the `בשטח` example expanded from 40 to 119 words with a concrete before/after (commit `ac85ad8`).
 
-- [ ] 🟥 **Step 6: Write & Inject Automations Copy**
-  - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
+- [x] 🟩 **Step 6: Write & Inject Automations Copy**
+  - [x] 🟩 Write full Hebrew copy based on the approved strategy and inject it.
+  - Body copy already existed. Fixed in commit `9a164cc`: removed an unsourced third-party statistic (foodora / 26% churn), removed literal `**` markdown that rendered as visible asterisks, and rewrote the scenario to be deterministic end to end (57 to 111 words). Metadata and dashes were handled in `8799b20`, illustrative framing in `9cb1f1f`.
 
 - [ ] 🟥 **Step 7: Write & Inject CRM Copy**
   - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
@@ -67,4 +68,6 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
 ## Findings
 
 - **No em dashes or en dashes in user-facing copy.** Shai flags them as an AI writing tell. Use commas, periods or colons instead. Applies to every Hebrew string across the site.
-- **Automations page still stars an AI agent** in its own `בשטח` example ("תשתמש בסוכן בינה מלאכותית..."). Now that Step 4 claims the judgment ground for AI Agents, trim that mention in Step 6 or the two pages still blur.
+- ~~Automations page stars an AI agent in its own example~~ Resolved in `9a164cc`. The Automations scenario is now deterministic and closes on "אין כאן פרשנות ואין החלטות", which is the boundary against the AI Agents page.
+- **No client work exists yet.** Scenario sections must read as illustrations, never as delivered projects. All 5 service pages use the heading `דוגמה:` and open with "כך זה יכול להיראות אצלכם." (commit `9cb1f1f`). Same rule applies to any new copy.
+- **No invented statistics.** No client metrics exist to cite. Keep ROI claims qualitative until Shai supplies real numbers.
