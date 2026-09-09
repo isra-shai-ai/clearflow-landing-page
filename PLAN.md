@@ -1,10 +1,10 @@
 # Feature Implementation Plan - Phase 2: Robust Hebrew Content
 
-**Overall Progress:** `30%`
+**Overall Progress:** `40%`
 
 ## TLDR
 
-Pivoting focus away from the English localization (placed on hold) to deeply enrich the 4 Hebrew service pages. We are implementing a centralized Services dropdown menu in the global navigation, enhancing the articles with real-world examples, adding contextual CTAs at the bottom of articles, and performing a rigorous accessibility audit. All changes will be reviewed locally before any production deployment.
+Pivoting focus away from the English localization (placed on hold) to deeply enrich the 5 Hebrew service pages. We are implementing a centralized Services dropdown menu in the global navigation, enhancing the articles with real-world examples, adding contextual CTAs at the bottom of articles, and performing a rigorous accessibility audit. All changes will be reviewed locally before any production deployment.
 
 ## Critical Decisions
 
@@ -34,23 +34,31 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
   - [ ] 🟥 Apply across all 6 Hebrew pages (`public/index.html` + `public/services/*.html`). Leave `/en/` alone per Decision 1.
   - [ ] 🟥 Keep the panel's show/hide CSS in `input.css` (Tailwind never scans it) or run `npm run build` and bump `styles.css?v=` if new utilities are introduced.
 
-- [ ] 🟥 **Step 3: Restructure Service Page HTML**
-  - [ ] 🟥 Update the HTML layout templates to support deeper content (Problem/Solution/Example/ROI framework).
-  - [ ] 🟥 Add contextual CTA block at the bottom of the article.
+- [x] 🟩 **Step 3: Restructure Service Page HTML**
+  - [x] 🟩 Update the HTML layout templates to support deeper content (Problem/Solution/Example/ROI framework).
+  - [x] 🟩 Add contextual CTA block at the bottom of the article.
+  - Verified across all 5 service pages: each carries H1 → Problem ("למה רוב X נכשלים?") → Solution → real-world example ("בשטח: …") → ROI list ("השורה התחתונה") → `<!-- Contextual CTA -->` block. Structure only; the copy inside it is Steps 4-8.
 
-- [ ] 🟥 **Step 4: Write & Inject Landing Pages Copy**
+- [ ] 🟥 **Step 4: Write & Inject AI Agents Copy** — ⚠️ **URGENT: page currently shows automations copy**
+  - `public/services/ai-agents.html` is a near-exact duplicate of `public/services/automations.html`. Diffing the two from `<h1>` to `<footer>` yields 4 differing lines, all `<img>` swaps. Every Hebrew heading, paragraph, example, ROI bullet and CTA on the page is Automations copy, as are the `<title>` and meta description.
+  - Impact: the AI Agents service has no real content, and the two pages compete in Google for the same terms.
+  - [ ] 🟥 Write full Hebrew copy for the four-part structure (Problem / Solution / "בשטח" example / "השורה התחתונה" ROI) plus the contextual CTA.
+  - [ ] 🟥 Rewrite `<title>`, meta description, and OG/Twitter title+description so they no longer duplicate Automations.
+  - [ ] 🟥 Get user approval on the copy before touching the file (CLAUDE.md hard rule).
+
+- [ ] 🟥 **Step 5: Write & Inject Landing Pages Copy**
   - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
 
-- [ ] 🟥 **Step 5: Write & Inject Automations Copy**
+- [ ] 🟥 **Step 6: Write & Inject Automations Copy**
   - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
 
-- [ ] 🟥 **Step 6: Write & Inject CRM Copy**
+- [ ] 🟥 **Step 7: Write & Inject CRM Copy**
   - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
 
-- [ ] 🟥 **Step 7: Write & Inject Training Copy**
+- [ ] 🟥 **Step 8: Write & Inject Training Copy**
   - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
   
-- [ ] 🟥 **Step 8: Final Polish & Accessibility (A11y) Audit**
+- [ ] 🟥 **Step 9: Final Polish & Accessibility (A11y) Audit**
   - [ ] 🟥 Ensure responsive design holds up with the expanded text.
   - [ ] 🟥 **Mandatory Step**: Run an accessibility audit checking for keyboard focus trapping, ARIA labels, and contrast ratios.
   - [ ] 🟥 Verify `input.css` compilation cleanly handles any new native Tailwind classes.
