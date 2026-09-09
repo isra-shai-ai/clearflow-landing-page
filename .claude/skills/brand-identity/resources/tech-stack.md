@@ -1,11 +1,18 @@
-# ClearFlow Tech Stack & Implementation Rules
+# ClearFlow Implementation Rules
+
+**Scope:** durable design and coding constraints only.
+
+This file deliberately does **not** describe the build setup, output files, page inventory, deploy target, or the form submission pipeline. Those change; documenting them here is how this file rotted last time. For any of that, read:
+
+- **`CLAUDE.md`** (project root) — build/CSS coupling, page architecture, form pipeline, accessibility gate, conventions
+- **`package.json`** — the actual commands
+
+If a rule below ever conflicts with observed code, the code wins — fix the rule, don't fix the code to match it.
 
 ## Core Stack
 
 | Layer | Technology | Notes |
 |---|---|---|
-| **Markup** | HTML5 | Single `index.html` output |
-| **Styling** | Tailwind CSS via CDN | Do NOT use a build step unless explicitly asked |
 | **Icons** | Inline SVG only | Lucide-style, thin-stroke (stroke-width: 1.5), monochrome |
 | **Fonts** | Google Fonts — Heebo / Rubik | Load via `<link>` in `<head>` |
 | **JS** | Vanilla JS inline | No frameworks. Keep scripts minimal and inline |
@@ -33,8 +40,8 @@
 - Icon: top-right corner, primary color, SVG only
 
 ### Forms
-- Inline success state: hide inputs, show "תודה!" — no page reload
-- Never use `fetch()` or external form services unless explicitly instructed
+- Inline success state: hide inputs, show "תודה!" — no page reload, no redirect
+- The submission mechanism itself is documented in `CLAUDE.md` — match the existing handler, don't invent a new one
 
 ### Sticky Elements
 - WhatsApp button: bottom-left, perfectly centered SVG icon using `flex items-center justify-center`
@@ -45,6 +52,5 @@
 - ❌ No jQuery
 - ❌ No Bootstrap
 - ❌ No React / Vue / Angular (unless explicitly requested)
-- ❌ No separate CSS files — all styles via Tailwind utilities inline
 - ❌ No "pill" tags above H2 headings
 - ❌ No colorful clipart or emoji-style icons — SVG only
