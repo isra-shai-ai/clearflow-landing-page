@@ -23,7 +23,16 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
 - [x] 🟩 **Step 2: Implement Navigation Dropdown (Global)**
   - [x] 🟩 Update `public/index.html` and `public/services/*.html` headers to include an accessible dropdown menu for "שירותים".
   - [x] 🟩 Ensure `aria-expanded`, tabindex, and keyboard navigability are correctly implemented.
-  - [ ] 🟥 **Open gap:** there is no mobile nav below `md` (768px) — the header nav is `hidden md:flex` and no hamburger exists, so the dropdown is unreachable on phones. Needs its own step.
+
+- [ ] 🟥 **Step 2b: Mobile Hamburger Nav (prerequisite for production)**
+  - Context: the header nav is `hidden md:flex` with **no mobile fallback** — below 768px it computes to `display: none` and there is no hamburger anywhere in the codebase. The Step 2 dropdown is therefore unreachable on phones; the only header controls left are the logo and the phone pill. This blocks go-live.
+  - [ ] 🟥 Add a hamburger trigger visible below `md`, hidden at `md` and up.
+  - [ ] 🟥 Build the panel — slide-out drawer or fullscreen overlay (decide before building).
+  - [ ] 🟥 Include every nav destination: בית, יצירת קשר, and all 5 service pages (`ai-agents`, `automations`, `crm-systems`, `landing-pages`, `training`).
+  - [ ] 🟥 Accessibility: `aria-expanded` on the trigger, `aria-controls`, focus trap while open, Escape to close, focus returned to the trigger on close, `inert`/`aria-hidden` on background content.
+  - [ ] 🟥 RTL: drawer slides from the right; verify no horizontal overflow at 320px.
+  - [ ] 🟥 Apply across all 6 Hebrew pages (`public/index.html` + `public/services/*.html`). Leave `/en/` alone per Decision 1.
+  - [ ] 🟥 Keep the panel's show/hide CSS in `input.css` (Tailwind never scans it) or run `npm run build` and bump `styles.css?v=` if new utilities are introduced.
 
 - [ ] 🟥 **Step 3: Restructure Service Page HTML**
   - [ ] 🟥 Update the HTML layout templates to support deeper content (Problem/Solution/Example/ROI framework).
