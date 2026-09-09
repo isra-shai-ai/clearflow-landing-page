@@ -15,8 +15,13 @@ All notable changes to the ClearFlow Landing Page project will be documented in 
 ## [Unreleased] MVP - V2 Polish
 
 ### Added
+- **SEO:** Added `<link rel="canonical">` to all 11 pages, plus reciprocal `hreflang` (`he` / `en` / `x-default`) linking the Hebrew and English homepages and the 4 paired service articles. `ai-agents.html` is canonical-only — it has no English counterpart.
+- **Social:** Created `public/og-image.jpg` (1200x630, brand gradient + logo + amber rule). The URL had been referenced 33 times across the site while returning HTTP 404, so every WhatsApp/LinkedIn/Twitter share rendered without an image.
 - **AI Agents Service:** Created a new dedicated service page (`ai-agents.html`) focusing on autonomous digital workers, complete with custom 3D abstract illustrations.
 - **Navigation:** Added the "AI Agents" service to the global dropdown menu across all pages.
+
+### Fixed
+- **Social:** `og:url` and `twitter:url` were hardcoded to the homepage (`https://clearflow.co.il/`) on all 11 pages, so sharing any service article rendered the homepage identity. Both now match each page's canonical.
 
 ### Changed
 - **Homepage Layout:** Redesigned the "Our Services" grid into a "1 + 4 Hero Layout". The new AI Agents card spans the full top width to serve as an anchor, while the legacy 4 services sit symmetrically beneath it.
