@@ -1,1 +1,4 @@
 node_modules/
+
+# Claude Code session worktrees — never commit
+.claude/worktrees/
