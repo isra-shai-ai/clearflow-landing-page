@@ -79,7 +79,7 @@
         });
     </script>
 
-    <link rel="stylesheet" href="../styles.css?v=3">
+    <link rel="stylesheet" href="../styles.css?v=4">
 
     <!-- Tabnav Accessibilty Widget -->
     <script src="https://widget.tabnav.com/limited-widget.min.js.gz"
@@ -231,12 +231,43 @@
 
             <div class="flex-1 flex justify-end items-center">
                 <a href="tel:0522296269" aria-label="טלפון"
-                    class="bg-amber-500 text-gray-700 px-6 py-2 rounded-full font-bold text-lg shadow-sm hover:scale-105 hover:bg-amber-600 transition-all">
+                    class="bg-amber-500 text-gray-700 px-3 py-1.5 text-sm sm:px-6 sm:py-2 sm:text-lg rounded-full font-bold shadow-sm hover:scale-105 hover:bg-amber-600 transition-all whitespace-nowrap">
                     <span dir="ltr">052-2296269</span>
                 </a>
+
+                <button type="button" id="mobileNavToggle"
+                    class="md:hidden text-white p-2 -ml-2 focus:outline-none"
+                    aria-label="פתיחת תפריט הניווט" aria-expanded="false" aria-controls="mobileNav">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
             </div>
         </div>
     </header>
+
+    <!-- Mobile nav drawer -->
+    <div id="mobileNav" data-mobile-nav class="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true"
+        aria-label="תפריט ניווט">
+        <div data-mobile-nav-overlay class="absolute inset-0 bg-black/50"></div>
+        <nav data-mobile-nav-panel
+            class="absolute top-0 right-0 h-full w-72 max-w-[85%] bg-[#11223A] text-white shadow-xl flex flex-col p-6 overflow-y-auto">
+            <button type="button" id="mobileNavClose"
+                class="self-start p-2 mb-4 text-white/80 hover:text-white transition-colors focus:outline-none"
+                aria-label="סגירת התפריט">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <a href="../index.html" class="py-3 text-lg font-medium border-b border-white/10 hover:text-amber-400 transition-colors">בית</a>
+
+            <p class="pt-6 pb-1 text-sm font-bold text-white/50">שירותים</p>
+            <a href="ai-agents.html" class="py-3 text-lg font-medium border-b border-white/10 hover:text-amber-400 transition-colors">סוכני AI</a>
+            <a href="automations.html" class="py-3 text-lg font-medium border-b border-white/10 hover:text-amber-400 transition-colors">אוטומציות</a>
+            <a href="crm-systems.html" class="py-3 text-lg font-medium border-b border-white/10 hover:text-amber-400 transition-colors">מערכות CRM</a>
+            <a href="landing-pages.html" class="py-3 text-lg font-medium border-b border-white/10 hover:text-amber-400 transition-colors">דפי נחיתה</a>
+            <a href="training.html" class="py-3 text-lg font-medium border-b border-white/10 hover:text-amber-400 transition-colors">הדרכה והטמעה</a>
+
+            <a href="#contact" class="mt-6 py-3 text-lg font-medium hover:text-amber-400 transition-colors">יצירת קשר</a>
+        </nav>
+    </div>
 
     <main id="main-content" class="flex-grow">
         <section class="py-32 px-6">
@@ -594,6 +625,67 @@
                     closeTimer = setTimeout(function () { close(false); }, 150);
                 });
             }
+        })();
+    </script>
+
+    <script>
+        // Mobile nav drawer: opens on tap, closes on link tap, close button,
+        // overlay tap or Escape. Focus is trapped in the panel while open and
+        // returned to the trigger on close.
+        (function () {
+            const root = document.getElementById('mobileNav');
+            const toggle = document.getElementById('mobileNavToggle');
+            if (!root || !toggle) return;
+            const panel = root.querySelector('[data-mobile-nav-panel]');
+            const overlay = root.querySelector('[data-mobile-nav-overlay]');
+            const closeButton = document.getElementById('mobileNavClose');
+
+            function isOpen() {
+                return root.getAttribute('data-open') === 'true';
+            }
+
+            function open() {
+                root.setAttribute('data-open', 'true');
+                toggle.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+                closeButton.focus();
+            }
+
+            function close(returnFocus) {
+                root.removeAttribute('data-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                if (returnFocus) toggle.focus();
+            }
+
+            toggle.addEventListener('click', open);
+            closeButton.addEventListener('click', function () { close(true); });
+            overlay.addEventListener('click', function () { close(false); });
+
+            panel.addEventListener('click', function (event) {
+                if (event.target.closest('a')) close(false);
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (!isOpen()) return;
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    close(true);
+                    return;
+                }
+                if (event.key !== 'Tab') return;
+                const items = panel.querySelectorAll('a[href], button');
+                if (!items.length) return;
+                const first = items[0];
+                const last = items[items.length - 1];
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            });
         })();
     </script>
 
