@@ -1,6 +1,6 @@
 # Feature Implementation Plan - Phase 2: Robust Hebrew Content
 
-**Overall Progress:** `50%`
+**Overall Progress:** `60%`
 
 ## TLDR
 
@@ -46,8 +46,9 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
   - [x] 🟩 Rewrite `<title>`, meta description, and OG/Twitter title+description so they no longer duplicate Automations.
   - [x] 🟩 Get user approval on the copy before touching the file (CLAUDE.md hard rule).
 
-- [ ] 🟥 **Step 5: Write & Inject Landing Pages Copy**
-  - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
+- [x] 🟩 **Step 5: Write & Inject Landing Pages Copy**
+  - [x] 🟩 Write full Hebrew copy based on the approved strategy and inject it.
+  - Body copy already existed and was page-specific. What was outstanding and is now done: page-specific `meta description`, `og:title`/`og:description` and `twitter:title`/`twitter:description` (commit `8799b20`), one en dash removed by rewriting an ungrammatical sentence, and the `בשטח` example expanded from 40 to 119 words with a concrete before/after (commit `ac85ad8`).
 
 - [ ] 🟥 **Step 6: Write & Inject Automations Copy**
   - [ ] 🟥 Write full Hebrew copy based on the approved strategy and inject it.
