@@ -29,26 +29,109 @@
     <!-- JSON-LD Structured Data Schema -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "ClearFlow",
-        "url": "https://clearflow.co.il/",
-        "logo": "https://clearflow.co.il/logo.png",
-        "image": "https://clearflow.co.il/og-image.jpg",
-        "description": "סוכנות אוטומציה עסקית בישראל. אנו מתמחים בהקמת תהליכי אוטומציה, ניווט נתונים, אינטגרציה בין מערכות (Make.com, Zapier) והטמעת מערכות CRM.",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IL"
-        },
-        "telephone": "+972522296269",
-        "email": "shai@clearflow.co.il",
-        "founder": {
-            "@type": "Person",
-            "name": "Shai Israel"
-        },
-        "areaServed": "IL",
-        "priceRange": "$$",
-        "knowsAbout": ["Business Automation", "Make.com", "Zapier", "CRM", "Data Integration"]
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "ClearFlow",
+            "url": "https://clearflow.co.il/",
+            "logo": "https://clearflow.co.il/logo.png",
+            "image": "https://clearflow.co.il/og-image.jpg",
+            "description": "סוכנות אוטומציה עסקית בישראל. אנו מתמחים בהקמת תהליכי אוטומציה, ניווט נתונים, אינטגרציה בין מערכות (Make.com, Zapier) והטמעת מערכות CRM.",
+            "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "IL"
+            },
+            "telephone": "+972522296269",
+            "email": "shai@clearflow.co.il",
+            "founder": {
+                    "@type": "Person",
+                    "name": "Shai Israel"
+            },
+            "areaServed": "IL",
+            "priceRange": "₪₪",
+            "knowsAbout": [
+                    "Business Automation",
+                    "Make.com",
+                    "Zapier",
+                    "CRM",
+                    "Data Integration"
+            ],
+            "@id": "https://clearflow.co.il/#localbusiness",
+            "inLanguage": "he",
+            "serviceType": [
+                    "אוטומציה עסקית",
+                    "סוכני AI",
+                    "מערכות CRM",
+                    "דפי נחיתה",
+                    "הדרכה"
+            ],
+            "parentOrganization": {
+                    "@id": "https://clearflow.co.il/#organization"
+            }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": "https://clearflow.co.il/services/ai-agents.html#service",
+            "name": "סוכני AI לעסקים",
+            "serviceType": "סוכני בינה מלאכותית לעסקים",
+            "description": "סוכני AI לעסקים בישראל. קוראים פניות בשפה חופשית, מחליטים מה לעשות, ועונים תוך שניות. מה שדורש שיקול דעת אנושי עובר אליכם. שיחת אפיון חינם.",
+            "url": "https://clearflow.co.il/services/ai-agents.html",
+            "inLanguage": "he",
+            "provider": {
+                    "@id": "https://clearflow.co.il/#organization"
+            },
+            "areaServed": {
+                    "@type": "Country",
+                    "name": "IL"
+            }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "@id": "https://clearflow.co.il/services/ai-agents.html#faq",
+            "inLanguage": "he",
+            "mainEntity": [
+                    {
+                            "@type": "Question",
+                            "name": "מה ההבדל בין אוטומציה לסוכן AI?",
+                            "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "אוטומציה מבצעת תהליך שהגדרתם מראש: אותו קלט מייצר תמיד את אותו רצף פעולות. סוכן AI נכנס לתמונה כשהפנייה לא נכנסת לשום תבנית. הוא קורא הודעה בשפה חופשית, מבין מה מבקשים ממנו ומחליט מה לעשות. כשהמקרה חריג או רגיש הוא מעביר אליכם סיכום ומחכה להחלטה שלכם."
+                            }
+                    },
+                    {
+                            "@type": "Question",
+                            "name": "אילו משימות סוכן AI יכול לבצע?",
+                            "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "לענות לפניות נכנסות בוואטסאפ או במייל, לסווג אותן לפי נושא, לבדוק יומן ולהציע מועדים פנויים, לשלוף מחיר מהמחירון, לפתוח כרטיס ב-CRM ולסכם שיחה. אתם מגדירים מראש מה מותר לו לסגור לבד ומה חייב לעבור דרככם."
+                            }
+                    }
+            ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                    {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "ClearFlow",
+                            "item": "https://clearflow.co.il/"
+                    },
+                    {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "סוכני AI",
+                            "item": "https://clearflow.co.il/services/ai-agents.html"
+                    }
+            ]
     }
     </script>
     <!-- Non-Blocking Google Fonts -->

@@ -32,26 +32,131 @@
     <!-- JSON-LD Structured Data Schema -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "ClearFlow",
-        "url": "https://clearflow.co.il/",
-        "logo": "https://clearflow.co.il/logo.png",
-        "image": "https://clearflow.co.il/og-image.jpg",
-        "description": "סוכנות אוטומציה עסקית בישראל. אנו מתמחים בהקמת תהליכי אוטומציה, ניווט נתונים, אינטגרציה בין מערכות (Make.com, Zapier) והטמעת מערכות CRM.",
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IL"
-        },
-        "telephone": "+972522296269",
-        "email": "shai@clearflow.co.il",
-        "founder": {
-            "@type": "Person",
-            "name": "Shai Israel"
-        },
-        "areaServed": "IL",
-        "priceRange": "$$",
-        "knowsAbout": ["Business Automation", "Make.com", "Zapier", "CRM", "Data Integration"]
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "ClearFlow",
+            "url": "https://clearflow.co.il/",
+            "logo": "https://clearflow.co.il/logo.png",
+            "image": "https://clearflow.co.il/og-image.jpg",
+            "description": "סוכנות אוטומציה עסקית בישראל. אנו מתמחים בהקמת תהליכי אוטומציה, ניווט נתונים, אינטגרציה בין מערכות (Make.com, Zapier) והטמעת מערכות CRM.",
+            "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "IL"
+            },
+            "telephone": "+972522296269",
+            "email": "shai@clearflow.co.il",
+            "founder": {
+                    "@type": "Person",
+                    "name": "Shai Israel"
+            },
+            "areaServed": "IL",
+            "priceRange": "₪₪",
+            "knowsAbout": [
+                    "Business Automation",
+                    "Make.com",
+                    "Zapier",
+                    "CRM",
+                    "Data Integration"
+            ],
+            "@id": "https://clearflow.co.il/#localbusiness",
+            "inLanguage": "he",
+            "serviceType": [
+                    "אוטומציה עסקית",
+                    "סוכני AI",
+                    "מערכות CRM",
+                    "דפי נחיתה",
+                    "הדרכה"
+            ],
+            "parentOrganization": {
+                    "@id": "https://clearflow.co.il/#organization"
+            }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://clearflow.co.il/#organization",
+            "name": "ClearFlow",
+            "url": "https://clearflow.co.il/",
+            "description": "סוכנות אוטומציה עסקית לעסקים ישראליים",
+            "logo": "https://clearflow.co.il/logo.png",
+            "image": "https://clearflow.co.il/og-image.jpg",
+            "email": "shai@clearflow.co.il",
+            "telephone": "+972522296269",
+            "areaServed": {
+                    "@type": "Country",
+                    "name": "IL"
+            },
+            "inLanguage": "he",
+            "founder": {
+                    "@type": "Person",
+                    "name": "Shai Israel"
+            }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "@id": "https://clearflow.co.il/#faq",
+            "inLanguage": "he",
+            "mainEntity": [
+                    {
+                            "@type": "Question",
+                            "name": "כמה זמן לוקח להקים אוטומציה?",
+                            "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "זה תלוי במורכבות, אבל בדרך כלל התהליך לוקח בין שבועיים לחודש. אנחנו מתחילים במיפוי מהיר, ותוך ימים ספורים כבר רואים את האוטומציות הראשונות רצות."
+                            }
+                    },
+                    {
+                            "@type": "Question",
+                            "name": "האם זה מתאים גם לעסקים קטנים?",
+                            "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "בהחלט. דווקא בעסקים קטנים, שבהם כל דקה חשובה ואין כוח אדם מיותר, האוטומציה היא \"מכפיל כוח\" קריטי שמאפשר לכם לצמוח בלי להחתים עוד פקידים."
+                            }
+                    },
+                    {
+                            "@type": "Question",
+                            "name": "כמה זה עולה?",
+                            "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "כל פרויקט שונה, אז אנחנו לא עובדים עם חבילות מדף. אחרי שיחת המיפוי הראשונית (שהיא חינם), אנחנו מגישים הצעת מחיר מפורטת ושקופה שמבוססת על הצרכים המדויקים שלכם, בלי הפתעות."
+                            }
+                    },
+                    {
+                            "@type": "Question",
+                            "name": "האם אני אצטרך לדעת לתכנת?",
+                            "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "ממש לא. כל המערכות שאנחנו בונים הן No-Code או Low-Code. בסוף התהליך תקבלו הדרכה שתאפשר לכם להבין בדיוק מה קורה \"מתחת למכסה המנוע\" בלי לכתוב שורת קוד אחת."
+                            }
+                    },
+                    {
+                            "@type": "Question",
+                            "name": "האם אתם עובדים עם מערכות CRM קיימות?",
+                            "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "כן, אנחנו מתמחים בחיבור ומקסום יכולות של מערכות כמו Monday, HubSpot, Pipedrive ועוד. אם המערכת שלכם פתוחה לחיבורים (API), אנחנו נדע להפוך אותה לאוטומטית."
+                            }
+                    }
+            ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                    {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "ClearFlow",
+                            "item": "https://clearflow.co.il/"
+                    }
+            ]
     }
     </script>
     <!-- Non-Blocking Google Fonts -->
