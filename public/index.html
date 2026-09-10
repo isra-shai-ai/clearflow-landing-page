@@ -184,6 +184,30 @@
             function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
             gtag('config', 'G-BXPWS2RHVV');
+
+            // gtag is local to this callback; the form handlers live in another
+            // script block and need it, so publish it once GA is configured.
+            window.gtag = gtag;
+
+            // Phone taps: header pill on desktop, drawer button on mobile.
+            document.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    gtag('event', 'click', {
+                        event_category: 'contact',
+                        event_label: 'phone_call'
+                    });
+                });
+            });
+
+            // CTA clicks heading for the contact form.
+            document.querySelectorAll('a[href="#contact"], a[href*="contact"]').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    gtag('event', 'click', {
+                        event_category: 'engagement',
+                        event_label: 'cta_contact'
+                    });
+                });
+            });
         });
     </script>
 
@@ -1165,6 +1189,12 @@
                 if (success) {
                     document.getElementById('heroFormInputs').classList.add('hidden');
                     document.getElementById('heroFormSuccess').classList.remove('hidden');
+                    if (typeof window.gtag === 'function') {
+                        window.gtag('event', 'generate_lead', {
+                            event_category: 'contact',
+                            event_label: 'contact_form'
+                        });
+                    }
                 }
             });
         }
@@ -1200,6 +1230,12 @@
                 if (success) {
                     footerForm.classList.add('hidden');
                     document.getElementById('footerSuccess').classList.remove('hidden');
+                    if (typeof window.gtag === 'function') {
+                        window.gtag('event', 'generate_lead', {
+                            event_category: 'contact',
+                            event_label: 'contact_form'
+                        });
+                    }
                 }
             });
         }
@@ -1234,6 +1270,12 @@
                 if (success) {
                     leadForm.classList.add('hidden');
                     document.getElementById('leadMagnetSuccess').classList.remove('hidden');
+                    if (typeof window.gtag === 'function') {
+                        window.gtag('event', 'generate_lead', {
+                            event_category: 'contact',
+                            event_label: 'contact_form'
+                        });
+                    }
                 }
             });
         }
