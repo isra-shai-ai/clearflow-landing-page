@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "ClearFlow B2B Automation Landing Page",
   "scripts": {
-    "build": "tailwindcss -i input.css -o public/styles.css --minify && node scripts/inline-css.mjs",
-    "dev": "npm run build && npm-run-all --parallel watch server",
+    "build": "tailwindcss -i input.css -o public/styles.css --minify",
+    "dev": "npm-run-all --parallel watch server",
     "watch": "tailwindcss -i input.css -o public/styles.css --watch",
     "server": "live-server public --port=3000"
   },
