@@ -177,16 +177,46 @@
 
     <!-- Deferred Google Analytics -->
     <script>
-        // GA4. The dataLayer shim and config run on load so no event is lost,
-        // but gtag.js itself waits for an idle callback: its long tasks were
-        // landing inside the LCP window.
-        window.addEventListener('load', function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', 'G-BXPWS2RHVV');
+        // GA4. dataLayer and the gtag shim exist from parse time, so clicks and
+        // form submissions queue even before gtag.js arrives; gtag.js drains the
+        // queue on load. The script itself waits for the first real interaction
+        // because its execution was landing inside the LCP and TBT window.
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-BXPWS2RHVV');
 
+        (function () {
+            var gaLoaded = false;
+            function loadGA() {
+                if (gaLoaded) return;
+                gaLoaded = true;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-BXPWS2RHVV';
+                document.head.appendChild(s);
+            }
+
+            // One shared handler so the first interaction detaches all five,
+            // rather than each event only detaching its own listener.
+            var events = ['click', 'scroll', 'keydown', 'touchstart', 'mousemove'];
+            function onFirstInteraction() {
+                loadGA();
+                events.forEach(function (evt) {
+                    window.removeEventListener(evt, onFirstInteraction);
+                });
+            }
+            events.forEach(function (evt) {
+                window.addEventListener(evt, onFirstInteraction, { passive: true });
+            });
+
+            // Safety net for visitors who bounce without interacting.
+            setTimeout(loadGA, 7000);
+        })();
+
+        // Click tracking needs the DOM, so it stays on load.
+        window.addEventListener('load', function () {
             // Phone taps: header pill on desktop, drawer button on mobile.
             document.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
                 el.addEventListener('click', function () {
@@ -206,21 +236,6 @@
                     });
                 });
             });
-
-            function loadGA() {
-                if (window._gaLoaded) return;
-                window._gaLoaded = true;
-                var s = document.createElement('script');
-                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-BXPWS2RHVV';
-                s.async = true;
-                document.head.appendChild(s);
-            }
-
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(loadGA, { timeout: 3000 });
-            } else {
-                setTimeout(loadGA, 3000);
-            }
         });
     </script>
 
