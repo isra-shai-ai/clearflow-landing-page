@@ -189,7 +189,13 @@
     <header id="mainHeader"
         class="fixed top-0 w-full z-40 bg-primary shadow-lg py-4 transition-all duration-300">
         <div class="container mx-auto px-6 max-w-6xl flex items-center justify-between">
-            <div class="flex-1 flex justify-start items-center">
+            <button type="button" id="mobileNavToggle"
+                class="md:hidden text-white p-2 -mr-2 focus:outline-none"
+                aria-label="פתיחת תפריט הניווט" aria-expanded="false" aria-controls="mobileNav">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+
+            <div class="flex-1 flex justify-end md:justify-start items-center">
                 <!-- Logo -->
                 <a href="../index.html" aria-label="ClearFlow - עמוד הבית">
                     <img id="headerLogo" src="../assets/logos/white_orange_logo.svg" alt="ClearFlow"
@@ -229,17 +235,11 @@
                 </nav>
             </div>
 
-            <div class="flex-1 flex justify-end items-center">
+            <div class="hidden flex-1 md:flex justify-end items-center">
                 <a href="tel:0522296269" aria-label="טלפון"
-                    class="bg-amber-500 text-gray-700 px-3 py-1.5 text-sm sm:px-6 sm:py-2 sm:text-lg rounded-full font-bold shadow-sm hover:scale-105 hover:bg-amber-600 transition-all whitespace-nowrap">
+                    class="bg-amber-500 text-gray-700 px-6 py-2 rounded-full font-bold text-lg shadow-sm hover:scale-105 hover:bg-amber-600 transition-all">
                     <span dir="ltr">052-2296269</span>
                 </a>
-
-                <button type="button" id="mobileNavToggle"
-                    class="md:hidden text-white p-2 -ml-2 focus:outline-none"
-                    aria-label="פתיחת תפריט הניווט" aria-expanded="false" aria-controls="mobileNav">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                </button>
             </div>
         </div>
     </header>
@@ -266,6 +266,11 @@
             <a href="training.html" class="py-3 text-lg font-medium border-b border-white/10 hover:text-amber-400 transition-colors">הדרכה והטמעה</a>
 
             <a href="#contact" class="mt-6 py-3 text-lg font-medium hover:text-amber-400 transition-colors">יצירת קשר</a>
+
+            <a href="tel:0522296269" aria-label="התקשרו אלינו"
+                class="mt-6 bg-amber-500 text-gray-900 font-bold text-lg py-3 rounded-full text-center hover:bg-amber-400 transition-colors">
+                <span dir="ltr">052-2296269</span>
+            </a>
         </nav>
     </div>
 
