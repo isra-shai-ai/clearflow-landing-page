@@ -139,6 +139,8 @@
     </script>
     <!-- Non-Blocking Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://widget.tabnav.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap">
@@ -309,7 +311,7 @@
                 <!-- Logo -->
                 <a href="../index.html" aria-label="ClearFlow - עמוד הבית">
                     <img id="headerLogo" src="../assets/logos/white_orange_logo.svg" alt="ClearFlow"
-                        class="h-8 w-auto min-w-[160px] object-contain transition-all duration-300">
+                        class="h-8 w-auto min-w-[160px] object-contain transition-all duration-300" width="900" height="187" decoding="async" fetchpriority="high" loading="eager">
                 </a>
             </div>
 
@@ -406,7 +408,10 @@
                     
                     <!-- Contextual Illustration -->
                     <div class="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100 bg-white">
-                        <img src="../assets/images/services/automations_chaos.png" alt="צוות שמבזבז שעות על העברת נתונים ידנית בין מערכות" class="w-full h-auto object-cover max-h-[400px]">
+                        <picture>
+                            <source srcset="../assets/images/services/automations_chaos.webp" type="image/webp">
+                            <img src="../assets/images/services/automations_chaos.png" alt="צוות שמבזבז שעות על העברת נתונים ידנית בין מערכות" class="w-full h-auto object-cover max-h-[400px]" width="1024" height="1024" decoding="async" loading="lazy">
+                        </picture>
                     </div>
 
                     <h2 class="text-3xl font-bold text-slate-800 mb-6 mt-12">איך פותרים את הכאוס? מעבר לעבודה חכמה</h2>
@@ -414,7 +419,10 @@
                     
                     <!-- Contextual Illustration -->
                     <div class="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100 bg-white">
-                        <img src="../assets/images/services/automations_solution.png" alt="תהליך אוטומטי שרץ לבד בין המערכות של העסק" class="w-full h-auto object-cover max-h-[400px]">
+                        <picture>
+                            <source srcset="../assets/images/services/automations_solution.webp" type="image/webp">
+                            <img src="../assets/images/services/automations_solution.png" alt="תהליך אוטומטי שרץ לבד בין המערכות של העסק" class="w-full h-auto object-cover max-h-[400px]" width="1024" height="1024" decoding="async" loading="lazy">
+                        </picture>
                     </div>
                 </div>
 
