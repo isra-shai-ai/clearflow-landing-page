@@ -51,3 +51,6 @@
 | `public/robots.txt` | Crawler directives |
 | `PLAN.md` | Project plan (completed) |
 | `INFRA.md` | This file |
+| `vercel.json` | Vercel config — sends `noindex, nofollow` header for the gated checklist page |
+| `public/resources/automation-checklist.html` | Lead magnet page (gated, noindex) |
+| `public/research/` | Internal reference markdown files — robots.txt blocks crawlers but files are publicly accessible via direct URL; move out of `public/` if they should be private |
