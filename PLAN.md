@@ -91,7 +91,7 @@ Steps 1-9 are complete. These are gates before the site goes live, not build wor
 
 ## Feature: Mobile Header Contact Icons
 
-**Feature Progress:** `83%` (5 / 6 steps)
+**Feature Progress:** `100%` (6 / 6 steps)
 
 ### TLDR
 
@@ -135,9 +135,9 @@ Put WhatsApp and phone one tap away on mobile. Two round icon buttons in the hea
   - 🟩 `npm run build` (minified), confirm new classes exist in `styles.css`
   - 🟩 Bump `styles.css?v=4` → `?v=5` in every HTML file that references it (also `resources/automation-checklist.html`, which was stale on `?v=2`)
 
-- 🟨 **Step 6: Verify, a11y audit, ship**
-  - 🟨 Checks below pass on local + Vercel preview (local 🟩: 320/360/390/800/1280px, GA one event per tap, focus order, drawer; preview pending)
-  - 🟥 Commit, push branch, PR, merge on approval
+- 🟩 **Step 6: Verify, a11y audit, ship**
+  - 🟩 Checks below pass on local + Vercel preview (320/360/390/800/1280px, GA one event per tap, focus order, drawer; preview serves new markup + `?v=5` on all 6 pages)
+  - 🟩 Commit, push branch, PR, merge on approval
 
 ### Verification
 
