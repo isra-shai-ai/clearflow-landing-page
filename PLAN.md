@@ -478,3 +478,17 @@ Research basis: consent research report, 2026-10-02, primary sources. Key points
 - **Airtable data transfer.** Consent at form submission (regulation 2(1)) is the simplest legal basis, and the policy wording above provides it. Airtable's DPA is a second basis, but it's unverified.
 - **Checklist email, optional and not required:** its footer says "להסיר את עצמך מרשימת התפוצה" / "הודעות נוספות", which hints at a mailing list that doesn't exist. Shai may soften it in Make (e.g. "לא נשלח לכם הודעות נוספות בלי שתבקשו"). The email also uses singular "שלך/תמצא", while the site voice is plural.
 - **Not legal advice.**
+
+---
+
+## Feature: Compact Mobile Header
+
+**Feature Progress:** `80%` (4 / 5 steps)
+
+Mobile header was 76px (68 scrolled) with 44px circles and a 32px logo; mobile norm (Apple / Material) is ~56px with ~24-36px visuals inside 44px tap areas. Approved by Shai in chat 2026-10-02.
+
+- 🟩 **Step 1: Branch** `feat/mobile-header-compact`
+- 🟩 **Step 2: Header, all 6 pages (mobile only)**: padding `py-2.5` (header 56px, fixed, no jump on scroll); scroll script swaps `md:py-4`/`md:py-3` only; hamburger 24px icon in 36px box; WhatsApp/phone 36px circles with 20/18px icons; 44px tap areas via `before:-inset-1`; logo `h-7` (28px); first-section top padding reduced to match (home `pt-20`, services `pt-24`)
+- 🟩 **Step 3: Build**, `styles.css?v=8`
+- 🟩 **Step 4: Verify**: 375/320px header 56-57px, tap 3px outside the circle still hits it, no horizontal scroll, hero button bottom 655 → 639px; desktop unchanged (77px, 69 scrolled)
+- 🟥 **Step 5: Shai reviews preview on his phone, merge**
