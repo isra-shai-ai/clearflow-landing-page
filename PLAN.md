@@ -430,9 +430,9 @@ Research basis: consent research report, 2026-10-02, primary sources. Key points
 >
 > **3. למה אנחנו משתמשים במידע:** כדי לחזור אליכם בנוגע לפנייה שלכם, לשלוח את מה שביקשתם, ולשפר את האתר. אנחנו לא שולחים דיוור שיווקי.
 >
-> **4. מי עוד רואה את המידע:** אנחנו לא מוכרים ולא משכירים מידע אישי. כדי להפעיל את האתר והטפסים אנחנו משתמשים בספקי שירות: Make (אוטומציה, שרתים באיחוד האירופי), Airtable (שמירת פניות, שרתים בארה״ב), Zoho (משלוח דוא״ל) ו-Google Analytics (סטטיסטיקת שימוש באתר), וכן ספקי שירות נוספים שנדרשים להפעלת האתר והטפסים. בשליחת טופס אתם מסכימים שהפרטים יעברו לספקים האלה, גם מחוץ לישראל. מידע יימסר לרשויות רק אם החוק מחייב זאת.
+> **4. מי עוד רואה את המידע:** אנחנו לא מוכרים ולא משכירים מידע אישי. כדי להפעיל את האתר והטפסים אנחנו משתמשים בספקי שירות: Make (אוטומציה, שרתים באיחוד האירופי), Airtable (שמירת פניות, שרתים בארה״ב), Zoho (משלוח דוא״ל) ו-Google Analytics (סטטיסטיקת שימוש באתר), וכן ספקי שירות נוספים שנדרשים להפעלת האתר והטפסים. המידע נשמר בחשבונות של ClearFlow אצל ספקי השירות האלה, ולכן הוא עשוי להיות מאוחסן בשרתים מחוץ לישראל. בשליחת טופס אתם מסכימים לכך. מידע יימסר לרשויות רק אם החוק מחייב זאת.
 >
-> **5. אבטחת מידע:** אנחנו נוקטים אמצעי אבטחה סבירים כדי להגן על המידע.
+> **5. אבטחת מידע:** אנחנו מגינים על המידע ומגבילים את הגישה אליו.
 >
 > **6. הזכויות שלכם:** אתם יכולים לבקש לעיין במידע עליכם, לתקן אותו או למחוק אותו.
 >
@@ -469,6 +469,8 @@ Research basis: consent research report, 2026-10-02, primary sources. Key points
 - Mobile 375px: modal scrolls, close button reachable
 
 ### Open Questions / Risks
+
+- **Review changes (Shai, preview):** storage sentence reworded (data sits in ClearFlow's own accounts, not "passed to" providers; legally still a transfer abroad, hence the consent). Security line: generic "מגינים ומגבילים גישה" instead of "סבירים" (weak) or naming 2FA (uncommon on small B2B sites, and Airtable has no 2FA yet). **Shai to enable 2FA on Airtable.**
 
 - **Processor list:** ends with "וכן ספקי שירות נוספים שנדרשים להפעלת האתר והטפסים" (Shai, option 1). When a significant new tool is added (e.g. a CRM), name it in the list and update the date.
 
