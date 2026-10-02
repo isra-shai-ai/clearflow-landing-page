@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /research/
 
 Sitemap: https://www.clearflow.co.il/sitemap.xml
