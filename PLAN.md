@@ -324,7 +324,7 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
 
 ## Roadmap: Open Items (ranked 2026-10-02)
 
-**Roadmap Progress:** `0%` (0 / 5 sprints)
+**Roadmap Progress:** `20%` (1 / 5 sprints)
 
 Every sprint below that touches site files gets its own `## Feature:` section and needs "The plan is approved." before any code. Rank is by **risk first** (legal exposure, lost leads), then **conversion impact**, then **effort**.
 
@@ -344,7 +344,7 @@ Every sprint below that touches site files gets its own `## Feature:` section an
 - 🟥 **Mail-tester:** send the checklist email to mail-tester.com; target 10/10.
 - 🟥 **Search Console:** request reindexing of `/` (drops `/index.html` faster). Optional.
 
-### 🟥 Sprint 1: Marketing consent (P1, legal) — rescoped 2026-10-02: no marketing is sent, so this became "Consent Cleanup + Privacy Policy", see its Feature section
+### 🟩 Sprint 1: Marketing consent (P1, legal) — rescoped 2026-10-02: no marketing is sent, so this became "Consent Cleanup + Privacy Policy", see its Feature section
 
 - **Blocked on:** the research agent's report (running), then Shai's decisions.
 - **Scope:** split the consent on all 3 forms into a required privacy checkbox + an optional, unchecked marketing checkbox. Store consent in Airtable (new payload key, so it's a **Data Schema change**: Make mapping + Airtable column, confirmed before code). Decide what to do with leads collected under the bundled consent.
@@ -394,7 +394,7 @@ Sprints 1 and 2 don't touch the same code (forms vs. attributes and CSS), but bo
 
 ## Feature: Sprint 1, Consent Cleanup + Privacy Policy
 
-**Feature Progress:** `80%` (4 / 5 steps)
+**Feature Progress:** `100%` (5 / 5 steps)
 
 ### TLDR
 
@@ -458,7 +458,7 @@ Research basis: consent research report, 2026-10-02, primary sources. Key points
   - 🟩 Each form still submits; required checkbox still blocks submit; payload unchanged
   - 🟩 Privacy modal opens and closes from the form link, content scrolls
   - 🟩 Preview link to Shai
-- 🟥 **Step 5: Shai reviews, merge, verify production, cleanup**
+- 🟩 **Step 5: Shai reviews, merge, verify production, cleanup**
 
 ### Verification
 
