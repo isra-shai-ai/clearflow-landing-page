@@ -161,7 +161,7 @@ Put WhatsApp and phone one tap away on mobile. Two round icon buttons in the hea
 
 ## Feature: Homepage Conversion Fixes (critique 2026-09-27)
 
-**Feature Progress:** `50%` (3 / 6 steps)
+**Feature Progress:** `67%` (4 / 6 steps)
 
 ### TLDR
 
@@ -268,15 +268,15 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
   - 🟩 WhatsApp link inside the network-error text
   - 🟩 Verify honeypot fake success and payload keys are unchanged
 
-- 🟥 **Step 4: Founder block (P1)** (commit 3)
-  - 🟥 Copy the headshot to `public/assets/founder/shai-israel.jpg`
-  - 🟥 Replace the trust band with the founder block:
+- 🟩 **Step 4: Founder block (P1)** (commit 3)
+  - 🟩 Copy the headshot to `public/assets/founder/shai-israel.jpg`
+  - 🟩 Replace the trust band with the founder block:
     - photo (`alt="שי ישראל"`, width/height set, lazy-loaded)
     - name + role and the 2 lines
     - WhatsApp link (`target="_blank"`, new-window label)
-  - 🟥 AI card copy (l.812)
-  - 🟥 New FAQ item "של מי המערכות בסוף?" in the `<details>` list and the `FAQPage` JSON-LD (copy above)
-  - 🟥 Brand tokens only (primary/accent/amber, Rubik); an H2 for the name, in the correct heading order
+  - 🟩 AI card copy (l.812)
+  - 🟩 New FAQ item "של מי המערכות בסוף?" in the `<details>` list and the `FAQPage` JSON-LD (copy above)
+  - 🟩 Brand tokens only (primary/accent/amber, Rubik); an H2 for the name, in the correct heading order
 
 - 🟥 **Step 5: Build + verify**
   - 🟥 `npm run build`; bump to `?v=6` on all pages
