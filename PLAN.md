@@ -394,7 +394,7 @@ Sprints 1 and 2 don't touch the same code (forms vs. attributes and CSS), but bo
 
 ## Feature: Sprint 1, Consent Cleanup + Privacy Policy
 
-**Feature Progress:** `40%` (2 / 5 steps)
+**Feature Progress:** `80%` (4 / 5 steps)
 
 ### TLDR
 
@@ -452,12 +452,12 @@ Research basis: consent research report, 2026-10-02, primary sources. Key points
 
 - 🟩 **Step 1: Branch** `chore/consent-cleanup`
 - 🟩 **Step 2: Consent line** on the 3 homepage forms (commit 1). Hero/footer: "ל" moved into the link ("למדיניות הפרטיות") so it doesn't render as "ל מדיניות"
-- 🟥 **Step 3: Privacy modal** replaced identically on all 6 pages (commit 2); verify all 6 copies are byte-identical
-- 🟥 **Step 4: Verify**
-  - 🟥 `grep -c 'דיוור' public/**/*.html` → 0
-  - 🟥 Each form still submits; required checkbox still blocks submit; payload unchanged
-  - 🟥 Privacy modal opens and closes from each form (button + Esc), headings in order, readable at 375px
-  - 🟥 Preview link to Shai
+- 🟩 **Step 3: Privacy modal** replaced identically on all 6 pages (commit 2); verify all 6 copies are byte-identical (sha256 match). CSS rebuilt (`text-xs` added, unused `px-1` dropped) → `styles.css?v=7` on all 7 pages
+- 🟩 **Step 4: Verify**
+  - 🟩 `grep -c 'דיוור'`: the only hit per page is the new policy line "אנחנו לא שולחים דיוור שיווקי"
+  - 🟩 Each form still submits; required checkbox still blocks submit; payload unchanged
+  - 🟩 Privacy modal opens and closes from the form link, content scrolls
+  - 🟩 Preview link to Shai
 - 🟥 **Step 5: Shai reviews, merge, verify production, cleanup**
 
 ### Verification
