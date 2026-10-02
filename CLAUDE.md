@@ -44,7 +44,7 @@ public/
   services/{ai-agents,automations,crm-systems,landing-pages,training}.html
   en/index.html, en/services/*.html   # English mirror — ON HOLD, do not update unless asked (see PLAN.md)
   resources/automation-checklist.html # gated lead magnet; noindex via vercel.json
-  research/*.md             # reference material, not shipped content
+research/*.md               # reference material at repo root, outside public/ so it is never deployed
 ```
 
 The `/en/` tree is intentionally stale — `PLAN.md` decision 1 paused it to focus on the Hebrew audience. Do not propagate Hebrew-side changes into it without being asked.
