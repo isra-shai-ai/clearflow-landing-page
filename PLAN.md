@@ -278,10 +278,10 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
   - 🟩 New FAQ item "של מי המערכות בסוף?" in the `<details>` list and the `FAQPage` JSON-LD (copy above)
   - 🟩 Brand tokens only (primary/accent/amber, Rubik); an H2 for the name, in the correct heading order
 
-- 🟥 **Step 5: Build + verify**
-  - 🟥 `npm run build`; bump to `?v=6` on all pages
-  - 🟥 Run the checks below, plus `impeccable detect` on `public/index.html` (no new findings)
-  - 🟥 Push the branch and send Shai the Vercel preview link
+- 🟨 **Step 5: Build + verify**
+  - 🟩 `npm run build`; bump to `?v=6` on all pages
+  - 🟨 Run the checks below, plus `impeccable detect` on `public/index.html` (no new findings). Local checks pass; detector shows 3 new findings, all false positives (light text on the navy hero measured against white; slate-900 on amber, ~8:1). Real footer test lead without email pending (Shai, on the preview)
+  - 🟩 Push the branch and send Shai the Vercel preview link
 
 - 🟥 **Step 6: Shai reviews, then merge**
   - 🟥 Shai approves each of commits 1-3 (can drop any)
