@@ -319,3 +319,162 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
 - **FAQ ownership answer: resolved.** Accounts are sometimes opened by the client, sometimes by Shai and transferred; the copy says only that everything is transferred, not how.
 - **Hero copy changes are claims.** All new strings are above for approval; nothing else changes.
 - **I'm not a lawyer.** The consent change and the reading of the employment agreement are my best reading, not legal advice.
+
+---
+
+## Roadmap: Open Items (ranked 2026-10-02)
+
+**Roadmap Progress:** `20%` (1 / 5 sprints)
+
+Every sprint below that touches site files gets its own `## Feature:` section and needs "The plan is approved." before any code. Rank is by **risk first** (legal exposure, lost leads), then **conversion impact**, then **effort**.
+
+### Ranking logic
+
+| Rank | Why it's here |
+|---|---|
+| 1. Legal exposure | Spam law (per-message statutory damages) and Israeli accessibility regulations (IS 5568) both carry fines without proof of harm. |
+| 2. Lead pipeline | A lead or checklist email that silently fails costs a customer. |
+| 3. Conversion | Page structure changes that move consult requests. |
+| 4. Polish | Visual and wording items with no measurable user impact. |
+
+### 🟥 Sprint 0: Quick checks (Shai, ~15 min, no code)
+
+- 🟥 **GA Realtime:** confirm `click_whatsapp_header` / `click_phone_header` arrive from a real tap. Every later measurement depends on tracking working.
+- 🟩 **Checklist email sender:** Zoho via Make (Shai, 2026-10-02), covered by SPF/DKIM. confirm which service the Make scenario sends the checklist email through. DNS has SPF (`include:zohomail.com`), DKIM (`zmail._domainkey`) and DMARC (`p=none`) for **Zoho only**. If Make sends through Gmail, SendGrid or similar, SPF/DKIM fail and the checklist can land in spam.
+- 🟥 **Mail-tester:** send the checklist email to mail-tester.com; target 10/10.
+- 🟥 **Search Console:** request reindexing of `/` (drops `/index.html` faster). Optional.
+
+### 🟩 Sprint 1: Marketing consent (P1, legal) — rescoped 2026-10-02: no marketing is sent, so this became "Consent Cleanup + Privacy Policy", see its Feature section
+
+- **Blocked on:** the research agent's report (running), then Shai's decisions.
+- **Scope:** split the consent on all 3 forms into a required privacy checkbox + an optional, unchecked marketing checkbox. Store consent in Airtable (new payload key, so it's a **Data Schema change**: Make mapping + Airtable column, confirmed before code). Decide what to do with leads collected under the bundled consent.
+- **Needs from Shai:** decisions on the research recommendations; Make/Airtable changes (Claude has no Make access).
+- **Risk if delayed:** every marketing message sent to a lead without valid consent is exposed to statutory damages. Today the risk is dormant only because nothing is sent.
+
+### 🟥 Sprint 2: Accessibility compliance pass (P1, legal)
+
+The site declares IS 5568 / WCAG 2.1 AA in its accessibility statement; the known gaps make that claim inaccurate.
+
+- 🟥 Phone pill: `aria-label="טלפון"` → include the visible number (WCAG 2.5.3), all 6 pages
+- 🟥 `aria-hidden="true"` on the 5 original FAQ plus/minus icons
+- 🟥 Visible focus rings where `focus:outline-none` has no replacement
+- 🟥 `.reveal-element`: content must not stay `opacity: 0` if JS or the observer fails
+- 🟥 Marquee/ticker: stop under `prefers-reduced-motion`
+- 🟥 Accessibility statement: WCAG 2.0 → 2.1 AA; update the date
+- 🟥 Lighthouse (mobile + desktop, homepage + 1 service page) before and after
+- 🟥 Screen reader spot check in Hebrew (NVDA) — **Shai**, after the fixes
+- **Effort:** small. Mostly attribute and CSS changes, across 6 pages for the shared chrome.
+
+### 🟥 Sprint 3: Conversion structure (P2)
+
+- 🟥 Lead magnet placement: move after the FAQ, or slim it down, so it stops competing with the consultation right before the final form
+- 🟥 Services order: automation first (core offer), landing pages later
+- 🟥 One CTA after the process section
+- 🟥 Small wording: cookie banner singular "הנך מסכים/ה" → plural; one phone number format sitewide; muddy `bg-white/40` header over the hero on desktop
+- **Needs from Shai:** decision on lead-magnet placement and services order (positioning choices, not technical ones).
+
+### 🟥 Sprint 4: Measure, then polish (P3)
+
+- 🟥 Re-run `/impeccable critique` on the homepage (baseline 21/36 on 2026-09-27)
+- 🟥 Decide on the design-checker clichés from the new report: gradient text in the H1, glow shadows, nested cards. **Keep** the `border-r-4` service-card edge: it's the project's RTL convention.
+- 🟥 `.agents/workflows/go-live.md` as a post-launch audit: error-route alert in Make if the webhook fails (no lead lost), end-to-end test lead, compressed images
+- 🟥 Optional: update Impeccable to v4.4.0 (`npx impeccable update`)
+
+### Sequencing
+
+```
+Sprint 0 (Shai, now) ──► Sprint 2 (a11y, can start now)
+Research report ──► Sprint 1 (consent)          ──► Sprint 4 (measure)
+                          Sprint 3 (after 1 and 2) ─┘
+```
+
+Sprints 1 and 2 don't touch the same code (forms vs. attributes and CSS), but both edit `public/index.html`, so they run one after the other, not in parallel.
+
+---
+
+## Feature: Sprint 1, Consent Cleanup + Privacy Policy
+
+**Feature Progress:** `100%` (5 / 5 steps)
+
+### TLDR
+
+ClearFlow sends no marketing messages and plans none (no newsletter; leads only, 1-2 jobs a month). So no marketing consent is needed. Remove the bundled "דיוור" clause from all 3 forms, use one identical consent line everywhere, and bring the privacy policy in line with Privacy Protection Law section 11 (Amendment 13): name the controller, say that giving details is voluntary, name the processors, drop the marketing purpose.
+
+Research basis: consent research report, 2026-10-02, primary sources. Key points: the PPA consent opinion (25.2.2026) objects to marketing consent bundled into a required box; Communications Law 30A needs prior opt-in *only* for advertising; replying to a person's own request is not unsolicited advertising.
+
+### Key Decisions
+
+- Decision 1: **No marketing checkbox at all.** Shai sends no marketing and plans none. If that changes, add an optional, unticked checkbox at that point (and get a short legal consult then).
+- Decision 2: **One identical consent line on all 3 forms** (Shai's request): `אני מסכים/ה ל[מדיניות הפרטיות].`
+- Decision 3: **The checklist email stays as is.** Reviewed 2026-10-02: it delivers only the checklist, a "reply with questions" line and a standard signature. There is no service pitch and no "book a call" CTA, so it's delivery, not advertising. **Rule going forward:** never add a sales CTA or service links to it.
+- Decision 4: **No Make / Airtable / payload changes.** Nothing new to store.
+- Decision 5: **No lawyer needed in this scope** (Claude's assessment, not legal advice). Revisit if marketing messages ever start.
+
+### Copy (exact strings, approve as part of this plan)
+
+**Consent line, all 3 forms** (hero, footer, lead magnet):
+> אני מסכים/ה ל[מדיניות הפרטיות].
+
+- Hero / footer: label "אני מאשר/ת שקראתי את" → "אני מסכים/ה ל", the button text "תנאי מדיניות הפרטיות" (hero) → "מדיניות הפרטיות", and delete `<span>ואת קבלת הדיוור.</span>`.
+- Lead magnet: "אני מסכים/ה למדיניות הפרטיות ולקבלת דיוור (אפשר להסיר תמיד)." → the line above.
+- Chosen by Shai 2026-10-02 over "אני מאשר/ת את", "מאשר/ת את" and a checkbox-free "בשליחת הטופס..." line: standard wording, active consent (also the basis for the transfer to Airtable), no JS change.
+
+**Privacy modal** (`#privacyModal`, identical on 6 pages). Plural voice (per `voice-tone.md`), "חברת" removed (ClearFlow is an עוסק פטור, not a company):
+
+> **מדיניות פרטיות - ClearFlow**
+> ClearFlow, בבעלות שי ישראל ("אנחנו"), מכבדת את פרטיותכם. כאן מוסבר איזה מידע אנחנו אוספים ומה אנחנו עושים איתו.
+>
+> **1. המידע שאנחנו אוספים:** שם מלא, טלפון ודוא״ל שאתם ממלאים בטפסים, ומידע על השימוש באתר שנאסף אוטומטית באמצעות עוגיות (Cookies).
+>
+> **2. מסירת המידע:** מסירת הפרטים היא מרצונכם, ואין חובה חוקית למסור אותם. בלי שם ודרך ליצירת קשר לא נוכל לחזור אליכם או לשלוח את הצ'קליסט שביקשתם.
+>
+> **3. למה אנחנו משתמשים במידע:** כדי לחזור אליכם בנוגע לפנייה שלכם, לשלוח את מה שביקשתם, ולשפר את האתר. אנחנו לא שולחים דיוור שיווקי.
+>
+> **4. מי עוד רואה את המידע:** אנחנו לא מוכרים ולא משכירים מידע אישי. כדי להפעיל את האתר והטפסים אנחנו משתמשים בספקי שירות: Make (אוטומציה, שרתים באיחוד האירופי), Airtable (שמירת פניות, שרתים בארה״ב), Zoho (משלוח דוא״ל) ו-Google Analytics (סטטיסטיקת שימוש באתר), וכן ספקי שירות נוספים שנדרשים להפעלת האתר והטפסים. המידע נשמר בחשבונות של ClearFlow אצל ספקי השירות האלה, ולכן הוא עשוי להיות מאוחסן בשרתים מחוץ לישראל. בשליחת טופס אתם מסכימים לכך. מידע יימסר לרשויות רק אם החוק מחייב זאת.
+>
+> **5. אבטחת מידע:** אנחנו מגינים על המידע ומגבילים את הגישה אליו.
+>
+> **6. הזכויות שלכם:** אתם יכולים לבקש לעיין במידע עליכם, לתקן אותו או למחוק אותו.
+>
+> **7. יצירת קשר:** בכל שאלה: 052-229-6269 או shai@clearflow.co.il.
+>
+> *עודכן לאחרונה: {DATE}*
+
+`{DATE}` is the ship date.
+
+### Critical Files
+
+- `public/index.html`: 3 consent lines + privacy modal
+- `public/services/{ai-agents,automations,crm-systems,landing-pages,training}.html`: privacy modal only (these pages have no forms)
+- Not touched: `resources/automation-checklist.html` (no modal), form JS, payload, Make, Airtable
+
+### Tasks
+
+- 🟩 **Step 1: Branch** `chore/consent-cleanup`
+- 🟩 **Step 2: Consent line** on the 3 homepage forms (commit 1). Hero/footer: "ל" moved into the link ("למדיניות הפרטיות") so it doesn't render as "ל מדיניות"
+- 🟩 **Step 3: Privacy modal** replaced identically on all 6 pages (commit 2); verify all 6 copies are byte-identical (sha256 match). CSS rebuilt (`text-xs` added, unused `px-1` dropped) → `styles.css?v=7` on all 7 pages
+- 🟩 **Step 4: Verify**
+  - 🟩 `grep -c 'דיוור'`: the only hit per page is the new policy line "אנחנו לא שולחים דיוור שיווקי"
+  - 🟩 Each form still submits; required checkbox still blocks submit; payload unchanged
+  - 🟩 Privacy modal opens and closes from the form link, content scrolls
+  - 🟩 Preview link to Shai
+- 🟩 **Step 5: Shai reviews, merge, verify production, cleanup**
+
+### Verification
+
+- No "דיוור" anywhere in `public/`
+- The 3 consent lines are identical text
+- 6 privacy modals identical (hash compare)
+- Form submit with fetch intercepted: same payload keys as before; checkbox unticked → "יש לאשר את מדיניות הפרטיות."
+- Mobile 375px: modal scrolls, close button reachable
+
+### Open Questions / Risks
+
+- **Review changes (Shai, preview):** storage sentence reworded (data sits in ClearFlow's own accounts, not "passed to" providers; legally still a transfer abroad, hence the consent). Security line: generic "מגינים ומגבילים גישה" instead of "סבירים" (weak) or naming 2FA (uncommon on small B2B sites, and Airtable has no 2FA yet). **Shai to enable 2FA on Airtable.**
+
+- **Processor list:** ends with "וכן ספקי שירות נוספים שנדרשים להפעלת האתר והטפסים" (Shai, option 1). When a significant new tool is added (e.g. a CRM), name it in the list and update the date.
+
+- ~~**Which service sends the checklist email?**~~ Resolved: Zoho, via Make. Matches the domain's SPF/DKIM, so the Sprint 0 sender check is closed (mail-tester still open).
+- **Airtable data transfer.** Consent at form submission (regulation 2(1)) is the simplest legal basis, and the policy wording above provides it. Airtable's DPA is a second basis, but it's unverified.
+- **Checklist email, optional and not required:** its footer says "להסיר את עצמך מרשימת התפוצה" / "הודעות נוספות", which hints at a mailing list that doesn't exist. Shai may soften it in Make (e.g. "לא נשלח לכם הודעות נוספות בלי שתבקשו"). The email also uses singular "שלך/תמצא", while the site voice is plural.
+- **Not legal advice.**
