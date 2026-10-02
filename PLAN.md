@@ -156,3 +156,166 @@ Put WhatsApp and phone one tap away on mobile. Two round icon buttons in the hea
 - ~~**Tight fit at small widths.**~~ Resolved. At 320px the logo was pushed into the left padding and touched the icons. Fix: logo `min-w-[120px] md:min-w-[160px]`, header row `gap-2`. Verified 8px gap and no horizontal scroll at 320/360/390px; desktop unchanged.
 - **Order differs from the reference.** hlk.co.il puts the logo on the right and the buttons on the left. Ours keeps the hamburger on the right (existing RTL position) with the icons next to it, and the logo on the left. Rebuilding the header layout to match exactly is out of scope.
 - **Mobile GA events for WhatsApp start at zero.** The float has no WhatsApp click tracking today, so there's no baseline to compare against. The new header events are the first data.
+
+---
+
+## Feature: Homepage Conversion Fixes (critique 2026-09-27)
+
+**Feature Progress:** `33%` (2 / 6 steps)
+
+### TLDR
+
+Fix the 3 top issues from the 2026-09-27 `/impeccable critique` of `public/index.html` (21/36):
+- the near-invisible hero CTA (P0)
+- fragile forms and bundled consent (P1)
+- the missing human proof (P1)
+
+Direction: founder-led, existing look kept. Homepage only. Built on a branch, and Shai reviews it on the Vercel preview before anything merges.
+
+### Key Decisions
+
+- Decision 1: **Founder block replaces the slogan "trust band"** (l.668-702). A zero-client agency sells the founder: photo, name, 2 lines, WhatsApp link.
+- Decision 2: **Founder copy is first person singular ("אני").** This is a deliberate exception to `voice-tone.md`'s plural voice, scoped to the founder block only. The rest of the page stays "אנחנו".
+- Decision 3: **No employer name and no LinkedIn link anywhere on the site.** The outside-work agreement (Aug 2026) forbids:
+  - presenting as a firm employee, or implying the services come from the firm, including on a website;
+  - showing both occupations in parallel on LinkedIn.
+
+  Experience is described by role and domain only. Verified: no `linkedin`, `sameAs` or employer name exists in `public/` today.
+- Decision 4: **Experience claim: "מעל 7 שנים".** Confirmed by Shai: work before and between the listed roles counts.
+- Decision 5: **Ownership lives in the FAQ, not the founder block.** True (confirmed by Shai) but felt forced as the founder block closer. New FAQ item instead (Step 4), in the page FAQ *and* the `FAQPage` JSON-LD.
+- Decision 6: **Post-submit promise is 24 hours, not same day.** Shai answers the same day *usually*, and the side business is capped at 5 h/week outside work hours. A promise that breaks for an 11pm lead costs more trust than it earns. "תוך 24 שעות" is specific and always keepable.
+- Decision 7: **Make payload keys unchanged** (`fullName`, `phone`, `email`, `source`).
+  - Footer email becomes optional. The key is omitted when empty, never sent as `""`.
+  - Honeypot fake-success behavior is unchanged.
+- Decision 8: **Each fix is its own commit**, so any one (especially the founder block) can be dropped without touching the others.
+
+### Copy (exact strings, approve as part of this plan)
+
+**Hero paragraph** (3 clauses → 1 sentence):
+> פחות עבודה ידנית, יותר שליטה: אוטומציה שחוסכת לכם שעות ולא נותנת לאף ליד ליפול.
+
+**Hero form heading** stays `לקביעת שיחת ייעוץ ללא עלות`. Its size drops from `text-4xl md:text-5xl` to `text-2xl md:text-3xl`.
+
+**Under the hero button** (new):
+> שיחת היכרות של 20 דקות, בלי עלות ובלי התחייבות. נחזור אליכם תוך 24 שעות.
+
+**Hero success** (was "תודה! הפרטים התקבלו בהצלחה."):
+> תודה! הפרטים התקבלו. נחזור אליכם תוך 24 שעות. רוצים לדבר כבר עכשיו? [כתבו לנו בוואטסאפ]
+
+**Founder block** (option B, first person, ownership line removed):
+> **שי ישראל, מייסד ClearFlow**
+> מערכת טובה שווה משהו רק אם הצוות באמת עובד איתה. את זה אני עושה כבר מעל 7 שנים: הטמעת מערכות והדרכת צוותים.
+> אני ממפה איתכם את התהליכים, בונה את האוטומציה ומדריך את הצוות שלכם לעבוד איתה.
+> [דברו איתי בוואטסאפ]
+
+**AI-agents card** (l.812; removes the "ללא מגע יד אדם" overclaim):
+> נציגים וירטואליים שמשתלבים בעבודה שלכם: עונים ללקוחות, מסננים פניות ומבצעים משימות חוזרות סביב השעון, ומעבירים אליכם את מה שדורש החלטה.
+
+**Consent label:** unchanged on all 3 forms (Shai's decision; marketing consent gets its own sprint).
+
+**New FAQ item** (page `<details>` + `FAQPage` JSON-LD):
+> **של מי המערכות בסוף?**
+> שלכם. בסוף העבודה, כל מה שנבנה עובר אליכם: המערכות והחשבונות.
+
+**Network error** (all 3 forms): keep the current text, and make "וואטסאפ" a real `wa.me` link.
+
+### Critical Files
+
+- `public/index.html`:
+  - hero (l.458-517)
+  - trust band → founder block (l.668-702)
+  - AI card copy (l.812)
+  - 3 forms: hero l.476, lead magnet l.946, footer l.1115
+  - form JS: `validateForm` and the 3 submit handlers (~l.1204-1320)
+- `public/assets/founder/shai-israel.jpg`: new, from the supplied 500×500 headshot (57 KB)
+- `public/styles.css`: regenerated; `styles.css?v=5` → `?v=6` on every page
+- Not touched: service pages, header/footer chrome, modals, `vercel.json`
+
+### Data Schema
+
+**Input:** form fields, names unchanged.
+
+**Output** (to the Make webhook; keys unchanged):
+```
+Hero:        { fullName, phone, source: "Hero" }
+Footer:      { fullName, phone, email?, source: "Footer" }   // email now optional: omitted when empty
+Lead Magnet: { fullName, email, source: "Lead Magnet" }
+```
+
+**Phone check (client side):**
+- Strip spaces, dashes and parentheses.
+- Accept `^0(5\d|[2-4]|[89]|7\d)\d{7}$`, or the same with a `+972` / `972` prefix in place of the leading 0.
+- The value sent stays what the visitor typed (trimmed), so the Airtable data format doesn't change.
+
+**External dependency:** none new. The Make scenario must already accept a footer submission without `email`. **Verify in Step 5 with one real footer test lead (no email) before merge.**
+
+### Tasks
+
+- 🟩 **Step 1: Branch**
+  - 🟩 `feat/homepage-conversion` from up-to-date `main`
+
+- 🟩 **Step 2: Hero CTA (P0)** (commit 1)
+  - 🟩 Submit button amber (`bg-amber-500 text-slate-900`, hover `bg-amber-400`), matching the other CTAs
+  - 🟩 Form H2 smaller; hero paragraph down to 1 sentence; microcopy under the button
+  - 🟩 Mobile: reduce `py-32` / `min-h-[85vh]` so the submit button is on the first screen at 375×667 (measured: bottom 655px; 320×568 still below the fold)
+  - 🟩 Success state: new copy + WhatsApp link
+
+- 🟥 **Step 3: Forms + consent (P1)** (commit 2)
+  - 🟥 Israeli phone check in `validateForm`, with a specific Hebrew error ("מספר הטלפון לא תקין")
+  - 🟥 `maxlength` (name 80, email 120, phone 20); `autocomplete` (`name`, `tel`, `email`); `inputmode="tel"`
+  - 🟥 Error `<p>`s get `role="alert"`; focus moves to the success heading (`tabindex="-1"`)
+  - 🟥 Footer email optional: drop `required`, omit the key when empty
+  - 🟥 WhatsApp link inside the network-error text
+  - 🟥 Verify honeypot fake success and payload keys are unchanged
+
+- 🟥 **Step 4: Founder block (P1)** (commit 3)
+  - 🟥 Copy the headshot to `public/assets/founder/shai-israel.jpg`
+  - 🟥 Replace the trust band with the founder block:
+    - photo (`alt="שי ישראל"`, width/height set, lazy-loaded)
+    - name + role and the 2 lines
+    - WhatsApp link (`target="_blank"`, new-window label)
+  - 🟥 AI card copy (l.812)
+  - 🟥 New FAQ item "של מי המערכות בסוף?" in the `<details>` list and the `FAQPage` JSON-LD (copy above)
+  - 🟥 Brand tokens only (primary/accent/amber, Rubik); an H2 for the name, in the correct heading order
+
+- 🟥 **Step 5: Build + verify**
+  - 🟥 `npm run build`; bump to `?v=6` on all pages
+  - 🟥 Run the checks below, plus `impeccable detect` on `public/index.html` (no new findings)
+  - 🟥 Push the branch and send Shai the Vercel preview link
+
+- 🟥 **Step 6: Shai reviews, then merge**
+  - 🟥 Shai approves each of commits 1-3 (can drop any)
+  - 🟥 Merge, verify production, clean up
+
+### Verification
+
+- **375×667:**
+  - hero submit button fully visible without scrolling (cookie banner dismissed)
+  - amber, contrast ≥ 4.5:1
+- **320, 390, 768 and 1280px:**
+  - no horizontal scroll
+  - founder block reads well, and the photo doesn't distort
+- **Hero, footer and lead-magnet forms:**
+  - empty fields → specific errors, announced (`role="alert"`)
+  - "abc" as the phone → phone error
+  - `050-123 4567` and `+972 50 123 4567` pass
+- **Honeypot filled:** fake success, no network request.
+- **Network failure** (DevTools offline):
+  - error shows with a working WhatsApp link
+  - button re-enabled
+- **Payload** (DevTools Network):
+  - keys exactly as in Data Schema
+  - footer without email sends no `email` key
+- **Real footer test lead without email** lands in Airtable, which confirms Make accepts it.
+- **Keyboard:**
+  - Tab reaches every field and both WhatsApp links
+  - focus is visible
+  - focus lands on the success heading
+- **`grep -i 'deloitte\|linkedin' public/`** stays empty.
+
+### Open Questions / Risks
+
+- **Marketing consent: out of scope.** Shai keeps the current bundled consent ("ואת קבלת הדיוור") for now and will handle it in a separate sprint (an opt-out Make automation already exists). Flagged in the critique as a likely compliance risk.
+- **FAQ ownership answer: resolved.** Accounts are sometimes opened by the client, sometimes by Shai and transferred; the copy says only that everything is transferred, not how.
+- **Hero copy changes are claims.** All new strings are above for approval; nothing else changes.
+- **I'm not a lawyer.** The consent change and the reading of the employment agreement are my best reading, not legal advice.
