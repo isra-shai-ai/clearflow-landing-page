@@ -161,7 +161,7 @@ Put WhatsApp and phone one tap away on mobile. Two round icon buttons in the hea
 
 ## Feature: Homepage Conversion Fixes (critique 2026-09-27)
 
-**Feature Progress:** `67%` (4 / 6 steps)
+**Feature Progress:** `100%` (6 / 6 steps)
 
 ### TLDR
 
@@ -185,7 +185,7 @@ Direction: founder-led, existing look kept. Homepage only. Built on a branch, an
 - Decision 5: **Ownership lives in the FAQ, not the founder block.** True (confirmed by Shai) but felt forced as the founder block closer. New FAQ item instead (Step 4), in the page FAQ *and* the `FAQPage` JSON-LD.
 - Decision 6: **Post-submit promise is 24 hours, not same day.** Shai answers the same day *usually*, and the side business is capped at 5 h/week outside work hours. A promise that breaks for an 11pm lead costs more trust than it earns. "תוך 24 שעות" is specific and always keepable.
 - Decision 7: **Make payload keys unchanged** (`fullName`, `phone`, `email`, `source`).
-  - Footer email becomes optional. The key is omitted when empty, never sent as `""`.
+  - ~~Footer email becomes optional.~~ Reverted at review: Shai keeps footer email required.
   - Honeypot fake-success behavior is unchanged.
 - Decision 8: **Each fix is its own commit**, so any one (especially the founder block) can be dropped without touching the others.
 
@@ -238,7 +238,7 @@ Direction: founder-led, existing look kept. Homepage only. Built on a branch, an
 **Output** (to the Make webhook; keys unchanged):
 ```
 Hero:        { fullName, phone, source: "Hero" }
-Footer:      { fullName, phone, email?, source: "Footer" }   // email now optional: omitted when empty
+Footer:      { fullName, phone, email, source: "Footer" }    // unchanged: email stays required (Shai, at review)
 Lead Magnet: { fullName, email, source: "Lead Magnet" }
 ```
 
@@ -264,7 +264,7 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
   - 🟩 Israeli phone check in `validateForm`, with a specific Hebrew error ("מספר הטלפון לא תקין")
   - 🟩 `maxlength` (name 80, email 120, phone 20); `autocomplete` (`name`, `tel`, `email`); `inputmode="tel"`
   - 🟩 Error `<p>`s get `role="alert"`; focus moves to the success heading (`tabindex="-1"`)
-  - 🟩 Footer email optional: drop `required`, omit the key when empty
+  - ~~Footer email optional~~ reverted at review (Shai keeps it required); email format check added instead
   - 🟩 WhatsApp link inside the network-error text
   - 🟩 Verify honeypot fake success and payload keys are unchanged
 
@@ -278,14 +278,14 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
   - 🟩 New FAQ item "של מי המערכות בסוף?" in the `<details>` list and the `FAQPage` JSON-LD (copy above)
   - 🟩 Brand tokens only (primary/accent/amber, Rubik); an H2 for the name, in the correct heading order
 
-- 🟨 **Step 5: Build + verify**
+- 🟩 **Step 5: Build + verify**
   - 🟩 `npm run build`; bump to `?v=6` on all pages
-  - 🟨 Run the checks below, plus `impeccable detect` on `public/index.html` (no new findings). Local checks pass; detector shows 3 new findings, all false positives (light text on the navy hero measured against white; slate-900 on amber, ~8:1). Real footer test lead without email pending (Shai, on the preview)
+  - 🟩 Run the checks below, plus `impeccable detect` on `public/index.html` (no new findings). Local checks pass; detector shows 3 new findings, all false positives (light text on the navy hero measured against white; slate-900 on amber, ~8:1). Footer test lead not needed: email stays required (Shai)
   - 🟩 Push the branch and send Shai the Vercel preview link
 
-- 🟥 **Step 6: Shai reviews, then merge**
-  - 🟥 Shai approves each of commits 1-3 (can drop any)
-  - 🟥 Merge, verify production, clean up
+- 🟩 **Step 6: Shai reviews, then merge**
+  - 🟩 Shai approves each of commits 1-3 (can drop any)
+  - 🟩 Merge, verify production, clean up
 
 ### Verification
 

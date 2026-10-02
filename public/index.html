@@ -1132,7 +1132,7 @@
                             <input id="foot-name" type="text" name="name" required placeholder="שם מלא" aria-label="שם מלא" maxlength="80" autocomplete="name" class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg">
                         </div>
                         <div>
-                            <input id="foot-email" type="email" name="email" dir="ltr" placeholder="דוא״ל (לא חובה)" aria-label="אימייל (לא חובה)" maxlength="120" autocomplete="email" class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg text-right focus:text-left">
+                            <input id="foot-email" type="email" name="email" required dir="ltr" placeholder="דוא״ל" aria-label="אימייל" maxlength="120" autocomplete="email" class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg text-right focus:text-left">
                         </div>
                         <div>
                             <input id="foot-phone" type="tel" name="phone" required dir="ltr" placeholder="טלפון" aria-label="טלפון" maxlength="20" autocomplete="tel" inputmode="tel" class="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white/70 placeholder:text-slate-500 focus:ring-4 focus:ring-accent/20 focus:border-accent outline-none transition-all text-lg text-right focus:text-left">
@@ -1301,15 +1301,15 @@
                 const emailVal = footerForm.querySelector('input[name="email"]').value.trim();
                 const privacyChecked = document.getElementById('privacy-footer').checked;
                 const errorEl = footerForm.querySelector('.footer-error-message');
-                if (!nameVal || !phoneVal) {
-                    showError(errorEl, 'אנא מלאו שם וטלפון.');
+                if (!nameVal || !phoneVal || !emailVal) {
+                    showError(errorEl, 'אנא מלאו את כל השדות.');
                     return;
                 }
                 if (!isValidPhone(phoneVal)) {
                     showError(errorEl, 'מספר הטלפון לא תקין.');
                     return;
                 }
-                if (emailVal && !isValidEmail(emailVal)) {
+                if (!isValidEmail(emailVal)) {
                     showError(errorEl, 'כתובת הדוא״ל לא תקינה.');
                     return;
                 }
@@ -1318,10 +1318,7 @@
                     return;
                 }
                 const sourceVal = footerForm.querySelector('input[name="source"]').value;
-                // Email is optional: omit the key entirely rather than sending "".
-                const payload = { fullName: nameVal, phone: phoneVal, source: sourceVal };
-                if (emailVal) payload.email = emailVal;
-                const success = await submitToWebhook(payload, footerForm.querySelector('button'), errorEl);
+                const success = await submitToWebhook({ fullName: nameVal, phone: phoneVal, email: emailVal, source: sourceVal }, footerForm.querySelector('button'), errorEl);
                 if (success) {
                     showSuccess(footerForm, document.getElementById('footerSuccess'));
                     if (typeof window.gtag === 'function') {
