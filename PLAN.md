@@ -161,7 +161,7 @@ Put WhatsApp and phone one tap away on mobile. Two round icon buttons in the hea
 
 ## Feature: Homepage Conversion Fixes (critique 2026-09-27)
 
-**Feature Progress:** `33%` (2 / 6 steps)
+**Feature Progress:** `50%` (3 / 6 steps)
 
 ### TLDR
 
@@ -260,13 +260,13 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
   - 🟩 Mobile: reduce `py-32` / `min-h-[85vh]` so the submit button is on the first screen at 375×667 (measured: bottom 655px; 320×568 still below the fold)
   - 🟩 Success state: new copy + WhatsApp link
 
-- 🟥 **Step 3: Forms + consent (P1)** (commit 2)
-  - 🟥 Israeli phone check in `validateForm`, with a specific Hebrew error ("מספר הטלפון לא תקין")
-  - 🟥 `maxlength` (name 80, email 120, phone 20); `autocomplete` (`name`, `tel`, `email`); `inputmode="tel"`
-  - 🟥 Error `<p>`s get `role="alert"`; focus moves to the success heading (`tabindex="-1"`)
-  - 🟥 Footer email optional: drop `required`, omit the key when empty
-  - 🟥 WhatsApp link inside the network-error text
-  - 🟥 Verify honeypot fake success and payload keys are unchanged
+- 🟩 **Step 3: Forms + consent (P1)** (commit 2)
+  - 🟩 Israeli phone check in `validateForm`, with a specific Hebrew error ("מספר הטלפון לא תקין")
+  - 🟩 `maxlength` (name 80, email 120, phone 20); `autocomplete` (`name`, `tel`, `email`); `inputmode="tel"`
+  - 🟩 Error `<p>`s get `role="alert"`; focus moves to the success heading (`tabindex="-1"`)
+  - 🟩 Footer email optional: drop `required`, omit the key when empty
+  - 🟩 WhatsApp link inside the network-error text
+  - 🟩 Verify honeypot fake success and payload keys are unchanged
 
 - 🟥 **Step 4: Founder block (P1)** (commit 3)
   - 🟥 Copy the headshot to `public/assets/founder/shai-israel.jpg`
