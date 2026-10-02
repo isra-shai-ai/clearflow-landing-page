@@ -483,7 +483,7 @@ Research basis: consent research report, 2026-10-02, primary sources. Key points
 
 ## Feature: Compact Mobile Header
 
-**Feature Progress:** `80%` (4 / 5 steps)
+**Feature Progress:** `100%` (5 / 5 steps)
 
 Mobile header was 76px (68 scrolled) with 44px circles and a 32px logo; mobile norm (Apple / Material) is ~56px with ~24-36px visuals inside 44px tap areas. Approved by Shai in chat 2026-10-02.
 
@@ -492,4 +492,4 @@ Mobile header was 76px (68 scrolled) with 44px circles and a 32px logo; mobile n
 - 🟩 **Step 3: Build**, `styles.css?v=8`
 - 🟩 **Step 4: Verify**: 375/320px header 56-57px, tap 3px outside the circle still hits it, no horizontal scroll, hero button bottom 655 → 639px; desktop unchanged (77px, 69 scrolled)
 - 🟩 **Step 4b: Smaller icons (Shai's review)**: circles 36 → 32px (icons 18/16px), menu box 36 → 32px, circle gap 8 → 12px so the 44px tap areas (`before:-inset-1.5`) touch without overlapping; header padding `py-3` keeps it at 56px. CSS v=9
-- 🟥 **Step 5: Shai reviews preview on his phone, merge**
+- 🟩 **Step 5: Shai reviews preview on his phone, merge**
