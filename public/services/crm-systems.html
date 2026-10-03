@@ -222,7 +222,7 @@
         });
     </script>
 
-    <link rel="stylesheet" href="../styles.css?v=9">
+    <link rel="stylesheet" href="../styles.css?v=10">
 
     <!-- Tabnav Accessibilty Widget -->
     <script src="https://widget.tabnav.com/limited-widget.min.js.gz"
@@ -318,7 +318,7 @@
         <div class="p-6 space-y-4 text-sm leading-relaxed max-h-[60vh] overflow-y-auto">
             <p><strong>הצהרת נגישות - ClearFlow</strong><br>
                 אנו ב-ClearFlow מייחסים חשיבות עליונה להנגשת אתר האינטרנט שלנו. אתר זה הונגש בהתאם להמלצות התקן הישראלי
-                (ת״י 5568) לנגישות תכנים באינטרנט ברמת AA, וכן עומד בהנחיות WCAG 2.0.<br><br>
+                (ת״י 5568) לנגישות תכנים באינטרנט ברמת AA, וכן עומד בהנחיות WCAG 2.1 ברמת AA.<br><br>
                 <strong>פירוט התאמות:</strong> האתר כולל תמיכה בניווט מקלדת, התאמה לקוראי מסך, ואפשרות להגדלת גופנים
                 ושינוי ניגודיות באמצעות תוסף הנגישות (Tabnav) המותקן באתר.<br>
                 <strong>סייגים:</strong> למרות מאמצינו להנגיש את כלל דפי האתר, ייתכן ויתגלו חלקים שטרם הונגשו
@@ -328,6 +328,7 @@
                 טלפון: 052-229-6269<br>
                 דוא״ל: shai@clearflow.co.il
             </p>
+            <p class="text-xs text-slate-500">עודכן לאחרונה: אוקטובר 2026</p>
         </div>
     </dialog>
 
@@ -336,7 +337,7 @@
         class="fixed top-0 w-full z-40 bg-primary shadow-lg py-3 md:py-4 transition-all duration-300">
         <div class="container mx-auto px-6 max-w-6xl flex items-center justify-between gap-2">
             <button type="button" id="mobileNavToggle"
-                class="md:hidden text-white p-1 -mr-1 focus:outline-none relative before:absolute before:-inset-1.5 before:content-['']"
+                class="md:hidden text-white p-1 -mr-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 relative before:absolute before:-inset-1.5 before:content-['']"
                 aria-label="פתיחת תפריט הניווט" aria-expanded="false" aria-controls="mobileNav">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
@@ -370,7 +371,7 @@
                     <div class="relative" data-services-dropdown>
                         <button type="button" id="servicesMenuButton" aria-haspopup="true" aria-expanded="false"
                             aria-controls="servicesMenu"
-                            class="hover:text-white transition-colors inline-flex items-center gap-1 focus:outline-none">
+                            class="hover:text-white transition-colors inline-flex items-center gap-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
                             שירותים
                             <svg data-services-chevron class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                         </button>
@@ -394,7 +395,7 @@
             </div>
 
             <div class="hidden flex-1 md:flex justify-end items-center">
-                <a href="tel:0522296269" aria-label="טלפון"
+                <a href="tel:0522296269"
                     class="bg-amber-500 text-gray-700 px-6 py-2 rounded-full font-bold text-lg shadow-sm hover:scale-105 hover:bg-amber-600 transition-all">
                     <span dir="ltr">052-2296269</span>
                 </a>
@@ -409,7 +410,7 @@
         <nav data-mobile-nav-panel
             class="absolute top-0 right-0 h-full w-72 max-w-[85%] bg-[#11223A] text-white shadow-xl flex flex-col p-6 overflow-y-auto">
             <button type="button" id="mobileNavClose"
-                class="self-start p-2 mb-4 text-white/80 hover:text-white transition-colors focus:outline-none"
+                class="self-start p-2 mb-4 text-white/80 hover:text-white transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
                 aria-label="סגירת התפריט">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
@@ -676,6 +677,10 @@
 
         // Reveal Animations
         document.addEventListener("DOMContentLoaded", () => {
+            if (!('IntersectionObserver' in window)) {
+                document.querySelectorAll('.reveal-element').forEach(el => el.classList.add('is-revealed'));
+                return;
+            }
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -700,6 +705,10 @@
         
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            if (!('IntersectionObserver' in window)) {
+                document.querySelectorAll('.reveal-element').forEach(el => el.classList.add('is-revealed'));
+                return;
+            }
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {

@@ -45,10 +45,6 @@ body {
             animation-delay: 4s;
         }
 
-        .marquee-container:hover .animate-marquee-rtl {
-            animation-play-state: paused !important;
-        }
-
         /* Ticker tool hover: show brand colors */
         .ticker-item {
             filter: grayscale(100%);
@@ -298,5 +294,35 @@ body {
             [data-mobile-nav],
             [data-mobile-nav-panel] {
                 transition: none;
+            }
+        }
+
+        /* Marquee pause button (WCAG 2.2.2) */
+        .marquee-container.is-paused .animate-marquee-rtl {
+            animation-play-state: paused;
+        }
+
+        /* Reduced motion: users who turned on "Reduce Motion" in their OS */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
+            }
+            .blob,
+            .animate-marquee-rtl,
+            .ticker-track {
+                animation: none !important;
+            }
+            .reveal-element {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* No JS: reveal content must never stay hidden */
+        @media (scripting: none) {
+            .reveal-element {
+                opacity: 1;
+                transform: none;
             }
         }
