@@ -324,7 +324,7 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
 
 ## Roadmap: Open Items (ranked 2026-10-02)
 
-**Roadmap Progress:** `40%` (2 / 5 sprints)
+**Roadmap Progress:** `80%` (4 / 5 sprints)
 
 Every sprint below that touches site files gets its own `## Feature:` section and needs "The plan is approved." before any code. Rank is by **risk first** (legal exposure, lost leads), then **conversion impact**, then **effort**.
 
@@ -365,7 +365,7 @@ The site declares IS 5568 / WCAG 2.1 AA in its accessibility statement; the know
 - 🟥 Screen reader spot check in Hebrew (NVDA) — **Shai**, after the fixes
 - **Effort:** small. Mostly attribute and CSS changes, across 6 pages for the shared chrome.
 
-### 🟥 Sprint 3: Conversion structure (P2) — decisions made 2026-10-03, plan awaiting approval, see its Feature section
+### 🟩 Sprint 3: Conversion structure (P2) — shipped 2026-10-03 (PR #12), see its Feature section
 
 - 🟥 Lead magnet placement: move after the FAQ, or slim it down, so it stops competing with the consultation right before the final form
 - 🟥 Services order: automation first (core offer), landing pages later
@@ -595,7 +595,7 @@ Reveal JS (7 pages): if `IntersectionObserver` is missing, add `is-revealed` to 
 
 ## Feature: Sprint 3, Conversion Structure
 
-**Feature Progress:** `86%` (6 / 7 steps)
+**Feature Progress:** `100%` (7 / 7 steps) — shipped 2026-10-03 (PR #12)
 
 ### TLDR
 
@@ -672,11 +672,11 @@ GA events only (no Make/Airtable impact):
   - 🟩 Cookie banner text → plural (index + 5 service pages)
   - 🟩 Phone `052-2296269` → `052-229-6269` in visible text and aria-labels (mobile nav, header icon, desktop pill)
   - 🟩 `grep` every page: 0 hits for `הנך מסכים` and `052-2296269`. Mixed line endings: use `\r?\n` in multi-line replacements
-- 🟨 **Step 7: Build, verify, ship**
+- 🟩 **Step 7: Build, verify, ship**
   - 🟩 `npm run build`; `styles.css?v=10` → `?v=11` on all 7 pages
   - 🟩 Run Verification below; after screenshots
   - 🟩 Spacing pass (Decision 10), rebuilt and re-measured
-  - 🟥 Push branch, send Shai the Vercel preview link; merge after approval; verify production
+  - 🟩 Push branch, send Shai the Vercel preview link; merge after approval; verify production. Live 2026-10-03; real test lead "TEST Sprint3 Claude" via the production strip: webhook 200, success state, checklist email delivered (mail-tester 9.5/10). Shai deletes the Airtable row
 
 ### Verification
 
