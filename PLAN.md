@@ -507,7 +507,7 @@ The accessibility statement claims ת״י 5568 / WCAG AA. Close the known gaps s
 ### Key Decisions (Shai, 2026-10-03)
 
 - Decision 1: **Reduced motion covers all motion** (marquee, reveal-on-scroll, blobs, smooth scroll). Users without the OS setting see no change.
-- Decision 1b: **Marquee gets a pause button** for everyone (WCAG 2.2.2, Level A: auto-moving content > 5s needs pause, decorative included). Hover-only pause doesn't work on touch or keyboard.
+- Decision 1b (revised 2026-10-03): **No visible pause button (Shai).** Tap/click on the strip toggles pause; keyboard focus pauses; hover pauses on mouse devices only; screen readers hear a hint (`sr-only`). This covers every input, but discoverability is a gray zone: a strict audit could ask for a visible control. Reduce Motion already stops it for the users most at risk. Original: **Marquee gets a pause button** for everyone (WCAG 2.2.2, Level A: auto-moving content > 5s needs pause, decorative included). Hover-only pause doesn't work on touch or keyboard.
 - Decision 2: **Phone pill: drop `aria-label`**; the visible number becomes the accessible name.
 - Decision 3: **Consent checkboxes: name = visible text.** Remove the hero `aria-label`; restructure so the label reads "אני מסכים/ה למדיניות הפרטיות". Visible text unchanged.
 - Decision 4: **Statement:** "WCAG 2.0" → "WCAG 2.1 ברמת AA" + "עודכן לאחרונה: {ship month}" line (same style as the privacy modal).
@@ -541,7 +541,7 @@ The accessibility statement claims ת״י 5568 / WCAG AA. Close the known gaps s
 ```
 Reveal JS (7 pages): if `IntersectionObserver` is missing, add `is-revealed` to every `.reveal-element` immediately.
 
-**F. Marquee pause button** (index only): a small round button next to the ticker, `aria-label="עצירת אנימציית הלוגואים"` / `"הפעלת אנימציית הלוגואים"`, `aria-pressed`, pause/play icon (`aria-hidden`). Toggles `.is-paused` on `.marquee-container`. Hidden under reduced motion (nothing to pause).
+**F. Marquee pause (index only), REVISED, no button:** `.marquee-container` gets `tabindex="0"`, `role="group"`, `aria-labelledby="toolsTickerLabel"`, `aria-describedby` → sr-only "הקישו על פס הלוגואים כדי לעצור או להפעיל את התנועה."; click toggles `.is-paused`; `:focus-visible` pauses with an inset ring; hover pause wrapped in `@media (hover: hover)` because touch keeps `:hover` stuck after a tap and blocked tap-to-resume. *Superseded original:* a small round button next to the ticker, `aria-label="עצירת אנימציית הלוגואים"` / `"הפעלת אנימציית הלוגואים"`, `aria-pressed`, pause/play icon (`aria-hidden`). Toggles `.is-paused` on `.marquee-container`. Hidden under reduced motion (nothing to pause).
 
 **G. Statement** (`#accessibilityModal`, 6 pages, byte-identical): "וכן עומד בהנחיות WCAG 2.0" → "וכן עומד בהנחיות WCAG 2.1 ברמת AA" + `<p class="text-xs text-slate-500">עודכן לאחרונה: {month} 2026</p>`.
 
@@ -562,6 +562,7 @@ Reveal JS (7 pages): if `IntersectionObserver` is missing, add `is-revealed` to 
 - 🟩 **Step 4: Motion + CSS** (E, H), reveal JS fallback on the 6 pages that use `.reveal-element`; reduced-motion also stops the unused `.ticker-track`
 - 🟩 **Step 5: Build**, `?v=10` on all 7 pages
 - 🟩 **Step 6: Verify**: headless Chrome checked accessible names (checkboxes "אני מסכים/ה למדיניות הפרטיות", phone pill "052-2296269"), pause by Enter/Space with `aria-pressed` flip, focus rings, reduced motion (marquee/blobs off, reveal visible, button hidden, scroll auto), JS off (reveal visible), normal scroll reveal, hero submit (blocked unticked; payload `{fullName, phone, source}` unchanged), 375px no horizontal scroll. Lighthouse after: a11y 100 on all 4 runs; perf 83/94/89/95. The desktop drop from 98 to 94 is local noise: re-running the `main` code now also gives 93 (FCP 0.9s then, 1.2s now on both)
+- 🟩 **Step 6b: Button → tap-to-stop (Shai)**: verified with touch emulation (tap pauses, second tap resumes), keyboard (Tab pauses, Tab away resumes), mouse (hover pauses; click toggles), accessible name and description, reduced motion still off, 375px no horizontal scroll
 - 🟥 **Step 7: Shai reviews (incl. NVDA Hebrew spot check), merge, verify production**
 
 ### Verification

@@ -146,8 +146,11 @@ body {
             animation: marquee-rtl 25s linear infinite;
         }
 
-        .marquee-container:hover .animate-marquee-rtl {
-            animation-play-state: paused;
+        /* Hover pause only on real pointers: touch keeps :hover stuck after a tap, blocking tap-to-resume */
+        @media (hover: hover) {
+            .marquee-container:hover .animate-marquee-rtl {
+                animation-play-state: paused;
+            }
         }
 
         /* Reveal on Scroll */
@@ -297,8 +300,9 @@ body {
             }
         }
 
-        /* Marquee pause button (WCAG 2.2.2) */
-        .marquee-container.is-paused .animate-marquee-rtl {
+        /* Marquee pause: tap/click toggles .is-paused, keyboard focus pauses (WCAG 2.2.2) */
+        .marquee-container.is-paused .animate-marquee-rtl,
+        .marquee-container:focus-visible .animate-marquee-rtl {
             animation-play-state: paused;
         }
 
