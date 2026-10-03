@@ -379,6 +379,19 @@ The site declares IS 5568 / WCAG 2.1 AA in its accessibility statement; the know
 - 🟥 Decide on the design-checker clichés from the new report: gradient text in the H1, glow shadows, nested cards. **Keep** the `border-r-4` service-card edge: it's the project's RTL convention.
 - 🟥 `.agents/workflows/go-live.md` as a post-launch audit: error-route alert in Make if the webhook fails (no lead lost), end-to-end test lead, compressed images
 - 🟥 Optional: update Impeccable to v4.4.0 (`npx impeccable update`)
+- 🟥 Add the missing `</main>` on all 6 main pages (footer currently sits inside the `main` landmark). Found in Sprint 3
+- 🟥 Service pages: mobile section padding is `py-24` like the homepage was; apply the Sprint 3 `py-16 md:py-24` fix there too
+- 🟥 Lead-magnet strip: consider moving the consent checkbox before the submit button (tab order). Only if data shows drop-off
+
+### Open items for Shai (no code, as of 2026-10-03)
+
+- 🟥 Delete the Airtable test rows "TEST mail-tester Claude" and "TEST Sprint3 Claude"
+- 🟥 Delete 5 stale branches (Claude was blocked by permissions; all were checked, nothing needed): local `pr-3`, `pr-3-updated`; remote `fix-contact-placeholders-6198256773187317632`, `perf-optimize-tailwind-12216371450165557557`, `remove-hidden-social-proof-8070926162330931184`
+- 🟥 Zoho filter for DMARC report emails (subject starts with "Report domain:") → "DMARC" folder. Later, once reports look clean, consider `p=quarantine`
+- 🟥 Optional, in the Make checklist email: add 2-3 lines of text (mail-tester's only deduction), use `https://www.clearflow.co.il/...` in the button link, add a plain-text version
+- 🟥 Optional: upgrade the Zoho DKIM key from 1024-bit to 2048-bit
+- 🟥 Optional: Search Console reindex of `/`
+- 🟥 **~2026-10-31: measure Sprint 3.** In GA, compare consult requests (`generate_lead`, label `contact_form`) for 4 weeks before vs. after 2026-10-03. Also look at `click_cta_process` and `generate_lead` with label `lead_magnet`. Low traffic means read it as a direction, not proof
 
 ### Sequencing
 
