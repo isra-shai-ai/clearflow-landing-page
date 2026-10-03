@@ -351,7 +351,7 @@ Every sprint below that touches site files gets its own `## Feature:` section an
 - **Needs from Shai:** decisions on the research recommendations; Make/Airtable changes (Claude has no Make access).
 - **Risk if delayed:** every marketing message sent to a lead without valid consent is exposed to statutory damages. Today the risk is dormant only because nothing is sent.
 
-### 🟥 Sprint 2: Accessibility compliance pass (P1, legal)
+### 🟨 Sprint 2: Accessibility compliance pass (P1, legal) — in review 2026-10-03, see its Feature section
 
 The site declares IS 5568 / WCAG 2.1 AA in its accessibility statement; the known gaps make that claim inaccurate.
 
@@ -493,3 +493,100 @@ Mobile header was 76px (68 scrolled) with 44px circles and a 32px logo; mobile n
 - 🟩 **Step 4: Verify**: 375/320px header 56-57px, tap 3px outside the circle still hits it, no horizontal scroll, hero button bottom 655 → 639px; desktop unchanged (77px, 69 scrolled)
 - 🟩 **Step 4b: Smaller icons (Shai's review)**: circles 36 → 32px (icons 18/16px), menu box 36 → 32px, circle gap 8 → 12px so the 44px tap areas (`before:-inset-1.5`) touch without overlapping; header padding `py-3` keeps it at 56px. CSS v=9
 - 🟩 **Step 5: Shai reviews preview on his phone, merge**
+
+---
+
+## Feature: Sprint 2, Accessibility Compliance Pass
+
+**Feature Progress:** `86%` (6 / 7 steps) — approved 2026-10-03
+
+### TLDR
+
+The accessibility statement claims ת״י 5568 / WCAG AA. Close the known gaps so the claim is true: accessible names, decorative icons, visible focus, a pausable marquee, respect for the OS "Reduce Motion" setting, and an accurate statement. Attributes, CSS and ~10 lines of JS. No copy changes beyond the statement line, no form logic or payload changes. `/en/` excluded.
+
+### Key Decisions (Shai, 2026-10-03)
+
+- Decision 1: **Reduced motion covers all motion** (marquee, reveal-on-scroll, blobs, smooth scroll). Users without the OS setting see no change.
+- Decision 1b (revised 2026-10-03): **No visible pause button (Shai).** Tap/click on the strip toggles pause; keyboard focus pauses; hover pauses on mouse devices only; screen readers hear a hint (`sr-only`). This covers every input, but discoverability is a gray zone: a strict audit could ask for a visible control. Reduce Motion already stops it for the users most at risk. Original: **Marquee gets a pause button** for everyone (WCAG 2.2.2, Level A: auto-moving content > 5s needs pause, decorative included). Hover-only pause doesn't work on touch or keyboard.
+- Decision 2: **Phone pill: drop `aria-label`**; the visible number becomes the accessible name.
+- Decision 3: **Consent checkboxes: name = visible text.** Remove the hero `aria-label`; restructure so the label reads "אני מסכים/ה למדיניות הפרטיות". Visible text unchanged.
+- Decision 4: **Statement:** "WCAG 2.0" → "WCAG 2.1 ברמת AA" + "עודכן לאחרונה: {ship month}" line (same style as the privacy modal).
+- Decision 5: **Lighthouse local only**, before and after.
+- Decision 6: **Delete the duplicate marquee hover rule** in `input.css` (lines 48-50 duplicate 153-155).
+
+### Changes
+
+**A. Phone pill** (desktop header, 6 pages): remove `aria-label="טלפון"` from `<a href="tel:0522296269">`. Name becomes "052-2296269".
+
+**B. FAQ icons** (`index.html`, 5 svgs ~lines 1016-1084): add `aria-hidden="true"` to every `faq-icon-plus` / `faq-icon-minus` svg that lacks it.
+
+**C. Focus rings** — add `focus-visible:ring-2` (amber-400 on dark, primary on light) where `focus:outline-none` has no replacement:
+- Hamburger `#mobileNavToggle` (6 pages)
+- Services dropdown toggle (6 pages)
+- Mobile nav close button (6 pages)
+- Hero + footer "למדיניות הפרטיות" buttons (index)
+- Not touched: `h3 tabindex="-1"` success headings (programmatic focus only, never in tab order); dropdown menu items (already have `focus:bg-slate-50`)
+
+**D. Consent checkboxes** (index, hero + footer): remove hero `aria-label="אישור מדיניות פרטיות"`; set `aria-labelledby` on both checkboxes to the label span + policy button so the name is "אני מסכים/ה למדיניות הפרטיות". Clicking the button still opens the modal; clicking the label text still toggles the box.
+
+**E. Motion** (`input.css`):
+```css
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .blob, .animate-marquee-rtl { animation: none !important; }
+  .reveal-element { opacity: 1; transform: none; transition: none; }
+}
+.marquee-container.is-paused .animate-marquee-rtl { animation-play-state: paused; }
+@media (scripting: none) { .reveal-element { opacity: 1; transform: none; } }
+```
+Reveal JS (7 pages): if `IntersectionObserver` is missing, add `is-revealed` to every `.reveal-element` immediately.
+
+**F. Marquee pause (index only), REVISED, no button:** `.marquee-container` gets `tabindex="0"`, `role="group"`, `aria-labelledby="toolsTickerLabel"`, `aria-describedby` → sr-only "הקישו על פס הלוגואים כדי לעצור או להפעיל את התנועה."; click toggles `.is-paused`; `:focus-visible` pauses with an inset ring; hover pause wrapped in `@media (hover: hover)` because touch keeps `:hover` stuck after a tap and blocked tap-to-resume. *Superseded original:* a small round button next to the ticker, `aria-label="עצירת אנימציית הלוגואים"` / `"הפעלת אנימציית הלוגואים"`, `aria-pressed`, pause/play icon (`aria-hidden`). Toggles `.is-paused` on `.marquee-container`. Hidden under reduced motion (nothing to pause).
+
+**G. Statement** (`#accessibilityModal`, 6 pages, byte-identical): "וכן עומד בהנחיות WCAG 2.0" → "וכן עומד בהנחיות WCAG 2.1 ברמת AA" + `<p class="text-xs text-slate-500">עודכן לאחרונה: {month} 2026</p>`.
+
+**H. Cleanup:** delete `input.css` lines 48-50 (duplicate hover-pause).
+
+### Critical Files
+
+- `public/index.html`: A-G
+- `public/services/{ai-agents,automations,crm-systems,landing-pages,training}.html`: A, C (header), E (reveal JS), G
+- `input.css`: E, H
+- `public/styles.css` (rebuilt) → `styles.css?v=10` on all 7 pages (incl. `resources/automation-checklist.html`, version bump only)
+
+### Tasks
+
+- 🟩 **Step 1: Branch** `fix/a11y-pass`; Lighthouse baseline (perf/a11y/bp/seo): `/` mobile 83/100/100/100, desktop 98/100/100/100; automations mobile 88/100/100/100, desktop 95/100/100/100. a11y was already 100: Lighthouse does not detect any of these gaps
+- 🟩 **Step 2: Shared chrome, 6 pages** (A, C header, G); verify modal copies byte-identical (hash)
+- 🟩 **Step 3: Homepage-only** (B, C consent buttons, D, F). Pause button keeps one fixed `aria-label` ("עצירת אנימציית הלוגואים") and flips only `aria-pressed`; a label that also flips would announce the state twice
+- 🟩 **Step 4: Motion + CSS** (E, H), reveal JS fallback on the 6 pages that use `.reveal-element`; reduced-motion also stops the unused `.ticker-track`
+- 🟩 **Step 5: Build**, `?v=10` on all 7 pages
+- 🟩 **Step 6: Verify**: headless Chrome checked accessible names (checkboxes "אני מסכים/ה למדיניות הפרטיות", phone pill "052-2296269"), pause by Enter/Space with `aria-pressed` flip, focus rings, reduced motion (marquee/blobs off, reveal visible, button hidden, scroll auto), JS off (reveal visible), normal scroll reveal, hero submit (blocked unticked; payload `{fullName, phone, source}` unchanged), 375px no horizontal scroll. Lighthouse after: a11y 100 on all 4 runs; perf 83/94/89/95. The desktop drop from 98 to 94 is local noise: re-running the `main` code now also gives 93 (FCP 0.9s then, 1.2s now on both)
+- 🟩 **Step 6b: Button → tap-to-stop (Shai)**: verified with touch emulation (tap pauses, second tap resumes), keyboard (Tab pauses, Tab away resumes), mouse (hover pauses; click toggles), accessible name and description, reduced motion still off, 375px no horizontal scroll
+- 🟥 **Step 7: Shai reviews (incl. NVDA Hebrew spot check), merge, verify production**
+
+### Verification
+
+- `grep 'aria-label="טלפון"'` hits only the two phone `<input>`s
+- No `faq-icon` svg without `aria-hidden="true"`
+- Keyboard Tab through header, mobile nav, hero form, FAQ, footer form: every stop shows a visible ring
+- Accessibility tree (DevTools): hero + footer checkbox name = "אני מסכים/ה למדיניות הפרטיות"; phone pill name = number
+- DevTools "Emulate prefers-reduced-motion: reduce": marquee, blobs static; all reveal content visible without scrolling; pause button hidden
+- Without emulation: site looks and moves exactly as before; pause button stops/resumes marquee by click, Enter and Space; `aria-pressed` flips
+- JS disabled: all reveal content visible
+- 6 accessibility modals identical (hash); "WCAG 2.0" gone
+- Forms still submit (fetch intercepted, payload unchanged); required checkbox still blocks
+- 375px and desktop: no layout change except the pause button
+- Lighthouse a11y score ≥ baseline on all 4 runs
+
+### Open Questions / Risks
+
+- **Pause button placement/look:** proposed small circle at the ticker's end edge, muted style. Shai reviews on preview.
+- **Tabnav widget** may also offer "stop animations"; we don't rely on it (third-party, may change).
+- **Lighthouse ≠ compliance.** It catches ~30% of issues; the NVDA spot check and keyboard pass matter more.
+- **Not a legal audit.** A formal 5568 audit by a certified accessibility consultant is the only proof of compliance if challenged.
+
+**Flagged, not fixed (outside this sprint):**
+- The lead-magnet consent checkbox name reads "אני מסכים/ה ל מדיניות הפרטיות ." (extra spaces, because the button sits inside the label). Screen readers handle it; tidy it if that form is ever edited.
+- The service pages run two identical reveal `IntersectionObserver` scripts. Harmless, but one is redundant.
+- Impeccable hook findings on index (gradient H1 text, contrast flags) predate this sprint; they're Sprint 4.
