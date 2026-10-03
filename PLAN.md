@@ -613,6 +613,7 @@ Make the homepage push one ask: the free consult. Add a booking button where int
 - Decision 6: **Scope:** items 2, 3, 4, 5c, 9 = `index.html` only. Items 5a, 5b = index + 5 service pages. The checklist page has no cookie banner text or visible phone, so it changes only for the CSS version bump.
 - Decision 7: **No payload change.** `{ fullName, phone?, email?, source }` and source values stay exactly as they are.
 - Decision 8: **Claude drafts all new copy** (below); Shai approves it with this plan.
+- Decision 10 (added after preview, Shai 2026-10-03): **Tighter section spacing on the homepage.** Mobile: the 4 middle sections go from 96px to 64px padding per side (`py-16 md:py-24`); desktop unchanged. Contact form bottom padding 128px → 48px mobile / 64px desktop, and the strip top padding 56px → 48px, so the checklist strip reads as a follow-up to the form. Measured content gaps: mobile middle sections 190–233px → 128–169px; contact → strip 226/242px → ~100px visible. Service pages likely have the same mobile padding; left for Sprint 4.
 - Decision 9: **Checklist GA label fix:** `generate_lead` from the lead-magnet form gets `event_label: 'lead_magnet'` instead of `'contact_form'`.
 
 ### New / changed copy (for approval)
@@ -674,6 +675,7 @@ GA events only (no Make/Airtable impact):
 - 🟨 **Step 7: Build, verify, ship**
   - 🟩 `npm run build`; `styles.css?v=10` → `?v=11` on all 7 pages
   - 🟩 Run Verification below; after screenshots
+  - 🟩 Spacing pass (Decision 10), rebuilt and re-measured
   - 🟥 Push branch, send Shai the Vercel preview link; merge after approval; verify production
 
 ### Verification
