@@ -324,7 +324,7 @@ Lead Magnet: { fullName, email, source: "Lead Magnet" }
 
 ## Roadmap: Open Items (ranked 2026-10-02)
 
-**Roadmap Progress:** `20%` (1 / 5 sprints)
+**Roadmap Progress:** `40%` (2 / 5 sprints)
 
 Every sprint below that touches site files gets its own `## Feature:` section and needs "The plan is approved." before any code. Rank is by **risk first** (legal exposure, lost leads), then **conversion impact**, then **effort**.
 
@@ -351,7 +351,7 @@ Every sprint below that touches site files gets its own `## Feature:` section an
 - **Needs from Shai:** decisions on the research recommendations; Make/Airtable changes (Claude has no Make access).
 - **Risk if delayed:** every marketing message sent to a lead without valid consent is exposed to statutory damages. Today the risk is dormant only because nothing is sent.
 
-### 🟨 Sprint 2: Accessibility compliance pass (P1, legal) — in review 2026-10-03, see its Feature section
+### 🟩 Sprint 2: Accessibility compliance pass (P1, legal) — shipped 2026-10-03 (PR #10), see its Feature section
 
 The site declares IS 5568 / WCAG 2.1 AA in its accessibility statement; the known gaps make that claim inaccurate.
 
@@ -498,7 +498,7 @@ Mobile header was 76px (68 scrolled) with 44px circles and a 32px logo; mobile n
 
 ## Feature: Sprint 2, Accessibility Compliance Pass
 
-**Feature Progress:** `86%` (6 / 7 steps) — approved 2026-10-03
+**Feature Progress:** `100%` (7 / 7 steps) — shipped 2026-10-03 (PR #10)
 
 ### TLDR
 
@@ -563,7 +563,7 @@ Reveal JS (7 pages): if `IntersectionObserver` is missing, add `is-revealed` to 
 - 🟩 **Step 5: Build**, `?v=10` on all 7 pages
 - 🟩 **Step 6: Verify**: headless Chrome checked accessible names (checkboxes "אני מסכים/ה למדיניות הפרטיות", phone pill "052-2296269"), pause by Enter/Space with `aria-pressed` flip, focus rings, reduced motion (marquee/blobs off, reveal visible, button hidden, scroll auto), JS off (reveal visible), normal scroll reveal, hero submit (blocked unticked; payload `{fullName, phone, source}` unchanged), 375px no horizontal scroll. Lighthouse after: a11y 100 on all 4 runs; perf 83/94/89/95. The desktop drop from 98 to 94 is local noise: re-running the `main` code now also gives 93 (FCP 0.9s then, 1.2s now on both)
 - 🟩 **Step 6b: Button → tap-to-stop (Shai)**: verified with touch emulation (tap pauses, second tap resumes), keyboard (Tab pauses, Tab away resumes), mouse (hover pauses; click toggles), accessible name and description, reduced motion still off, 375px no horizontal scroll
-- 🟥 **Step 7: Shai reviews (incl. NVDA Hebrew spot check), merge, verify production**
+- 🟩 **Step 7: Shai reviews (incl. NVDA Hebrew spot check), merge, verify production**: Shai passed all points on the preview; production on www checked: v=10 on all 7 pages, statement 2.1 on 6, tap pause/resume, hero submit payload unchanged (fetch intercepted)
 
 ### Verification
 
