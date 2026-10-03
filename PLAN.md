@@ -671,7 +671,7 @@ GA events only (no Make/Airtable impact):
   - 🟩 Cookie banner text → plural (index + 5 service pages)
   - 🟩 Phone `052-2296269` → `052-229-6269` in visible text and aria-labels (mobile nav, header icon, desktop pill)
   - 🟩 `grep` every page: 0 hits for `הנך מסכים` and `052-2296269`. Mixed line endings: use `\r?\n` in multi-line replacements
-- 🟨 **Step 7: Build, verify, ship**
+- 🟨 **Step 7: Build, verify, ship**
   - 🟩 `npm run build`; `styles.css?v=10` → `?v=11` on all 7 pages
   - 🟩 Run Verification below; after screenshots
   - 🟥 Push branch, send Shai the Vercel preview link; merge after approval; verify production
