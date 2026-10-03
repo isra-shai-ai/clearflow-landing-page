@@ -337,12 +337,12 @@ Every sprint below that touches site files gets its own `## Feature:` section an
 | 3. Conversion | Page structure changes that move consult requests. |
 | 4. Polish | Visual and wording items with no measurable user impact. |
 
-### 🟥 Sprint 0: Quick checks (Shai, ~15 min, no code)
+### 🟩 Sprint 0: Quick checks (Shai, ~15 min, no code) — done 2026-10-03; only the optional Search Console reindex is left
 
-- 🟥 **GA Realtime:** confirm `click_whatsapp_header` / `click_phone_header` arrive from a real tap. Every later measurement depends on tracking working.
+- 🟩 **GA Realtime:** confirmed 2026-10-03 (Shai, real phone tap): `click_whatsapp_header` and `click_phone_header` both arrive. The extra generic `click` event in the same session is GA4 enhanced measurement's automatic outbound-link click (the WhatsApp tap goes to wa.me), not a duplicate from our code.
 - 🟩 **Checklist email sender:** Zoho via Make (Shai, 2026-10-02), covered by SPF/DKIM. confirm which service the Make scenario sends the checklist email through. DNS has SPF (`include:zohomail.com`), DKIM (`zmail._domainkey`) and DMARC (`p=none`) for **Zoho only**. If Make sends through Gmail, SendGrid or similar, SPF/DKIM fail and the checklist can land in spam.
-- 🟥 **Mail-tester:** send the checklist email to mail-tester.com; target 10/10.
-- 🟥 **Search Console:** request reindexing of `/` (drops `/index.html` faster). Optional.
+- 🟩 **Mail-tester:** 9.5/10 (2026-10-03). SPF, DKIM, DMARC all pass via Zoho; sender IP on the Mailspike whitelist. Only deduction: `HTML_IMAGE_ONLY_28` (too little text vs. image, HTML-only, no plain-text part). Optional fix in Make: add 2-3 lines of body text. Test lead "TEST mail-tester Claude" to delete from Airtable.
+- 🟨 **Search Console:** site side verified (2026-10-03): `/index.html` 308 → `/`, apex 301 → `www`, sitemap lists the 6 Hebrew pages. Reindex request itself is optional (Shai).
 
 ### 🟩 Sprint 1: Marketing consent (P1, legal) — rescoped 2026-10-02: no marketing is sent, so this became "Consent Cleanup + Privacy Policy", see its Feature section
 
@@ -365,7 +365,7 @@ The site declares IS 5568 / WCAG 2.1 AA in its accessibility statement; the know
 - 🟥 Screen reader spot check in Hebrew (NVDA) — **Shai**, after the fixes
 - **Effort:** small. Mostly attribute and CSS changes, across 6 pages for the shared chrome.
 
-### 🟥 Sprint 3: Conversion structure (P2)
+### 🟥 Sprint 3: Conversion structure (P2) — decisions made 2026-10-03, plan awaiting approval, see its Feature section
 
 - 🟥 Lead magnet placement: move after the FAQ, or slim it down, so it stops competing with the consultation right before the final form
 - 🟥 Services order: automation first (core offer), landing pages later
@@ -590,3 +590,113 @@ Reveal JS (7 pages): if `IntersectionObserver` is missing, add `is-revealed` to 
 - The lead-magnet consent checkbox name reads "אני מסכים/ה ל מדיניות הפרטיות ." (extra spaces, because the button sits inside the label). Screen readers handle it; tidy it if that form is ever edited.
 - The service pages run two identical reveal `IntersectionObserver` scripts. Harmless, but one is redundant.
 - Impeccable hook findings on index (gradient H1 text, contrast flags) predate this sprint; they're Sprint 4.
+
+---
+
+## Feature: Sprint 3, Conversion Structure
+
+**Feature Progress:** `86%` (6 / 7 steps)
+
+### TLDR
+
+Make the homepage push one ask: the free consult. Add a booking button where intent peaks (after the 3-step process), move the checklist offer out of the middle of the page into a slim "not ready yet?" strip under the final form, reorder the service cards, and fix 3 small wording/visual issues. Also give checklist downloads their own GA label so Sprint 4 can measure the change. No change to what the forms send, so Make and Airtable are untouched. The site has no `/en/` directory anymore; only the 7 Hebrew pages exist.
+
+### Key Decisions (Shai, 2026-10-03)
+
+- Decision 1: **North Star = consult requests** (hero + footer forms). Checklist downloads are secondary; since Sprint 1 no follow-up is sent to checklist leads.
+- Decision 2: **Lead magnet → slim strip below the final contact form** (option a). Consult ask comes first; the strip catches visitors not ready for a call. Accepted trade-off: fewer downloads.
+- Decision 3: **Services order: AI agents stays the featured full-width card** (option b, "everyone talks about AI agents"), then automations → CRM → landing pages → training. **Menu must match the cards.** Checked: the desktop dropdown and mobile menu on all 6 pages already read AI → automations → CRM → landing → training, so only the homepage cards move (landing pages goes from 2nd to 4th).
+- Decision 4: **Amber CTA "לקביעת שיחת ייעוץ" after the process section**, scrolls to `#contact`, tracked as GA event `click_cta_process`.
+- Decision 5a: **Cookie banner in plural** (6 pages).
+- Decision 5b: **Visible phone format `052-229-6269`** everywhere. `tel:`, `wa.me` and JSON-LD stay machine format.
+- Decision 5c: **Header over the hero: translucent navy until scroll.** Scrolled state (solid `#11223A`) unchanged.
+- Decision 6: **Scope:** items 2, 3, 4, 5c, 9 = `index.html` only. Items 5a, 5b = index + 5 service pages. The checklist page has no cookie banner text or visible phone, so it changes only for the CSS version bump.
+- Decision 7: **No payload change.** `{ fullName, phone?, email?, source }` and source values stay exactly as they are.
+- Decision 8: **Claude drafts all new copy** (below); Shai approves it with this plan.
+- Decision 10 (added after preview, Shai 2026-10-03): **Tighter section spacing on the homepage.** Mobile: the 4 middle sections go from 96px to 64px padding per side (`py-16 md:py-24`); desktop unchanged. Contact form bottom padding 128px → 48px mobile / 64px desktop, and the strip top padding 56px → 48px, so the checklist strip reads as a follow-up to the form. Measured content gaps: mobile middle sections 190–233px → 128–169px; contact → strip 226/242px → ~100px visible. Service pages likely have the same mobile padding; left for Sprint 4.
+- Decision 9: **Checklist GA label fix:** `generate_lead` from the lead-magnet form gets `event_label: 'lead_magnet'` instead of `'contact_form'`.
+
+### New / changed copy (for approval)
+
+| Where | Current | New |
+|---|---|---|
+| Process CTA button | (none) | **לקביעת שיחת ייעוץ** |
+| Lead-magnet strip H2 | האם העסק שלכם מוכן לאוטומציה? | **לא מוכנים לשיחה עדיין?** |
+| Lead-magnet strip line | ודאו שאינכם משאירים כסף על השולחן. הורידו את הצ'ק-ליסט... | **קחו את הצ'ק-ליסט החינמי: 7 נורות האזהרה שמראות איפה בורחות לכם שעות והכנסות.** |
+| Cookie banner | אנו משתמשים בעוגיות (Cookies) כדי להעניק לך את החוויה הטובה ביותר. בהמשך הגלישה, הנך מסכים/ה לשימוש בהן. | **אנחנו משתמשים בעוגיות (Cookies) כדי להעניק לכם את החוויה הטובה ביותר. בהמשך הגלישה, אתם מסכימים לשימוש בהן.** |
+| Phone (visible + aria-label) | 052-2296269 | **052-229-6269** |
+
+Lead-magnet button text, consent text and success message ("מעולה! הצ'ק-ליסט בדרך אליכם!") stay as they are. The 3 checklist bullets are dropped from the strip (the new line summarizes the first one).
+
+### Critical Files
+
+- `public/index.html`: services card order; process CTA; lead-magnet section moved below `#contact` and slimmed; header unscrolled class + scroll JS; contact-click tracking selector; lead-magnet GA label; cookie text; phone format
+- `public/services/{ai-agents,automations,crm-systems,landing-pages,training}.html`: cookie text; phone format
+- `public/resources/automation-checklist.html`: `styles.css?v=11` only
+- `public/styles.css`: regenerated by `npm run build` (new arbitrary classes, e.g. `bg-[#11223A]/70`)
+- `CLAUDE.md`: one-line fix, `/en/` no longer exists (stale docs)
+
+### Data Schema
+
+No change. Webhook URL, keys (`fullName`, `phone`, `email`, `source`), source values (`"Hero" | "Footer" | "Lead Magnet"`), honeypot `b_title` with fake success, and inline success swap all preserved. The lead-magnet form keeps its IDs (`leadMagnetForm`, `leadMagnetSuccess`) so the existing handler works unchanged after the move.
+
+GA events only (no Make/Airtable impact):
+- New: `click_cta_process` (process CTA)
+- Changed: lead-magnet `generate_lead` label `contact_form` → `lead_magnet`
+
+### Tasks
+
+- 🟩 **Step 1: Branch + baseline**
+  - 🟩 `feat/sprint3-conversion` from `main`
+  - 🟩 Screenshot homepage at 390px and 1280px (before)
+
+- 🟩 **Step 2: Services order** (`index.html`)
+  - 🟩 Move the landing-pages card from 2nd to 4th: AI (featured) → automations → CRM → landing pages → training
+  - 🟩 Confirm menu order on all 6 pages still matches (no edit expected)
+
+- 🟩 **Step 3: Process CTA** (`index.html`)
+  - 🟩 Amber button under the 3 process cards: `<a href="#contact" data-track-event="click_cta_process">לקביעת שיחת ייעוץ</a>`, brand amber CTA recipe from `design-tokens.json`, visible focus ring, ≥ 44px tap target
+  - 🟩 Contact-click tracking selector gets `:not([data-track-event])` (same pattern as the phone handler) so the new button counts once, not twice
+
+- 🟩 **Step 4: Lead magnet → slim strip** (`index.html`)
+  - 🟩 Move the section from between process and FAQ to directly after `#contact`, before `<footer>`
+  - 🟩 Slim layout: H2 + one line + form in one compact row on desktop, stacked on mobile; drop the 3 bullets, blobs and "מדריך חינם" pill
+  - 🟩 Keep form IDs, field names, hidden `source="Lead Magnet"`, honeypot, consent checkbox, success state
+  - 🟩 Tidy the consent label spacing (flagged in Sprint 2: "tidy it if that form is ever edited")
+  - 🟩 GA label `contact_form` → `lead_magnet` in the lead-magnet handler only
+
+- 🟩 **Step 5: Header over the hero** (`index.html`)
+  - 🟩 Unscrolled class `bg-white/40` → `bg-[#11223A]/70` in the `<header>` and both branches of the scroll JS (all widths; mobile has the same issue)
+
+- 🟩 **Step 6: Wording, 6 pages**
+  - 🟩 Cookie banner text → plural (index + 5 service pages)
+  - 🟩 Phone `052-2296269` → `052-229-6269` in visible text and aria-labels (mobile nav, header icon, desktop pill)
+  - 🟩 `grep` every page: 0 hits for `הנך מסכים` and `052-2296269`. Mixed line endings: use `\r?\n` in multi-line replacements
+- 🟨 **Step 7: Build, verify, ship**
+  - 🟩 `npm run build`; `styles.css?v=10` → `?v=11` on all 7 pages
+  - 🟩 Run Verification below; after screenshots
+  - 🟩 Spacing pass (Decision 10), rebuilt and re-measured
+  - 🟥 Push branch, send Shai the Vercel preview link; merge after approval; verify production
+
+### Verification
+
+- **Section order on index:** hero → ticker → founder → pain/solution → services → process (+CTA) → FAQ → contact → checklist strip → footer
+- **Services:** cards read AI → automations → CRM → landing → training; menu (desktop + mobile) shows the same order on all 6 pages
+- **Process CTA:** click scrolls to `#contact` without the heading hidden under the fixed header; Tab reaches it with a visible focus ring; GA DebugView shows `click_cta_process` once and no duplicate `cta_contact`
+- **Lead-magnet strip (real end-to-end):** submit as "TEST Sprint3 Claude"; success state shows, checklist email arrives, Airtable row has `source = Lead Magnet`; GA shows `generate_lead` with label `lead_magnet`. Shai deletes the test row
+- **Honeypot** filled on the strip: fake success, no network request
+- **Header:** at 1280px over the hero, icons and nav are clearly readable; after scrolling it turns solid navy as before
+- **320 / 390 / 768 / 1280px:** no horizontal scroll; the strip stacks cleanly on mobile
+- **grep** on all pages: no `הנך מסכים`, no visible `052-2296269`; `styles.css?v=11` on all 7
+- **Heading order** stays H1 → H2 → H3 after the move (strip uses H2, form title H3)
+
+### Open Questions / Risks
+
+- **Fewer checklist downloads** is expected (Decision 2). Judge Sprint 3 by consult requests over 4+ weeks, not by downloads.
+- **Measurement baseline:** Sprint 0 GA Realtime confirmed 2026-10-03, so tracking works before this ships.
+- **Low traffic:** with few visits per day, a before/after comparison will be noisy. Treat the result as a direction, not proof.
+- **CLAUDE.md was stale** about `/en/` (the directory no longer exists). Fixed in the same PR.
+
+**Flagged, not fixed (outside this sprint):**
+- `</main>` is missing on all 6 main pages, so the footer sits inside the `main` landmark (screen readers announce it as main content). One line per page; Sprint 4 or the next shared-chrome edit.
+- On the lead-magnet strip the consent checkbox comes after the submit button in tab order (same as the old layout). Submitting without it shows the error, so nothing breaks; worth swapping if conversion data shows drop-off.
