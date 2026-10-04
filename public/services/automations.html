@@ -433,43 +433,53 @@
     </div>
 
     <main id="main-content" class="flex-grow">
-        <section class="pt-24 pb-16 md:py-32 px-6">
-            <div class="container mx-auto max-w-4xl opacity-100 translate-y-0 duration-700 ease-out" id="articleWrapper">
+        <section class="bg-[#EAF0F7] border-b border-slate-200 pt-24 pb-10 md:pt-32 md:pb-14 px-6">
+            <div class="container mx-auto max-w-4xl">
                 <a href="/#services" class="inline-flex items-center gap-2 text-slate-500 hover:text-primary transition-colors font-medium mb-8">
                     <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     חזרה לעמוד הראשי
                 </a>
                 <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6 tracking-tight">אוטומציה עסקית: לעבוד חכם, לא קשה</h1>
-                <p class="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed max-w-5xl text-balance">בתור עצמאיים או מנהלי עסקים קטנים, הזמן הוא המשאב היקר ביותר שאתם שורפים. אנחנו משלבים סוכני בינה מלאכותית (AI) יחד עם מערכים תפעוליים שקופים, כדי להפוך פעולות ידניות ורוטיניות בעסק למערך אוטומטי, מהיר ונטול תקלות.</p>
+                <p class="text-xl md:text-2xl text-slate-700 leading-relaxed max-w-5xl text-balance">בתור עצמאיים או מנהלי עסקים קטנים, הזמן הוא המשאב היקר ביותר שאתם שורפים. אנחנו משלבים סוכני בינה מלאכותית (AI) יחד עם מערכים תפעוליים שקופים, כדי להפוך פעולות ידניות ורוטיניות בעסק למערך אוטומטי, מהיר ונטול תקלות.</p>
+            </div>
+        </section>
 
-                <!-- Read Time Badge -->
-                <div class="flex items-center gap-2 text-slate-600 font-medium mb-12 bg-slate-100 inline-flex px-4 py-2 rounded-full text-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    4 דקות קריאה
-                </div>
+        <section class="bg-white pt-8 pb-16 md:pt-10 md:pb-32 px-6">
+            <div class="container mx-auto max-w-4xl opacity-100 translate-y-0 duration-700 ease-out" id="articleWrapper">
 
                 <div class="prose prose-lg prose-slate text-right rtl max-w-none text-slate-700">
                     <h2 class="text-3xl font-bold text-slate-800 mb-6 mt-10">הבעיה השקופה: 'מס-התפעול' של העסק שלכם</h2>
                     <p class="leading-relaxed text-lg mb-8">ככל שעסק צומח, כמות הפעולות הטכניות והחזרתיות מזנקת. הצוות שלכם מתחיל לתפקד כמו 'רובוטים אנושיים': מעתיקים נתונים מטופס ליצירת קשר לקובץ אקסל, שולחים הודעות גנריות בסוף כל שיחה, מנסים להעביר מידע למחלקת משאבי אנוש, ושוכחים משימות חשובות בדרך. התהליכים האלו אולי נראים קטנים וטבעיים ביום-יום, אבל במצטבר הם יוצרים צוואר בקבוק שחונק את רווחיות העסק, גורם לטעויות אנוש הרסניות מול הלקוח, ושורף שעות עבודה יקרות של עובדים שצריכים להתעסק בפיתוח עסקי במקום בהעתק-הדבק.</p>
                     
-                    <!-- Contextual Illustration -->
-                    <div class="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100 bg-white">
-                        <picture>
-                            <source srcset="../assets/images/services/automations_chaos.webp" type="image/webp">
-                            <img src="../assets/images/services/automations_chaos.png" alt="צוות שמבזבז שעות על העברת נתונים ידנית בין מערכות" class="w-full h-auto object-cover max-h-[400px]" width="1024" height="1024" decoding="async" loading="lazy">
-                        </picture>
-                    </div>
+                    <!-- Before/after flow -->
+                    <figure class="mb-12" aria-labelledby="flowTitle">
+                        <figcaption id="flowTitle" class="text-xl md:text-2xl font-bold text-primary mb-5">ליד משאיר פרטים בטופס</figcaption>
+                        <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
+                            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5">
+                                <p class="text-sm font-semibold text-slate-500 mb-4">היום</p>
+                                <ol class="space-y-3">
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">1</span><span class="text-slate-600 leading-snug pt-0.5">מישהו צריך לראות את המייל</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">2</span><span class="text-slate-600 leading-snug pt-0.5">פותח כרטיס ידנית</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">3</span><span class="text-slate-600 leading-snug pt-0.5">וצריך לזכור לחזור</span></li>
+                                </ol>
+                            </div>
+                            <div class="flex items-center justify-center text-amber-500" aria-hidden="true">
+                                <svg class="w-8 h-8 -rotate-90 md:rotate-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0l7-7m-7 7l7 7"/></svg>
+                            </div>
+                            <div class="rounded-2xl bg-[#11223A] p-5">
+                                <p class="text-sm font-semibold text-amber-400 mb-4">עם ClearFlow</p>
+                                <ol class="space-y-3">
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-slate-900 text-sm font-bold flex items-center justify-center" aria-hidden="true">1</span><span class="text-white leading-snug pt-0.5">נפתח כרטיס ב-CRM</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-slate-900 text-sm font-bold flex items-center justify-center" aria-hidden="true">2</span><span class="text-white leading-snug pt-0.5">יוצאת הודעת וואטסאפ עם שם הפונה</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-slate-900 text-sm font-bold flex items-center justify-center" aria-hidden="true">3</span><span class="text-white leading-snug pt-0.5">נרשמת משימת מעקב והליד מנותב לאיש המכירות</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </figure>
 
                     <h2 class="text-3xl font-bold text-slate-800 mb-6 mt-12">איך פותרים את הכאוס? מעבר לעבודה חכמה</h2>
                     <p class="leading-relaxed text-lg mb-12">הפתרון לא טמון בגיוס עוד כוח אדם או ביצירת עוד נהלים מסורבלים, אלא בבניית תשתית אוטומטית שבאמת 'מחברת את הנקודות'. אוטומציה עסקית עובדת מאחורי הקלעים וגורמת לתוכנות שלכם (כמו האימייל, ה-CRM במשרד, ומערכות התשלום) 'לדבר' אחת עם השנייה במקומכם. תהליך נכון מתחיל במיפוי קפדני של כל פעולה שחוזרת על עצמה יותר מ-3 פעמים ביום שצוות שלם מבצע. לאחר מכן, תופרים לוגיקה חכמה שגורמת למערכת לבצע את הפעולות הללו בצורה אוטומטית וחלקה מיד כשמתרחש אירוע מסוים.</p>
                     
-                    <!-- Contextual Illustration -->
-                    <div class="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100 bg-white">
-                        <picture>
-                            <source srcset="../assets/images/services/automations_solution.webp" type="image/webp">
-                            <img src="../assets/images/services/automations_solution.png" alt="תהליך אוטומטי שרץ לבד בין המערכות של העסק" class="w-full h-auto object-cover max-h-[400px]" width="1024" height="1024" decoding="async" loading="lazy">
-                        </picture>
-                    </div>
                 </div>
 
                 <!-- Dark Pitch Box -->
@@ -727,7 +737,6 @@
             }
         });
     </script>
-    
 
     <script>
         if (localStorage.getItem('cookieAccepted') === 'true') {
@@ -883,6 +892,5 @@
     </script>
 
 </body>
-        
 
 </html>

@@ -363,7 +363,7 @@
 
     <!-- ── Header ── -->
     <header id="mainHeader"
-        class="fixed top-0 w-full z-40 bg-[#11223A]/70 backdrop-blur-xl border-b border-transparent py-3 md:py-4 transition-all duration-300">
+        class="fixed top-0 w-full z-40 bg-primary shadow-lg py-3 md:py-4 transition-all duration-300">
         <div class="container mx-auto px-6 max-w-6xl flex items-center justify-between gap-2">
             <button type="button" id="mobileNavToggle"
                 class="md:hidden text-white p-1 -mr-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 relative before:absolute before:-inset-1.5 before:content-['']"
@@ -1145,11 +1145,11 @@
         if (header) {
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
-                    header.classList.remove('bg-[#11223A]/70', 'border-transparent', 'md:py-4');
-                    header.classList.add('bg-[#11223A]', 'border-gray-100', 'shadow-md', 'md:py-3');
+                    header.classList.remove('shadow-lg', 'md:py-4');
+                    header.classList.add('shadow-md', 'md:py-3');
                 } else {
-                    header.classList.add('bg-[#11223A]/70', 'border-transparent', 'md:py-4');
-                    header.classList.remove('bg-[#11223A]', 'border-gray-100', 'shadow-md', 'md:py-3');
+                    header.classList.add('shadow-lg', 'md:py-4');
+                    header.classList.remove('shadow-md', 'md:py-3');
                 }
             });
         }

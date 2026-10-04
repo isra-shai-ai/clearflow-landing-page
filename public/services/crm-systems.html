@@ -433,43 +433,53 @@
     </div>
 
     <main id="main-content" class="flex-grow">
-        <section class="pt-24 pb-16 md:py-32 px-6">
-            <div class="container mx-auto max-w-4xl opacity-100 translate-y-0 duration-700 ease-out" id="articleWrapper">
+        <section class="bg-[#EAF0F7] border-b border-slate-200 pt-24 pb-10 md:pt-32 md:pb-14 px-6">
+            <div class="container mx-auto max-w-4xl">
                 <a href="/#services" class="inline-flex items-center gap-2 text-slate-500 hover:text-primary transition-colors font-medium mb-8">
                     <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     חזרה לעמוד הראשי
                 </a>
                 <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6 tracking-tight">מערכות CRM להשגת שליטה מלאה</h1>
-                <p class="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed max-w-5xl text-balance">בלב הפועם של עסקים קטנים ועצמאיים, מידע מפוזר הוא כסף אבוד. אנחנו משלבים יכולות בינה מלאכותית אל תוך מערכת הניהול (CRM), והופכים אותה ל'מוח המרכזי' האקטיבי של העסק שלכם: מערכת שעובדת בשבילכם, בלי שהצוות ישנא לעדכן אותה.</p>
+                <p class="text-xl md:text-2xl text-slate-700 leading-relaxed max-w-5xl text-balance">בלב הפועם של עסקים קטנים ועצמאיים, מידע מפוזר הוא כסף אבוד. אנחנו משלבים יכולות בינה מלאכותית אל תוך מערכת הניהול (CRM), והופכים אותה ל'מוח המרכזי' האקטיבי של העסק שלכם: מערכת שעובדת בשבילכם, בלי שהצוות ישנא לעדכן אותה.</p>
+            </div>
+        </section>
 
-                <!-- Read Time Badge -->
-                <div class="flex items-center gap-2 text-slate-600 font-medium mb-12 bg-slate-100 inline-flex px-4 py-2 rounded-full text-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    5 דקות קריאה
-                </div>
+        <section class="bg-white pt-8 pb-16 md:pt-10 md:pb-32 px-6">
+            <div class="container mx-auto max-w-4xl opacity-100 translate-y-0 duration-700 ease-out" id="articleWrapper">
 
                 <div class="prose prose-lg prose-slate text-right rtl max-w-none text-slate-700">
                     <h2 class="text-3xl font-bold text-slate-800 mb-6 mt-10">למה רוב מערכות הניהול ננטשות בעסקים?</h2>
                     <p class="leading-relaxed text-lg mb-8">בעלי עסקים רבים משקיעים כסף רב בקניית מערכות הניהול "המתקדמות ביותר בשוק", רק כדי לגלות בתסכול חודש לאחר מכן שאף אחד במשרד לא באמת משתמש בהן. למה זה קורה? התופעה נקראת 'התנגדות משתמשים'. רוב המערכות הפופולריות מגיעות מהקופסה בארכיטקטורה מורכבת ועמוסה, שמדרישה מהעובד למלא 15 שדות חובה רק כדי לעדכן שיחת טלפון פשוטה. העובדים, שמרגישים שהמערכת רק מעכבת אותם, זונחים אותה באלגנטיות וחוזרים לפתקים על המסך או לאקסלים אישיים במחשב. התוצאה: להנהלה אין 'אמת ארגונית אחת' לקבל דרכה החלטות.</p>
                     
-                    <!-- Contextual Illustration -->
-                    <div class="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100 bg-white">
-                        <picture>
-                            <source srcset="../assets/images/services/crm_scattered.webp" type="image/webp">
-                            <img src="../assets/images/services/crm_scattered.png" alt="מידע על לקוחות מפוזר בין גיליונות, פתקים והודעות" class="w-full h-auto object-cover max-h-[400px]" width="1024" height="1024" decoding="async" loading="lazy">
-                        </picture>
-                    </div>
+                    <!-- Before/after flow -->
+                    <figure class="mb-12" aria-labelledby="flowTitle">
+                        <figcaption id="flowTitle" class="text-xl md:text-2xl font-bold text-primary mb-5">איפה עומד הלקוח?</figcaption>
+                        <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
+                            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5">
+                                <p class="text-sm font-semibold text-slate-500 mb-4">היום</p>
+                                <ol class="space-y-3">
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">1</span><span class="text-slate-600 leading-snug pt-0.5">יומן שאף אחד לא מתחזק</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">2</span><span class="text-slate-600 leading-snug pt-0.5">פרטים בוואטסאפ ובאקסל</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">3</span><span class="text-slate-600 leading-snug pt-0.5">התשובה תלויה במי שנמצא במשרד</span></li>
+                                </ol>
+                            </div>
+                            <div class="flex items-center justify-center text-amber-500" aria-hidden="true">
+                                <svg class="w-8 h-8 -rotate-90 md:rotate-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0l7-7m-7 7l7 7"/></svg>
+                            </div>
+                            <div class="rounded-2xl bg-[#11223A] p-5">
+                                <p class="text-sm font-semibold text-amber-400 mb-4">עם ClearFlow</p>
+                                <ol class="space-y-3">
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-slate-900 text-sm font-bold flex items-center justify-center" aria-hidden="true">1</span><span class="text-white leading-snug pt-0.5">כרטיס לקוח אחד לכל הפניות</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-slate-900 text-sm font-bold flex items-center justify-center" aria-hidden="true">2</span><span class="text-white leading-snug pt-0.5">גוררים ל'נשלחה הצעת מחיר'</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-slate-900 text-sm font-bold flex items-center justify-center" aria-hidden="true">3</span><span class="text-white leading-snug pt-0.5">ההצעה נוצרת, המעקב נקבע, הצפי מתעדכן</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </figure>
 
                     <h2 class="text-3xl font-bold text-slate-800 mb-6 mt-12">הסוד: מינימליזם והתאמת המערכת לצוות</h2>
                     <p class="leading-relaxed text-lg mb-12">מערכת ניהול מודרנית לא אמורה להחליף את האינטואיציה האנושית, אלא להגביר אותה ולחסוך מהצוות עבודת כפיים. הדרך היחידה למנוע נטישה היא לגשת לאפיון המערכת 'מלמטה למעלה': לפגוש את צוות השטח ולהבין היכן בדיוק הם נתקעים ביום עבודה עמוס. בעזרת אפיון מדויק, יש לייצר ממשק מינימליסטי שבו רק המידע ההכרחי מוצג. כשהמערכת עושה לעובד חיים קלים יותר (לדוגמה: מתזמנת לבד פולו-אפים ומציגה לו מה בוער הבוקר), האימוץ הארגוני מגיע מעצמו והמידע נשמר באדיקות.</p>
                     
-                    <!-- Contextual Illustration -->
-                    <div class="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100 bg-white">
-                        <picture>
-                            <source srcset="../assets/images/services/crm_organized.webp" type="image/webp">
-                            <img src="../assets/images/services/crm_organized.png" alt="לוח ניהול לקוחות מסודר שמרכז את כל המידע במקום אחד" class="w-full h-auto object-cover max-h-[400px]" width="1024" height="1024" decoding="async" loading="lazy">
-                        </picture>
-                    </div>
                 </div>
 
                 <!-- Dark Pitch Box -->
@@ -727,7 +737,6 @@
             }
         });
     </script>
-    
 
     <script>
         if (localStorage.getItem('cookieAccepted') === 'true') {
@@ -883,6 +892,5 @@
     </script>
 
 </body>
-        
 
 </html>

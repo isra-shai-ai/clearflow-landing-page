@@ -733,7 +733,7 @@ GA events only (no Make/Airtable impact):
 
 ## Feature: Sprint 4a, Post-Launch Audit + Safe Polish
 
-**Feature Progress:** `75%` (6 / 8 steps)
+**Feature Progress:** `82%` (9 / 11 steps)
 
 ### TLDR
 
@@ -796,6 +796,24 @@ No change. `{ fullName, phone?, email?, source }`, honeypot, inline success. The
   - 🟩 Verified (Playwright/Edge): banner height 75px at 390 (was ~153), 69px at 768/1280, 108px at 320; hero checkbox hit-test passes with the banner open at 390/768/1280; no horizontal scroll; "הבנתי" hides it and stays hidden after reload
   - **No reject button** (Decision, Shai 2026-10-04). The PPA consent opinion (26.2.2026) allows implied-consent banners. GA loads for everyone today, so a "דחייה" button would be fake unless GA were gated; gating would drop 30-60% of GA data and break the 10-31 read. Revisit after 10-31, or sooner if a lawyer advises it
   - Measurement note: this changes the homepage on 2026-10-04, one day after Sprint 3. The 10-31 post window covers both, so read it as "Sprint 3 + banner"
+- 🟩 **Step 6c: Service-page visuals** (Shai, 2026-10-04): the 10 AI images are gone; each page has **one "before → after" diagram built in HTML** where the first image was (copy below, approved). Two lanes: "היום" (slate) and "עם ClearFlow" (navy, amber number circles); an RTL arrow pointing left on desktop and down on mobile (`-rotate-90 md:rotate-0`); steps are a real `<ol>`, the decorative arrow and numbers are `aria-hidden`. First built inside a bordered card; the detector flagged nested cards, so the outer card was dropped and the lanes sit directly on the page. All 20 image files (`*.png` + `*.webp`) deleted; 0 refs left. Real screenshots replace diagrams later where Shai has them
+- 🟩 **Step 6d: Service-page header band** (Shai, 2026-10-04): the opening (back link, H1, opening paragraph) is a full-width `bg-[#EAF0F7]` band with `border-b border-slate-200`; the article starts in a white section below (`pt-8 md:pt-10`). The "X דקות קריאה" badge is removed on all 5
+- 🟩 **Step 6e: Homepage nav bar** (Shai, 2026-10-04): the header is now `bg-primary shadow-lg` from load (same as the service pages); the scroll JS only swaps `shadow-lg/md:py-4` ↔ `shadow-md/md:py-3`. The bar separates visibly from the `#11223A` hero at 390 and 1280; no border needed. Note: this overrides `design-tokens.json` `components.nav` ("transparent → solid on scroll") by Shai's decision
+  - Measurement note: homepage change before 10-31, cosmetic; same "Sprint 3 + changes" note as the banner
+- Verified (Playwright/Edge, 390 + 1280): no horizontal scroll, 1 H1 per page, no 404s or console errors, diagram stacks on mobile. Detector on crm-systems: nested-cards back to the baseline 1 (Services dropdown); the new "gray-on-color" hits are the amber number circles (dark text on amber ≈ 8:1, false positive, same as the CTA). Service pages are about 30% shorter on desktop
+
+#### Diagram copy (Step 6c, approved 2026-10-04)
+
+| Page | Title | היום | עם ClearFlow |
+|---|---|---|---|
+| ai-agents | הודעה אחת ב-23:40: תור, מחיר ותלונה | האוטומציה שולחת תשובה גנרית → הפנייה מחכה לבוקר → הלקוחה כותבת למתחרה | הסוכן מזהה 3 בקשות → מציע 2 מועדים ועונה על המחיר → מסמן את התלונה ומעביר לכם סיכום |
+| automations | ליד משאיר פרטים בטופס | מישהו צריך לראות את המייל → פותח כרטיס ידנית → וצריך לזכור לחזור | נפתח כרטיס ב-CRM → יוצאת הודעת וואטסאפ עם שם הפונה → נרשמת משימת מעקב והליד מנותב לאיש המכירות |
+| crm-systems | איפה עומד הלקוח? | יומן שאף אחד לא מתחזק → פרטים בוואטסאפ ובאקסל → התשובה תלויה במי שנמצא במשרד | כרטיס לקוח אחד לכל הפניות → גוררים ל'נשלחה הצעת מחיר' → ההצעה נוצרת, המעקב נקבע, הצפי מתעדכן |
+| landing-pages | גולש מגיע ממודעה על שירות אחד | נוחת בעמוד בית עם 6 שירותים → 3 קריאות לפעולה מתחרות → טופס של 9 שדות | כותרת שאומרת מה שהמודעה הבטיחה → 3 נקודות הוכחה → טופס של 2 שדות: שם וטלפון |
+| training | מערכת CRM חדשה נמסרה | המערכת עובדת → לאף אחד אין זמן ללמוד אותה → אחרי 3 שבועות חוזרים לוואטסאפ ולאקסל | הדרכה על התרחישים של הצוות → מפגש חי, הקלטה או מדריך כתוב → אחרי 3 חודשים המערכת עדיין בשימוש |
+
+Every line comes from that page's own example text, so there are no new claims.
+
 - 🟥 **Step 7: Ship + end-to-end lead**
   - 🟥 Merge after Shai's "merge it"; verify production
   - 🟥 One test lead "TEST Sprint4a Claude" via the production hero form: webhook 200, success state, row in Airtable. Shai deletes the row
