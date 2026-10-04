@@ -166,29 +166,6 @@ body {
         }
         
         /* Tech Ticker (Logos) */
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background-color: #f8fafc;
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 1rem 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .ticker-track {
-            display: flex;
-            gap: 3rem;
-            width: max-content;
-            animation: tickerScroll 30s linear infinite;
-        }
-
-        [dir="rtl"] .ticker-track {
-            animation: tickerScrollRTL 30s linear infinite;
-            padding-right: 3rem;
-        }
-
         .ticker-item {
             flex-shrink: 0;
             display: flex;
@@ -208,16 +185,6 @@ body {
         .ticker-item:hover {
             opacity: 1;
             filter: grayscale(0%);
-        }
-
-        @keyframes tickerScroll {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        @keyframes tickerScrollRTL {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(50%, 0, 0); }
         }
         /* ---- Services nav dropdown ----
            Visibility is driven by JS via [data-open] on the wrapper, not by
@@ -312,8 +279,7 @@ body {
                 scroll-behavior: auto !important;
             }
             .blob,
-            .animate-marquee-rtl,
-            .ticker-track {
+            .animate-marquee-rtl {
                 animation: none !important;
             }
             .reveal-element {

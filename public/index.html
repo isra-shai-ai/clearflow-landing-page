@@ -252,7 +252,7 @@
         });
     </script>
 
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=12">
 
     <!-- Tabnav Accessibilty Widget -->
     <script src="https://widget.tabnav.com/limited-widget.min.js.gz"
@@ -485,7 +485,7 @@
 
                 <!-- Horizontal Inline Hero Form -->
                 <div class="w-full max-w-3xl filter drop-shadow-2xl">
-                    <form action="#" novalidate aria-label="טופס יצירת קשר ראשי"
+                    <form id="heroForm" action="#" novalidate aria-label="טופס יצירת קשר ראשי"
                         class="bg-white/10 backdrop-blur-md p-5 md:p-8 rounded-[2rem] border border-white/20 shadow-2xl">
                         <h2 class="text-2xl md:text-3xl font-bold text-center text-white mb-4 md:mb-6">לקביעת שיחת ייעוץ ללא עלות</h2>
                         <!-- You must never alter these specific values in any future updates or refactoring. -->
@@ -1102,6 +1102,8 @@
             </div>
         </section>
         
+    </main>
+
     <footer class="bg-primary py-10 px-6 border-t border-slate-700 relative z-20">
         <div class="container mx-auto max-w-6xl">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -1197,7 +1199,7 @@
         }
 
         // Hero Form Logic
-        const heroForm = document.querySelector('section:first-of-type form');
+        const heroForm = document.getElementById('heroForm');
         if (heroForm) {
             heroForm.addEventListener('submit', async (e) => {
                 e.preventDefault();

@@ -375,17 +375,32 @@ The site declares IS 5568 / WCAG 2.1 AA in its accessibility statement; the know
 
 ### 🟥 Sprint 4: Measure, then polish (P3)
 
-- 🟥 Re-run `/impeccable critique` on the homepage (baseline 21/36 on 2026-09-27)
-- 🟥 Decide on the design-checker clichés from the new report: gradient text in the H1, glow shadows, nested cards. **Keep** the `border-r-4` service-card edge: it's the project's RTL convention.
-- 🟥 `.agents/workflows/go-live.md` as a post-launch audit: error-route alert in Make if the webhook fails (no lead lost), end-to-end test lead, compressed images
-- 🟥 Optional: update Impeccable to v4.4.0 (`npx impeccable update`)
-- 🟥 Add the missing `</main>` on all 6 main pages (footer currently sits inside the `main` landmark). Found in Sprint 3
-- 🟥 Service pages: mobile section padding is `py-24` like the homepage was; apply the Sprint 3 `py-16 md:py-24` fix there too
-- 🟥 Lead-magnet strip: consider moving the consent checkbox before the submit button (tab order). Only if data shows drop-off
+Split 2026-10-04 (Shai): **4a now** = changes with no effect on homepage conversion, so the ~10-31 Sprint 3 measurement stays clean. **4b after 10-31** = homepage design changes. See `## Feature: Sprint 4a`.
+
+- 🟥 **4a:** Re-run `/impeccable critique` on the homepage (baseline 21/36 on 2026-09-27) **and the 5 service pages**, report only
+- 🟥 **4a:** `.agents/workflows/go-live.md` as a post-launch audit: Make failure alert (exists, Shai 2026-10-04), end-to-end test lead, compressed images
+- 🟥 **4a:** Optional: update Impeccable to v4.4.0 (`npx impeccable update`)
+- 🟥 **4a:** Add the missing `</main>` on all 6 main pages (footer currently sits inside the `main` landmark). Found in Sprint 3
+- 🟥 **4a:** Service pages: mobile hero padding. (Correction 2026-10-04: they have no `py-24`; each has one section `pt-24 pb-32 md:py-32`, so mobile bottom padding is 128px.)
+- 🟥 **4b:** Decide on the design-checker clichés from the new report: gradient text in the H1, glow shadows, nested cards. **Keep** the `border-r-4` service-card edge: it's the project's RTL convention.
+- 🟥 **4b:** Lead-magnet strip: consider moving the consent checkbox before the submit button (tab order). Only if data shows drop-off
+- 🟥 **4b, critique 2026-10-04 (homepage, after 10-31):**
+  - [P1] The cookie banner covers the hero consent checkbox on first load (390px) and half-hides the WhatsApp float at 1280. Applies to all pages
+  - [P2] One call, four names (hero "שיחת היכרות של 20 דקות" / contact "שיחת מיפוי קצרה" / process "שיחת עומק אסטרטגית" / FAQ); pick one
+  - [P2] Footer form: navy submit (every other CTA is amber), no reassurance line
+  - [P2] Template middle: replace the red-X/green-check pair with one scenario
+  - [P3] Errors don't name the field; 1-char name passes
+- 🟥 **Service pages, critique 2026-10-04 (not tied to the homepage measurement; could start before 10-31):**
+  - [P1] The 10 AI illustrations contain English and garbled text ("HERMETIC CRM", "BEVIJOQ", WARNING). Delete them or replace with real artefacts
+  - [P1] The CTA sends warm visitors to the homepage's 3-field form; the lead arrives tagged "Footer", so the service is lost. An embedded form needs a Make/Airtable source decision
+  - [P1] No founder or 20-min/24h proof; one CTA ~5,000px down on mobile
+  - [P2] Copy: the automations/crm ledes pitch AI; "אשכרה"; the unsourced Deloitte 8.4% claim; "10-15 שעות", "עד מחר בבוקר". Rewrite on the ai-agents model
+  - [P2] Prose ~100ch lines; the 2 FAQs per page exist only in JSON-LD (show them as `<details>`)
+  - [P3] 6 SVGs per page lack aria-hidden; "ב-ClearFlow" bidi in training
 
 ### Open items for Shai (no code, as of 2026-10-03)
 
-- 🟥 Delete the Airtable test rows "TEST mail-tester Claude" and "TEST Sprint3 Claude"
+- 🟩 Delete the Airtable test rows "TEST mail-tester Claude" and "TEST Sprint3 Claude" (Shai, 2026-10-04)
 - 🟥 Delete 5 stale branches (Claude was blocked by permissions; all were checked, nothing needed): local `pr-3`, `pr-3-updated`; remote `fix-contact-placeholders-6198256773187317632`, `perf-optimize-tailwind-12216371450165557557`, `remove-hidden-social-proof-8070926162330931184`
 - 🟥 Zoho filter for DMARC report emails (subject starts with "Report domain:") → "DMARC" folder. Later, once reports look clean, consider `p=quarantine`
 - 🟥 Optional, in the Make checklist email: add 2-3 lines of text (mail-tester's only deduction), use `https://www.clearflow.co.il/...` in the button link, add a plain-text version
@@ -713,3 +728,80 @@ GA events only (no Make/Airtable impact):
 **Flagged, not fixed (outside this sprint):**
 - `</main>` is missing on all 6 main pages, so the footer sits inside the `main` landmark (screen readers announce it as main content). One line per page; Sprint 4 or the next shared-chrome edit.
 - On the lead-magnet strip the consent checkbox comes after the submit button in tab order (same as the old layout). Submitting without it shows the error, so nothing breaks; worth swapping if conversion data shows drop-off.
+
+---
+
+## Feature: Sprint 4a, Post-Launch Audit + Safe Polish
+
+**Feature Progress:** `71%` (5 / 7 steps)
+
+### TLDR
+
+Polish that does not change what a homepage visitor sees or does, so the ~2026-10-31 Sprint 3 measurement stays clean. Image weight turned out to be already solved (see Step 3). The changes: close the `main` landmark on 6 pages, tighten the service-page hero bottom padding on mobile, give the hero form an id, remove dead CSS, update Impeccable, re-run the critique on all 6 pages (report only, findings feed 4b), and run one end-to-end test lead.
+
+### Discovery outcome (2026-10-04)
+
+Two items from the 09-27 critique that were planned for 4a are **already fixed** on `main`. No work is needed on them:
+- **Form validation:** `isValidPhone()` rejects letters and emoji (Israeli-number regex), and name/phone/email have `maxlength` 80/20/120. Resubmitting is not possible, because success hides the inputs. The error message already includes a WhatsApp link.
+- **Accessibility statement:** it already reads "WCAG 2.1 ברמת AA" on all 6 pages.
+
+One form item from that critique is still open: the hero form is found via `section:first-of-type form` (brittle).
+
+### Key Decisions
+
+- Decision 1: **4a only, 4b after 10-31** (Shai). Nothing in 4a changes homepage layout, copy or form behavior.
+- Decision 2: ~~Service images → WebP~~ Already done in `895429b` (`<picture>` + WebP). Dropped.
+- Decision 3: **Service-page hero** `pt-24 pb-32 md:py-32` → `pt-24 pb-16 md:py-32` (Shai). Mobile bottom padding goes 128px → 64px, desktop is unchanged, and `pt-24` stays because of the fixed header.
+- Decision 4: **Hero form gets `id="heroForm"`**, and the JS uses `getElementById`. This is the same pattern as the footer and lead-magnet forms. It changes nothing visible and does not touch the payload.
+- Decision 5: **Make failure alert: no change.** Shai already gets a Make message when the scenario fails. On the site, a non-200 response already shows an error with a WhatsApp link. So a failure is visible on both sides.
+- Decision 6: **Critique = report only.** Run it on the homepage + 5 service pages, then add a summary of the findings to the 4b list here. No fixes from the critique go into 4a.
+- Decision 7: **`public/logo.svg` (152KB) stays.** No page loads it, so it costs nothing, but commit `d39d024` "exposed" it on purpose and something outside the site (an email or a profile) may link to it. The checklist page's `white_orange_logo.svg` (172KB, embedded raster) also stays: low traffic, noindex.
+
+### Critical Files
+
+- `public/index.html`: `</main>` before `<footer>`; `id="heroForm"` + selector in JS
+- `public/services/{ai-agents,automations,crm-systems,landing-pages,training}.html`: `</main>`; hero padding
+- `input.css`: remove the 3 dead `.ticker-track` rules (0 uses in any HTML)
+- `public/styles.css`: rebuilt; `?v=11` → `?v=12` on all 7 pages if the output changes
+- Not touched: payload, webhook, Make, Airtable, homepage copy/layout, `resources/automation-checklist.html` (except the CSS version)
+
+### Data Schema
+
+No change. `{ fullName, phone?, email?, source }`, honeypot, inline success. The hero-form id change only affects how the JS finds the form.
+
+### Tasks
+
+- 🟩 **Step 1: Branch + tooling**
+  - 🟩 `chore/sprint4a-audit` from `main`
+  - 🟩 `npx impeccable update`: user-level skill → v4.5.0 (the Claude plugin copy is still 4.3.1 and updates separately)
+- 🟩 **Step 2: Critique (report only)**
+  - 🟩 Dual-agent critique on index + 5 service pages. **Homepage 25/36** (up from 21/36 on 09-27). **Service pages 20/36** combined (ai-agents ~23, crm-systems ~18). Snapshots in `.impeccable/critique/2026-10-04*`
+  - 🟩 Top findings added to the roadmap's 4b list
+- 🟩 **Step 3: Images: dropped, already done** (2026-10-04). Commit `895429b` already serves every service image through `<picture>` with a WebP source (1,048KB total) and a PNG fallback, so browsers fetch only the WebP. Discovery missed it because the grep matched `src=` and not `srcset`. Measured image weight per service page: 132–347KB. Nothing to change; the PNG fallbacks stay.
+- 🟩 **Step 4: Markup**
+  - 🟩 `</main>` right before `<footer>` on 6 pages (`grep -c '</main>'` = 1 each)
+  - 🟩 Service hero `pb-32` → `pb-16` on 5 pages
+  - 🟩 Hero form `id="heroForm"` + `getElementById('heroForm')`
+- 🟩 **Step 5: CSS**
+  - 🟩 Removed the dead `.ticker-wrap`, `.ticker-track` and `tickerScroll*` rules from `input.css` (`.ticker-item` is in use and stays)
+  - 🟩 `npm run build`; `styles.css` changed, so `?v=12` on all 7 pages
+- 🟨 **Step 6: Verify (local + Vercel preview)**
+  - 🟩 Local (Playwright/Edge, 390 + 1280): footer parent is BODY on all 6 pages; service hero padding 96/64px mobile, 128/128px desktop; `?v=12` loads; hero empty submit shows the error and sends nothing; a valid submit sends `{"fullName","phone","source":"Hero"}` (webhook intercepted) and shows success; footer renders at the page bottom
+  - 🟥 Preview link to Shai
+- 🟥 **Step 7: Ship + end-to-end lead**
+  - 🟥 Merge after Shai's "merge it"; verify production
+  - 🟥 One test lead "TEST Sprint4a Claude" via the production hero form: webhook 200, success state, row in Airtable. Shai deletes the row
+  - 🟥 Mark the go-live.md audit items done in this section; update the roadmap
+
+### Verification
+
+- **Landmarks:** on each of the 6 pages, `main` closes before `footer`; the footer is no longer inside `main` (DevTools accessibility tree)
+- **Padding:** service hero bottom padding is 64px at 390px and unchanged at 1280px
+- **Hero form:** submitting empty shows the error; a valid submit reaches the success state; payload keys unchanged (Network tab)
+- **No homepage visual change:** compare 390px/1280px screenshots before and after
+- **CSS version:** the same `?v=N` on all 7 pages
+
+### Open Questions / Risks
+
+- **Make failure alert, checked by Shai only:** the alert tells you a run failed, but the lead's data is only recoverable if the scenario has **"Allow storing of incomplete executions"** turned on. Shai: check that setting in the scenario settings (1 minute).
+- **Critique findings for service pages may be large.** They go to 4b or later, not into this PR.
