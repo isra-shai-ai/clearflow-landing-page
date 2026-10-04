@@ -733,7 +733,7 @@ GA events only (no Make/Airtable impact):
 
 ## Feature: Sprint 4a, Post-Launch Audit + Safe Polish
 
-**Feature Progress:** `71%` (5 / 7 steps)
+**Feature Progress:** `75%` (6 / 8 steps)
 
 ### TLDR
 
@@ -788,6 +788,14 @@ No change. `{ fullName, phone?, email?, source }`, honeypot, inline success. The
 - 🟨 **Step 6: Verify (local + Vercel preview)**
   - 🟩 Local (Playwright/Edge, 390 + 1280): footer parent is BODY on all 6 pages; service hero padding 96/64px mobile, 128/128px desktop; `?v=12` loads; hero empty submit shows the error and sends nothing; a valid submit sends `{"fullName","phone","source":"Hero"}` (webhook intercepted) and shows success; footer renders at the page bottom
   - 🟥 Preview link to Shai
+- 🟩 **Step 6b: Compact cookie banner** (Shai: "fix now", 2026-10-04; wording and "no reject button" approved the same day)
+  - Problem (critique P1): on mobile the banner stacked text over the button, about 153px tall. It covered the required hero consent checkbox and the Tabnav button; at 1280px it half-hid the WhatsApp float
+  - 🟩 Same markup on all 6 pages (identical before, sha256 checked): one row at every width, `py-3`, `ps-16` (keeps the text clear of the Tabnav button), `md:px-24`, button `min-h-[44px]`
+  - 🟩 Copy (adapted from a mediniot.co.il example Shai liked): "אנחנו משתמשים בעוגיות כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. בהמשך הגלישה אתם מסכימים לכך. [מדיניות הפרטיות]", button "הבנתי"
+  - 🟩 WhatsApp float `z-40` → `z-[60]` (6 pages), so it sits above the banner instead of half under it
+  - 🟩 Verified (Playwright/Edge): banner height 75px at 390 (was ~153), 69px at 768/1280, 108px at 320; hero checkbox hit-test passes with the banner open at 390/768/1280; no horizontal scroll; "הבנתי" hides it and stays hidden after reload
+  - **No reject button** (Decision, Shai 2026-10-04). The PPA consent opinion (26.2.2026) allows implied-consent banners. GA loads for everyone today, so a "דחייה" button would be fake unless GA were gated; gating would drop 30-60% of GA data and break the 10-31 read. Revisit after 10-31, or sooner if a lawyer advises it
+  - Measurement note: this changes the homepage on 2026-10-04, one day after Sprint 3. The 10-31 post window covers both, so read it as "Sprint 3 + banner"
 - 🟥 **Step 7: Ship + end-to-end lead**
   - 🟥 Merge after Shai's "merge it"; verify production
   - 🟥 One test lead "TEST Sprint4a Claude" via the production hero form: webhook 200, success state, row in Airtable. Shai deletes the row
