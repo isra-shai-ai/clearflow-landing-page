@@ -16,8 +16,9 @@
     "accent": {
       "DEFAULT": "#F59E0B",
       "hover": "#D97706",
-      "foreground": "#FFFFFF",
-      "note": "amber-500 — used for CTA buttons and phone number pill"
+      "foreground": "#11223A",
+      "text": "#B45309",
+      "note": "Brand amber (DEFAULT, amber-500) is for fills only: CTA buttons, phone number pill, progress bars, shapes. Text on amber is navy (foreground). For amber-colored text on light backgrounds use accent-text (amber-700, #B45309), which passes WCAG AA for large text. On dark navy backgrounds (primary.dark, primary) brand amber may be used for text."
     },
     "accessibility_widget": "#405EC3",
     "background": {
@@ -38,8 +39,8 @@
     }
   },
   "typography": {
-    "font_family_primary": ["Heebo", "Rubik", "sans-serif"],
-    "note": "Hebrew RTL fonts. Prefer Heebo for body, Rubik for headings if available.",
+    "font_family_primary": ["Rubik", "sans-serif"],
+    "note": "Hebrew RTL. Rubik is the marketing font (landing page Tailwind sans, loaded from Google Fonts). Assistant 400/700 is the document font (clearflow-doc-template PDFs).",
     "font_weight_bold": "700",
     "font_weight_semibold": "600",
     "font_weight_normal": "400",
@@ -57,8 +58,8 @@
     "spacing_base": "4px"
   },
   "components": {
-    "cta_primary": "bg-amber-500 hover:bg-amber-600 text-white font-bold",
-    "cta_phone_pill": "bg-amber-500 text-white rounded-full px-4 py-1",
+    "cta_primary": "bg-amber-500 hover:bg-amber-600 text-[#11223A] font-bold",
+    "cta_phone_pill": "bg-amber-500 text-[#11223A] rounded-full px-4 py-1",
     "glass_card": "bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl",
     "card_standard": "bg-slate-50 border-r-4 border-r-[#1E3A5F] rounded-xl hover:-translate-y-1 transition-all",
     "nav": "transparent → solid bg-[#11223A] on scroll, text-white"
