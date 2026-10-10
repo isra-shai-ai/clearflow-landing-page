@@ -81,11 +81,11 @@ Pivoting focus away from the English localization (placed on hold) to deeply enr
 Steps 1-9 are complete. These are gates before the site goes live, not build work.
 
 - [ ] 🟥 **Verify the Deloitte / Google citation.** `public/services/landing-pages.html` cites "Milliseconds Make Millions" for a 0.1 second mobile speed improvement and an 8.4% conversion lift. It is the only statistic left on the site. Confirm the exact figure, year and wording against the published report before launch. Note the 8.4% is the retail vertical specifically. An earlier Yottaa 2025 claim and an Akamai 100ms claim were both replaced and no longer appear anywhere.
-- [ ] 🟥 **Run a Lighthouse audit** on the homepage and one service page, mobile and desktop. Check performance, accessibility, best practices and SEO. The a11y work in Step 9 was verified by hand and by scripted DOM checks, not by Lighthouse.
-- [ ] 🟥 **Screen reader spot check** with NVDA or VoiceOver in Hebrew. Automated checks cannot confirm how the RTL content and the nav drawer actually announce.
+- [x] 🟩 **Run a Lighthouse audit** on the homepage and one service page, mobile and desktop. Check performance, accessibility, best practices and SEO. The a11y work in Step 9 was verified by hand and by scripted DOM checks, not by Lighthouse. Done in Sprint 2 (Lighthouse a11y 100 on 4 runs).
+- [x] 🟩 **Screen reader spot check** with NVDA or VoiceOver in Hebrew. Automated checks cannot confirm how the RTL content and the nav drawer actually announce. Done by Shai in Sprint 2 Step 7.
 - [ ] 🟥 **Run `npm run build` before committing.** `npm run dev` starts `tailwindcss --watch`, which rewrites `public/styles.css` unminified. Committing after a dev session ships a 3,000 line stylesheet instead of the minified one.
-- [ ] 🟥 **`/en/` is still frozen** at Decision 1. It has no services dropdown, no mobile nav, stale copy, and `styles.css?v=2` while the Hebrew pages are on `?v=4`. Decide whether to unfreeze or noindex it before launch.
-- [ ] 🟥 Work through `.agents/workflows/go-live.md` (SPF/DKIM/DMARC, legal modals, end to end lead test, RTL and mobile pass).
+- [x] 🟩 ~~**`/en/` is still frozen** at Decision 1. It has no services dropdown, no mobile nav, stale copy, and `styles.css?v=2` while the Hebrew pages are on `?v=4`. Decide whether to unfreeze or noindex it before launch.~~ Obsolete: `/en/` was removed in `1f5098a`.
+- [x] 🟩 Work through `.agents/workflows/go-live.md` (SPF/DKIM/DMARC, legal modals, end to end lead test, RTL and mobile pass). Done as the Sprint 4a post-launch audit (2026-10-10).
 
 ---
 
@@ -355,33 +355,33 @@ Every sprint below that touches site files gets its own `## Feature:` section an
 
 The site declares IS 5568 / WCAG 2.1 AA in its accessibility statement; the known gaps make that claim inaccurate.
 
-- 🟥 Phone pill: `aria-label="טלפון"` → include the visible number (WCAG 2.5.3), all 6 pages
-- 🟥 `aria-hidden="true"` on the 5 original FAQ plus/minus icons
-- 🟥 Visible focus rings where `focus:outline-none` has no replacement
-- 🟥 `.reveal-element`: content must not stay `opacity: 0` if JS or the observer fails
-- 🟥 Marquee/ticker: stop under `prefers-reduced-motion`
-- 🟥 Accessibility statement: WCAG 2.0 → 2.1 AA; update the date
-- 🟥 Lighthouse (mobile + desktop, homepage + 1 service page) before and after
-- 🟥 Screen reader spot check in Hebrew (NVDA) — **Shai**, after the fixes
+- 🟩 Phone pill: `aria-label="טלפון"` → include the visible number (WCAG 2.5.3), all 6 pages
+- 🟩 `aria-hidden="true"` on the 5 original FAQ plus/minus icons
+- 🟩 Visible focus rings where `focus:outline-none` has no replacement
+- 🟩 `.reveal-element`: content must not stay `opacity: 0` if JS or the observer fails
+- 🟩 Marquee/ticker: stop under `prefers-reduced-motion`
+- 🟩 Accessibility statement: WCAG 2.0 → 2.1 AA; update the date
+- 🟩 Lighthouse (mobile + desktop, homepage + 1 service page) before and after
+- 🟩 Screen reader spot check in Hebrew (NVDA) — **Shai**, after the fixes
 - **Effort:** small. Mostly attribute and CSS changes, across 6 pages for the shared chrome.
 
 ### 🟩 Sprint 3: Conversion structure (P2) — shipped 2026-10-03 (PR #12), see its Feature section
 
-- 🟥 Lead magnet placement: move after the FAQ, or slim it down, so it stops competing with the consultation right before the final form
-- 🟥 Services order: automation first (core offer), landing pages later
-- 🟥 One CTA after the process section
-- 🟥 Small wording: cookie banner singular "הנך מסכים/ה" → plural; one phone number format sitewide; muddy `bg-white/40` header over the hero on desktop
+- 🟩 Lead magnet placement: move after the FAQ, or slim it down, so it stops competing with the consultation right before the final form
+- 🟩 Services order: automation first (core offer), landing pages later
+- 🟩 One CTA after the process section
+- 🟩 Small wording: cookie banner singular "הנך מסכים/ה" → plural; one phone number format sitewide; muddy `bg-white/40` header over the hero on desktop
 - **Needs from Shai:** decision on lead-magnet placement and services order (positioning choices, not technical ones).
 
-### 🟥 Sprint 4: Measure, then polish (P3)
+### 🟨 Sprint 4: Measure, then polish (P3) — 4a shipped 2026-10-10 (`e5f5acb`); 4b after 10-31
 
 Split 2026-10-04 (Shai): **4a now** = changes with no effect on homepage conversion, so the ~10-31 Sprint 3 measurement stays clean. **4b after 10-31** = homepage design changes. See `## Feature: Sprint 4a`.
 
-- 🟥 **4a:** Re-run `/impeccable critique` on the homepage (baseline 21/36 on 2026-09-27) **and the 5 service pages**, report only
-- 🟥 **4a:** `.agents/workflows/go-live.md` as a post-launch audit: Make failure alert (exists, Shai 2026-10-04), end-to-end test lead, compressed images
-- 🟥 **4a:** Optional: update Impeccable to v4.4.0 (`npx impeccable update`)
-- 🟥 **4a:** Add the missing `</main>` on all 6 main pages (footer currently sits inside the `main` landmark). Found in Sprint 3
-- 🟥 **4a:** Service pages: mobile hero padding. (Correction 2026-10-04: they have no `py-24`; each has one section `pt-24 pb-32 md:py-32`, so mobile bottom padding is 128px.)
+- 🟩 **4a:** Re-run `/impeccable critique` on the homepage (baseline 21/36 on 2026-09-27) **and the 5 service pages**, report only
+- 🟩 **4a:** `.agents/workflows/go-live.md` as a post-launch audit: Make failure alert (exists, Shai 2026-10-04), end-to-end test lead, compressed images
+- 🟩 **4a:** Optional: update Impeccable to v4.4.0 (`npx impeccable update`)
+- 🟩 **4a:** Add the missing `</main>` on all 6 main pages (footer currently sits inside the `main` landmark). Found in Sprint 3
+- 🟩 **4a:** Service pages: mobile hero padding. (Correction 2026-10-04: they have no `py-24`; each has one section `pt-24 pb-32 md:py-32`, so mobile bottom padding is 128px.)
 - 🟥 **4b:** Decide on the design-checker clichés from the new report: gradient text in the H1, glow shadows, nested cards. **Keep** the `border-r-4` service-card edge: it's the project's RTL convention.
 - 🟥 **4b:** Lead-magnet strip: consider moving the consent checkbox before the submit button (tab order). Only if data shows drop-off
 - 🟥 **4b, critique 2026-10-04 (homepage, after 10-31):**
@@ -733,7 +733,7 @@ GA events only (no Make/Airtable impact):
 
 ## Feature: Sprint 4a, Post-Launch Audit + Safe Polish
 
-**Feature Progress:** `82%` (9 / 11 steps)
+**Feature Progress:** `100%` (11 / 11 steps) — shipped 2026-10-10, `main` at `e5f5acb`
 
 ### TLDR
 
@@ -785,9 +785,9 @@ No change. `{ fullName, phone?, email?, source }`, honeypot, inline success. The
 - 🟩 **Step 5: CSS**
   - 🟩 Removed the dead `.ticker-wrap`, `.ticker-track` and `tickerScroll*` rules from `input.css` (`.ticker-item` is in use and stays)
   - 🟩 `npm run build`; `styles.css` changed, so `?v=12` on all 7 pages
-- 🟨 **Step 6: Verify (local + Vercel preview)**
+- 🟩 **Step 6: Verify (local + Vercel preview)**
   - 🟩 Local (Playwright/Edge, 390 + 1280): footer parent is BODY on all 6 pages; service hero padding 96/64px mobile, 128/128px desktop; `?v=12` loads; hero empty submit shows the error and sends nothing; a valid submit sends `{"fullName","phone","source":"Hero"}` (webhook intercepted) and shows success; footer renders at the page bottom
-  - 🟥 Preview link to Shai
+  - 🟩 Preview link to Shai (superseded: Shai reviewed and approved the merge; production verified in Step 7)
 - 🟩 **Step 6b: Compact cookie banner** (Shai: "fix now", 2026-10-04; wording and "no reject button" approved the same day)
   - Problem (critique P1): on mobile the banner stacked text over the button, about 153px tall. It covered the required hero consent checkbox and the Tabnav button; at 1280px it half-hid the WhatsApp float
   - 🟩 Same markup on all 6 pages (identical before, sha256 checked): one row at every width, `py-3`, `ps-16` (keeps the text clear of the Tabnav button), `md:px-24`, button `min-h-[44px]`
@@ -814,10 +814,11 @@ No change. `{ fullName, phone?, email?, source }`, honeypot, inline success. The
 
 Every line comes from that page's own example text, so there are no new claims.
 
-- 🟥 **Step 7: Ship + end-to-end lead**
-  - 🟥 Merge after Shai's "merge it"; verify production
-  - 🟥 One test lead "TEST Sprint4a Claude" via the production hero form: webhook 200, success state, row in Airtable. Shai deletes the row
-  - 🟥 Mark the go-live.md audit items done in this section; update the roadmap
+- 🟩 **Step 7: Ship + end-to-end lead** (2026-10-10)
+  - 🟩 Merged to `main` (`e5f5acb`, with the brand sync and CTA navy-text fixes); production checked: `?v=13`, amber CTA text `#11223A`, no old images
+  - 🟩 Test lead "TEST Sprint4a Claude" via the production hero form: success state shown. **First run failed in Make** with Airtable 422 "Insufficient permissions to create new select option Hero": the hero form sends `source: "Hero"`, but `מקור טופס באתר` only had Main / Footer / Lead Magnet / N/A. So every hero lead since the source rename was dropped (no row, no email; no real ones in the last 30 days). **Fix:** added the `Hero` option in Airtable (Shai approved). Replayed the execution: success, 3 ops, row created, notification email sent. **Shai deletes the test row**
+  - 🟩 go-live.md audit items done; roadmap updated
+  - Rule: any new form `source` value needs a matching Airtable select option first (Make sends with `typecast: false`)
 
 ### Verification
 
@@ -829,5 +830,5 @@ Every line comes from that page's own example text, so there are no new claims.
 
 ### Open Questions / Risks
 
-- **Make failure alert, checked by Shai only:** the alert tells you a run failed, but the lead's data is only recoverable if the scenario has **"Allow storing of incomplete executions"** turned on. Shai: check that setting in the scenario settings (1 minute).
+- **Make "Allow storing of incomplete executions": OFF** (checked 2026-10-10 via the API, `dlq: false`). Without it a failed lead's data can't be resumed from the queue (replay still works while the execution data is kept). **Shai: turn it on** in scenario 4665152 → Scenario settings (1 minute). Not changed by API on purpose: that would mean resending the whole blueprint.
 - **Critique findings for service pages may be large.** They go to 4b or later, not into this PR.
