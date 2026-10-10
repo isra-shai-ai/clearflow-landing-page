@@ -4,7 +4,7 @@ description: Creative brainstorming for copy concepts — generates multiple ang
 
 # /copy-brainstorm — ClearFlow Copy Brainstorm Workflow
 
-> **Pre-requisite**: Read `.agents/skills/clearflow-copy-skill` before starting. It contains all brand context, voice rules, tone guidelines, and the visual identity spec.
+> **Pre-requisite**: Read `.agents/skills/clearflow-copy-skill` before starting, then the brand files it points to in `.claude/skills/brand-identity/resources/` (`brand-context.md`, `voice-tone.md`, `visual-identity.md`, `design-tokens.json`).
 
 ---
 
