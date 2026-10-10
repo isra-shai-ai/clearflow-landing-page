@@ -830,5 +830,5 @@ Every line comes from that page's own example text, so there are no new claims.
 
 ### Open Questions / Risks
 
-- **Make "Allow storing of incomplete executions": OFF** (checked 2026-10-10 via the API, `dlq: false`). Without it a failed lead's data can't be resumed from the queue (replay still works while the execution data is kept). **Shai: turn it on** in scenario 4665152 → Scenario settings (1 minute). Not changed by API on purpose: that would mean resending the whole blueprint.
+- **Make "Allow storing of incomplete executions": ON** (set 2026-10-10 via the API, `dlq: true`). Failed lead runs now wait in the incomplete-executions queue and can be resumed. The same update fixed the notification email's "פרטים ב-Airtable" button: it pointed to an old base (`appcRDqP3BHvX9x9O`) and used the autonumber `{{2.ID}}`; it now opens `app2eEDQzmApYPiMg/.../{{2.id}}`. Verified with test lead "TEST Sprint4a Claude 2" (email link opens the record). Note: a blueprint update via the API deactivates the scenario; reactivate right after (`scenarios_activate`).
 - **Critique findings for service pages may be large.** They go to 4b or later, not into this PR.
