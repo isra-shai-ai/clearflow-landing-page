@@ -222,7 +222,7 @@
         });
     </script>
 
-    <link rel="stylesheet" href="../styles.css?v=12">
+    <link rel="stylesheet" href="../styles.css?v=13">
 
     <!-- Tabnav Accessibilty Widget -->
     <script src="https://widget.tabnav.com/limited-widget.min.js.gz"
@@ -243,7 +243,7 @@
     <a href="https://wa.me/972522296269?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%A6%D7%99%D7%94%20%D7%A2%D7%A1%D7%A7%D7%99%D7%AA..."
         target="_blank" rel="noopener noreferrer" aria-label="פתח שיחה בוואטסאפ (נפתח בחלון חדש)"
         title="(נפתח בחלון חדש)"
-        class="fixed bottom-5 left-6 z-40 w-14 h-14 bg-green-500 rounded-full hidden md:flex items-center justify-center p-0 shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300">
+        class="fixed bottom-5 left-6 z-[60] w-14 h-14 bg-green-500 rounded-full hidden md:flex items-center justify-center p-0 shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300">
         <span class="sr-only">(נפתח בחלון חדש)</span>
         <svg aria-hidden="true" viewBox="0 0 16 16" fill="white" class="w-8 h-8">
             <path
@@ -253,18 +253,17 @@
 
     <!-- ── Cookie Banner ── -->
     <div id="cookieBanner"
-        class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] py-4 px-6 transform transition-transform duration-500 translate-y-0">
-        <div
-            class="container mx-auto max-w-6xl flex flex-col lg:flex-row lg:flex-nowrap items-center justify-between gap-6">
-            <p class="text-sm text-slate-600 flex-1">
-                אנחנו משתמשים בעוגיות (Cookies) כדי להעניק לכם את החוויה הטובה ביותר. בהמשך הגלישה, אתם מסכימים לשימוש בהן.
-                לקריאה נוספת: <button onclick="document.getElementById('privacyModal').showModal()"
-                    class="text-primary font-semibold hover:underline">מדיניות הפרטיות</button> שלנו.
+        class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] py-3 ps-16 pe-4 md:px-24 transform transition-transform duration-500 translate-y-0">
+        <div class="container mx-auto max-w-6xl flex flex-row items-center justify-between gap-3 md:gap-6">
+            <p class="text-xs leading-snug md:text-sm text-slate-600 flex-1">
+                אנחנו משתמשים בעוגיות כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. בהמשך הגלישה אתם מסכימים לכך.
+                <button onclick="document.getElementById('privacyModal').showModal()"
+                    class="text-primary font-semibold underline">מדיניות הפרטיות</button>
             </p>
             <button
                 onclick="localStorage.setItem('cookieAccepted', 'true'); document.getElementById('cookieBanner').style.transform = 'translateY(100%)'; setTimeout(()=> document.getElementById('cookieBanner').style.display = 'none', 500);"
-                class="bg-primary text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#152a45] transition-colors whitespace-nowrap flex-shrink-0">
-                הבנתי תודה
+                class="bg-primary text-white px-5 min-h-[44px] rounded-full text-sm font-medium hover:bg-[#152a45] transition-colors whitespace-nowrap flex-shrink-0">
+                הבנתי
             </button>
         </div>
     </div>
@@ -434,20 +433,19 @@
     </div>
 
     <main id="main-content" class="flex-grow">
-        <section class="pt-24 pb-32 md:py-32 px-6">
-            <div class="container mx-auto max-w-4xl opacity-100 translate-y-0 duration-700 ease-out" id="articleWrapper">
+        <section class="bg-[#EAF0F7] border-b border-slate-200 pt-24 pb-10 md:pt-32 md:pb-14 px-6">
+            <div class="container mx-auto max-w-4xl">
                 <a href="/#services" class="inline-flex items-center gap-2 text-slate-500 hover:text-primary transition-colors font-medium mb-8">
                     <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     חזרה לעמוד הראשי
                 </a>
                 <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6 tracking-tight">סוכני AI שמנהלים את הפניות שלכם, גם ב-2 בלילה</h1>
-                <p class="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed max-w-5xl text-balance">אוטומציה מבצעת תהליך שהגדרתם מראש. סוכן AI יודע להחליט מה לעשות כשהפנייה לא נכנסת לשום תבנית: לקרוא הודעה חופשית, להבין מה הלקוח באמת רוצה, לענות, ולהעביר אליכם כשצריך.</p>
+                <p class="text-xl md:text-2xl text-slate-700 leading-relaxed max-w-5xl text-balance">אוטומציה מבצעת תהליך שהגדרתם מראש. סוכן AI יודע להחליט מה לעשות כשהפנייה לא נכנסת לשום תבנית: לקרוא הודעה חופשית, להבין מה הלקוח באמת רוצה, לענות, ולהעביר אליכם כשצריך.</p>
+            </div>
+        </section>
 
-                <!-- Read Time Badge -->
-                <div class="flex items-center gap-2 text-slate-600 font-medium mb-12 bg-slate-100 inline-flex px-4 py-2 rounded-full text-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    4 דקות קריאה
-                </div>
+        <section class="bg-white pt-8 pb-16 md:pt-10 md:pb-32 px-6">
+            <div class="container mx-auto max-w-4xl opacity-100 translate-y-0 duration-700 ease-out" id="articleWrapper">
 
                 <div class="prose prose-lg prose-slate text-right rtl max-w-none text-slate-700">
                     <h2 class="text-3xl font-bold text-slate-800 mb-6 mt-10">למה האוטומציה נעצרת בדיוק ברגע הקריטי</h2>
@@ -455,26 +453,37 @@
                     <p class="leading-relaxed text-lg mb-6">הבעיה מתחילה כשהלקוח כותב בשפה שלו. הודעה אחת בוואטסאפ יכולה להכיל שאלה על זמינות, תלונה על ביקור קודם ובקשת מחיר, הכל במשפט אחד ובלי סימני פיסוק. שום תרשים זרימה לא מכסה את זה. האוטומציה תשלח את התשובה הגנרית שהגדרתם, או שתעצור ותחכה לאדם.</p>
                     <p class="leading-relaxed text-lg mb-8">ומי שמחכה לאדם, מחכה. הפנייה יושבת בתור עד הבוקר, והלקוח כבר כתב למתחרה שענה לו ראשון. זה לא כשל טכני. זה פשוט הגבול של מה שכללים קבועים יודעים לעשות.</p>
                     
-                    <!-- Contextual Illustration -->
-                    <div class="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100 bg-white">
-                        <picture>
-                            <source srcset="../assets/images/services/ai_chaos.webp" type="image/webp">
-                            <img src="../assets/images/services/ai_chaos.png" alt="פניות ומשימות דיגיטליות שנתקעות בצוואר בקבוק" class="w-full h-auto object-cover max-h-[400px]" width="1024" height="1024" decoding="async" loading="lazy">
-                        </picture>
-                    </div>
+                    <!-- Before/after flow -->
+                    <figure class="mb-12" aria-labelledby="flowTitle">
+                        <figcaption id="flowTitle" class="text-xl md:text-2xl font-bold text-primary mb-5">הודעה אחת ב-23:40: תור, מחיר ותלונה</figcaption>
+                        <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
+                            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5">
+                                <p class="text-sm font-semibold text-slate-500 mb-4">היום</p>
+                                <ol class="space-y-3">
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">1</span><span class="text-slate-600 leading-snug pt-0.5">האוטומציה שולחת תשובה גנרית</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">2</span><span class="text-slate-600 leading-snug pt-0.5">הפנייה מחכה לבוקר</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-slate-200 text-slate-600 text-sm font-bold flex items-center justify-center" aria-hidden="true">3</span><span class="text-slate-600 leading-snug pt-0.5">הלקוחה כותבת למתחרה</span></li>
+                                </ol>
+                            </div>
+                            <div class="flex items-center justify-center text-amber-500" aria-hidden="true">
+                                <svg class="w-8 h-8 -rotate-90 md:rotate-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0l7-7m-7 7l7 7"/></svg>
+                            </div>
+                            <div class="rounded-2xl bg-[#11223A] p-5">
+                                <p class="text-sm font-semibold text-amber-400 mb-4">עם ClearFlow</p>
+                                <ol class="space-y-3">
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-[#11223A] text-sm font-bold flex items-center justify-center" aria-hidden="true">1</span><span class="text-white leading-snug pt-0.5">הסוכן מזהה 3 בקשות</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-[#11223A] text-sm font-bold flex items-center justify-center" aria-hidden="true">2</span><span class="text-white leading-snug pt-0.5">מציע 2 מועדים ועונה על המחיר</span></li>
+                                <li class="flex items-start gap-3"><span class="flex-none w-7 h-7 rounded-full bg-amber-500 text-[#11223A] text-sm font-bold flex items-center justify-center" aria-hidden="true">3</span><span class="text-white leading-snug pt-0.5">מסמן את התלונה ומעביר לכם סיכום</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </figure>
 
                     <h2 class="text-3xl font-bold text-slate-800 mb-6 mt-12">מה סוכן AI עושה אחרת</h2>
                     <p class="leading-relaxed text-lg mb-6">סוכן הוא לא עוד תרשים זרימה. הוא קורא את הפנייה כמו שעובד שלכם היה קורא אותה, מזהה מה בדיוק מבקשים ממנו, ופועל לפי הכללים שהגדרתם: בודק יומן, שולף מחיר מהמחירון, פותח כרטיס ב-CRM, ומנסח תשובה בשפה שלכם.</p>
                     <p class="leading-relaxed text-lg mb-6">הדבר החשוב יותר הוא מה שהוא לא עושה. סוכן טוב מכיר בגבול שלו. כשהפנייה רגישה, חריגה או פשוט לא ברורה מספיק, הוא לא ממציא תשובה. הוא מסמן אותה, מעביר אליכם סיכום קצר, ומחכה להחלטה שלכם.</p>
                     <p class="leading-relaxed text-lg mb-12">אתם מגדירים מראש מה מותר לו לסגור לבד ומה חייב לעבור דרככם. הסוכן עובד בתוך הגבולות האלה בלבד, וכל שיחה שלו מתועדת אצלכם.</p>
                     
-                    <!-- Contextual Illustration -->
-                    <div class="w-full mb-12 rounded-3xl overflow-hidden shadow-lg border border-slate-100 bg-white">
-                        <picture>
-                            <source srcset="../assets/images/services/ai_solution.webp" type="image/webp">
-                            <img src="../assets/images/services/ai_solution.png" alt="סוכן AI שממיין ומארגן פניות נכנסות" class="w-full h-auto object-cover max-h-[400px]" width="1024" height="1024" decoding="async" loading="lazy">
-                        </picture>
-                    </div>
                 </div>
 
                 <!-- Dark Pitch Box -->
@@ -519,6 +528,8 @@
             </div>
         </section>
         
+    </main>
+
     <footer class="bg-primary py-10 px-6 border-t border-slate-700 relative z-20">
         <div class="container mx-auto max-w-6xl">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -730,7 +741,6 @@
             }
         });
     </script>
-    
 
     <script>
         if (localStorage.getItem('cookieAccepted') === 'true') {
@@ -886,6 +896,5 @@
     </script>
 
 </body>
-        
 
 </html>

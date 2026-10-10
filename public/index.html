@@ -252,7 +252,7 @@
         });
     </script>
 
-    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="styles.css?v=13">
 
     <!-- Tabnav Accessibilty Widget -->
     <script src="https://widget.tabnav.com/limited-widget.min.js.gz"
@@ -273,7 +273,7 @@
     <a href="https://wa.me/972522296269?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%A6%D7%99%D7%94%20%D7%A2%D7%A1%D7%A7%D7%99%D7%AA..."
         target="_blank" rel="noopener noreferrer" aria-label="פתח שיחה בוואטסאפ (נפתח בחלון חדש)"
         title="(נפתח בחלון חדש)"
-        class="fixed bottom-5 left-6 z-40 w-14 h-14 bg-green-500 rounded-full hidden md:flex items-center justify-center p-0 shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300">
+        class="fixed bottom-5 left-6 z-[60] w-14 h-14 bg-green-500 rounded-full hidden md:flex items-center justify-center p-0 shadow-lg hover:scale-110 hover:shadow-2xl transition-all duration-300">
         <span class="sr-only">(נפתח בחלון חדש)</span>
         <svg aria-hidden="true" viewBox="0 0 16 16" fill="white" class="w-8 h-8">
             <path
@@ -283,18 +283,17 @@
 
     <!-- ── Cookie Banner ── -->
     <div id="cookieBanner"
-        class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] py-4 px-6 transform transition-transform duration-500 translate-y-0">
-        <div
-            class="container mx-auto max-w-6xl flex flex-col lg:flex-row lg:flex-nowrap items-center justify-between gap-6">
-            <p class="text-sm text-slate-600 flex-1">
-                אנחנו משתמשים בעוגיות (Cookies) כדי להעניק לכם את החוויה הטובה ביותר. בהמשך הגלישה, אתם מסכימים לשימוש בהן.
-                לקריאה נוספת: <button onclick="document.getElementById('privacyModal').showModal()"
-                    class="text-primary font-semibold hover:underline">מדיניות הפרטיות</button> שלנו.
+        class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] py-3 ps-16 pe-4 md:px-24 transform transition-transform duration-500 translate-y-0">
+        <div class="container mx-auto max-w-6xl flex flex-row items-center justify-between gap-3 md:gap-6">
+            <p class="text-xs leading-snug md:text-sm text-slate-600 flex-1">
+                אנחנו משתמשים בעוגיות כדי לשפר את חוויית הגלישה ולנתח את תנועת האתר. בהמשך הגלישה אתם מסכימים לכך.
+                <button onclick="document.getElementById('privacyModal').showModal()"
+                    class="text-primary font-semibold underline">מדיניות הפרטיות</button>
             </p>
             <button
                 onclick="localStorage.setItem('cookieAccepted', 'true'); document.getElementById('cookieBanner').style.transform = 'translateY(100%)'; setTimeout(()=> document.getElementById('cookieBanner').style.display = 'none', 500);"
-                class="bg-primary text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#152a45] transition-colors whitespace-nowrap flex-shrink-0">
-                הבנתי תודה
+                class="bg-primary text-white px-5 min-h-[44px] rounded-full text-sm font-medium hover:bg-[#152a45] transition-colors whitespace-nowrap flex-shrink-0">
+                הבנתי
             </button>
         </div>
     </div>
@@ -364,7 +363,7 @@
 
     <!-- ── Header ── -->
     <header id="mainHeader"
-        class="fixed top-0 w-full z-40 bg-[#11223A]/70 backdrop-blur-xl border-b border-transparent py-3 md:py-4 transition-all duration-300">
+        class="fixed top-0 w-full z-40 bg-primary shadow-lg py-3 md:py-4 transition-all duration-300">
         <div class="container mx-auto px-6 max-w-6xl flex items-center justify-between gap-2">
             <button type="button" id="mobileNavToggle"
                 class="md:hidden text-white p-1 -mr-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 relative before:absolute before:-inset-1.5 before:content-['']"
@@ -485,7 +484,7 @@
 
                 <!-- Horizontal Inline Hero Form -->
                 <div class="w-full max-w-3xl filter drop-shadow-2xl">
-                    <form action="#" novalidate aria-label="טופס יצירת קשר ראשי"
+                    <form id="heroForm" action="#" novalidate aria-label="טופס יצירת קשר ראשי"
                         class="bg-white/10 backdrop-blur-md p-5 md:p-8 rounded-[2rem] border border-white/20 shadow-2xl">
                         <h2 class="text-2xl md:text-3xl font-bold text-center text-white mb-4 md:mb-6">לקביעת שיחת ייעוץ ללא עלות</h2>
                         <!-- You must never alter these specific values in any future updates or refactoring. -->
@@ -1102,6 +1101,8 @@
             </div>
         </section>
         
+    </main>
+
     <footer class="bg-primary py-10 px-6 border-t border-slate-700 relative z-20">
         <div class="container mx-auto max-w-6xl">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -1144,11 +1145,11 @@
         if (header) {
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
-                    header.classList.remove('bg-[#11223A]/70', 'border-transparent', 'md:py-4');
-                    header.classList.add('bg-[#11223A]', 'border-gray-100', 'shadow-md', 'md:py-3');
+                    header.classList.remove('shadow-lg', 'md:py-4');
+                    header.classList.add('shadow-md', 'md:py-3');
                 } else {
-                    header.classList.add('bg-[#11223A]/70', 'border-transparent', 'md:py-4');
-                    header.classList.remove('bg-[#11223A]', 'border-gray-100', 'shadow-md', 'md:py-3');
+                    header.classList.add('shadow-lg', 'md:py-4');
+                    header.classList.remove('shadow-md', 'md:py-3');
                 }
             });
         }
@@ -1197,7 +1198,7 @@
         }
 
         // Hero Form Logic
-        const heroForm = document.querySelector('section:first-of-type form');
+        const heroForm = document.getElementById('heroForm');
         if (heroForm) {
             heroForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
