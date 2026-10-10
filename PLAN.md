@@ -406,6 +406,7 @@ Split 2026-10-04 (Shai): **4a now** = changes with no effect on homepage convers
 - 🟥 Optional, in the Make checklist email: add 2-3 lines of text (mail-tester's only deduction), use `https://www.clearflow.co.il/...` in the button link, add a plain-text version
 - 🟥 Optional: upgrade the Zoho DKIM key from 1024-bit to 2048-bit
 - 🟥 Optional: Search Console reindex of `/`
+- ⏸ **Service-page lead source (deferred by Shai 2026-10-10, low site traffic):** plan = fill the existing "שירות מבוקש" field via `/?service=<page>#contact`; order Airtable options → Make → site
 - 🟥 **~2026-10-31: measure Sprint 3.** In GA, compare consult requests (`generate_lead`, label `contact_form`) for 4 weeks before vs. after 2026-10-03. Also look at `click_cta_process` and `generate_lead` with label `lead_magnet`. Low traffic means read it as a direction, not proof
 
 ### Sequencing
