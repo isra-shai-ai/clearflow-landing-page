@@ -296,3 +296,9 @@ body {
                 transform: none;
             }
         }
+
+/* Service pages: cap article line length (~70 chars) for readability */
+#articleWrapper .prose > p,
+#articleWrapper > ul {
+    max-width: 70ch;
+}
