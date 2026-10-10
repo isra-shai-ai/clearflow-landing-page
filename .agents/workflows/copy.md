@@ -4,7 +4,7 @@ description: Main copywriting workflow — handles all channels (landing page, e
 
 # /copy — ClearFlow Copywriting Workflow
 
-> **Pre-requisite**: Read `.agents/skills/clearflow-copy-skill` before starting. It contains all brand context, voice rules, tone guidelines, and the visual identity spec.
+> **Pre-requisite**: Read `.agents/skills/clearflow-copy-skill` before starting, then the brand files it points to in `.claude/skills/brand-identity/resources/` (`brand-context.md`, `voice-tone.md`, `visual-identity.md`, `design-tokens.json`).
 
 ---
 
@@ -36,7 +36,7 @@ Ask **channel-specific** questions. Use the base questions below + the channel-s
 ### Base Questions (all channels)
 
 1. מה המטרה? (מודעות / engagement / לידים / מכירות ישירות?)
-2. למי פונים? (אם שונה מה-ICP ב-`context.md` — פרטו)
+2. למי פונים? (אם שונה מה-ICP ב-`brand-context.md` — פרטו)
 3. יש טקסט קיים לשיפור? (אם כן — הדביקו)
 4. העדפת טון מיוחדת? (ברירת מחדל: מקצועי, ישיר, בגובה העיניים)
 
@@ -291,9 +291,9 @@ After presenting the draft:
 
 > **Applies to**: Landing Page, Ads, Social, Blog, Email (minimal). **Skip for**: WhatsApp/SMS.
 
-After the user approves the draft copy, generate an **English** image prompt using the **ClearFlow Transformation visual concept** defined in `.agents/skills/clearflow-copy-skill` (Visual Identity section).
+After the user approves the draft copy, generate an **English** image prompt using the **ClearFlow Transformation visual concept** defined in `.claude/skills/brand-identity/resources/visual-identity.md`.
 
-Refer to the skill for: brand colors, fixed visual elements, style rules, what to avoid, and channel-specific prompt types.
+Refer to `visual-identity.md` for: brand colors, fixed visual elements, style rules, what to avoid, and channel-specific prompt types.
 
 ### Output format
 

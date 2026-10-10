@@ -62,7 +62,7 @@ Success is an inline DOM swap (hide inputs, reveal `#heroFormSuccess` / `#footer
 
 ## Design system
 
-Source of truth: `.claude/skills/brand-identity/` — `design-tokens.json` (colors, glassmorphism, component recipes), `voice-tone.md` (Hebrew copy rules), `tech-stack.md`.
+Source of truth: `.claude/skills/brand-identity/` — `design-tokens.json` (colors, glassmorphism, component recipes), `voice-tone.md` (Hebrew copy rules, channel openings), `brand-context.md` (product, ICP, positioning), `visual-identity.md` (image direction), `tech-stack.md`. The first four are synced copies of the master files in the ClearFlow Drive (`H:\My Drive\marketing\brand\`): edit the master, then copy it here. Copywriting agents start from `.agents/skills/clearflow-copy-skill`, which points to these files.
 
 `tailwind.config.js` only defines four semantic colors (`primary #1E3A5F`, `accent #4A6FA5`, `surface`, `alt`) and the Rubik font. Everything else in the tokens file — amber CTAs (`#F59E0B`), dark nav (`#11223A`) — is written as arbitrary values in the HTML.
 

@@ -4,7 +4,7 @@ description: Review and improve existing copy — structured audit with scorecar
 
 # /copy-review — ClearFlow Copy Review Workflow
 
-> **Pre-requisite**: Read `.agents/skills/clearflow-copy-skill` before starting. It contains all brand context, voice rules, tone guidelines, and the visual identity spec.
+> **Pre-requisite**: Read `.agents/skills/clearflow-copy-skill` before starting, then the brand files it points to in `.claude/skills/brand-identity/resources/` (`brand-context.md`, `voice-tone.md`, `visual-identity.md`, `design-tokens.json`).
 
 ---
 

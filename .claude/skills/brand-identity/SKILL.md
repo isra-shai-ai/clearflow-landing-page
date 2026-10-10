@@ -27,6 +27,15 @@ Durable implementation rules and forbidden patterns:
 Hebrew voice, tone, persona, and terminology rules:
 👉 **[`resources/voice-tone.md`](resources/voice-tone.md)**
 
+### For Product, Audience & Positioning
+ICP, pain points, objections, value props, positioning:
+**[`resources/brand-context.md`](resources/brand-context.md)**
+
+### For Image Direction
+"ClearFlow Transformation" rules for AI image prompts:
+**[`resources/visual-identity.md`](resources/visual-identity.md)**
+
+> `brand-context.md`, `voice-tone.md`, `visual-identity.md` and `design-tokens.json` are synced copies of the masters in `H:\My Drive\marketing\brand\`. Edit the master, then copy it here.
 ## Scope Boundary
 
 This skill covers **durable brand decisions only** — things that stay true across refactors.

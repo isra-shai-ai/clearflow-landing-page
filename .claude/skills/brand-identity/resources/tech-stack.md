@@ -14,7 +14,7 @@ If a rule below ever conflicts with observed code, the code wins — fix the rul
 | Layer | Technology | Notes |
 |---|---|---|
 | **Icons** | Inline SVG only | Lucide-style, thin-stroke (stroke-width: 1.5), monochrome |
-| **Fonts** | Google Fonts — Heebo / Rubik | Load via `<link>` in `<head>` |
+| **Fonts** | Google Fonts — Rubik | Load via `<link>` in `<head>` |
 | **JS** | Vanilla JS inline | No frameworks. Keep scripts minimal and inline |
 
 ## Layout Rules
